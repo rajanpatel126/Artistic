@@ -1,0 +1,189 @@
+.App {
+    text-align: center;
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    color: black;
+
+    background-image: url("https://img.freepik.com/premium-photo/abstract-modern-black-background-black-paper-texture-black-dark-gray-textured-design-paper_183577-792.jpg"); 
+    background-size: cover;
+    /* opacity: 0.5; */
+}
+
+
+
+label{
+    color: white;
+}
+
+.img1 {
+    width: 60px;
+    border-radius: 50px;
+}
+
+.logoimg {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+   
+}
+
+.auth-form-container{
+    width: 30%;
+   height: 50%;
+}
+
+
+
+.auth-form-container,
+.register-form,
+.login-form {
+  
+    display: flex;
+    flex-direction: column;
+    height: 550px;
+}
+
+
+
+@media screen and (min-width:600px) {
+    .auth-form-container {
+        padding: 3rem;
+        border: 1px solid white;
+        box-sizing: border-box;
+        /* box-shadow: 7px 7px #888; */
+        border-radius: 10px;
+        margin: 0.5rem;
+    }
+}
+
+.l1 {
+    text-align: left;
+    margin-bottom: 252px;
+}
+
+input {
+    margin: 0.5rem 0;
+    margin-top: 0px;
+    margin-bottom: 5%;
+    /* padding: 0.7rem; */
+    /* border: none; */
+    border-radius: 10px;
+}
+
+button {
+    border: none;
+    background-color: red;
+    /* background-color: rgb(24, 24, 237); */
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    /* margin-bottom: 10%; */
+}
+
+.button1:hover {
+    background-color: #1620b5;
+}
+
+.link-btn {
+    background: none;
+    color: blue;
+    text-decoration: underline;
+}
+
+.link-btn:hover{
+    color: #1620b5;
+}
+
+.forgot {
+   
+    color: blue;
+    font: bold;
+    margin-bottom: 10%;
+    text-align: left;
+}
+
+.or {
+    margin-top: -245px;
+    justify-content: center;
+    display: flex;
+}
+
+.l1-r {
+    margin-bottom: 250px;
+    text-align: left;
+}
+
+.or-r {
+    margin-top: -245px;
+    justify-content: center;
+    display: flex;
+}
+
+.link-btn:hover {
+    color: blue;
+}
+
+.btn-l {
+    padding: 3px;
+    margin-top: 15px;
+}
+
+.btn-r {
+    padding: 3px;
+    margin-top: 10px;
+}
+
+.btn-google-r {
+    background-color: white;
+    cursor: pointer;
+    color: black;
+}
+
+.btn-google-l {
+    background-color: white;
+    cursor: pointer;
+    color: black;
+}
+
+.btn-google-r:hover {
+    background-color: #747171;
+    transition: .5s all ease;
+}
+
+.btn-google-l:hover {
+    background-color: #747171;
+    transition: .5s all ease;
+}
+
+.btn-google-l .icon-l {
+    margin-top: 10px;
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+
+.imgc {
+    margin-right: 10px;
+}
+
+.btn-google-r .icon-r {
+    margin-top: 10px;
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.btn-google-r .icon-r img {
+    width: 20px;
+    height: 20px;
+    margin-right: 15px;
+}
+
+.btn-google-l .icon-l img {
+    width: 20px;
+    height: 20px;
+    margin-right: 15px;
+}
