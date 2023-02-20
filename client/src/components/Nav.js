@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
@@ -5,11 +6,8 @@ import { FiShoppingCart } from "react-icons/fi";
 import { CgMenu, CgClose } from "react-icons/cg";
 import LogReg from "./UserLogin/LogR";
 
-
-
 const Nav = () => {
   const [menuIcon, setMenuIcon] = useState();
-
 
   const Nav = styled.nav`
     .navbar-lists {
@@ -61,7 +59,7 @@ const Nav = () => {
         width: 2.4rem;
         height: 2.4rem;
         position: absolute;
-        background-color: #00023D;
+        background-color: #00023d;
         color: white;
         border-radius: 50%;
         display: grid;
@@ -72,7 +70,6 @@ const Nav = () => {
       }
     }
 
-  
     .user-logout,
     .user-login {
       font-size: 1.4rem;
@@ -159,108 +156,100 @@ const Nav = () => {
     }
   `;
 
-  return (<>
-
-
-    {/* <div className="App">
+  return (
+    <>
+      {/* <div className="App">
       {
         currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm} />
       }
     </div> */}
 
-    <h2 className="text-6xl flex font-bold justify-center bg-slate-100 items-center text-center ">Artistic</h2>
-    <Nav class="bg-slate-200">
-
-      <div className={menuIcon ? "navbar active" : "navbar"} >
-        <ul className="navbar-lists h-8 bg-slate-100">
-
-         
-          <nav aria-label="primary" class="relative z-20 flex-col flex-grow hidden pb-4 md:pb-0 md:flex md:justify-end md:flex-row">
-
-            <div class="relative group">
-              <button class="flex flex-row items-center text-3xl w-full px-4 py-4 mt-4 text-left bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4 focus:outline-none font-montserrat ">
-
-                <span className="text-black">Login</span>
-              </button>
-              <div class=" z-10 hidden absolute -my-4 ml-10  group-hover:block">
-
-                <div class="px-3 py-4 pt-2 pb-2 bg-slate-200 w-36 h-40 rounded-md text-black">
-                  {/* <div class="grid grid-cols-1 gap-4 md:grid-cols-2"> */}
-                  <ul>
-                    <li>
-                      <NavLink
-                        to="/Login1"
-                        className="navbar-link">
-                        User
-                      </NavLink>
-                    </li>
-                    <hr />
-                    <li>
-                      <NavLink
-                        to="/AdminLogin"
-                        className="navbar-link">
-                       Admin
-                      </NavLink>
-                    </li>
-                    <hr />
-                    <li>
-                      <NavLink
-                        to="/ArtistLogin"
-                        className="navbar-link">
-                        Artist
-                      </NavLink>
-                    </li>
-
-                  </ul> 
-                  {/* </div> */}
+      <h2 className="text-6xl flex font-bold justify-center bg-slate-100 items-center text-center ">
+        Artistic
+      </h2>
+      <Nav className="bg-slate-200">
+        <div className={menuIcon ? "navbar active" : "navbar"}>
+          <ul className="navbar-lists h-8 bg-slate-100">
+            <nav
+              aria-label="primary"
+              className="relative z-20 flex-col flex-grow hidden pb-4 md:pb-0 md:flex md:justify-end md:flex-row"
+            >
+              <div className="relative group">
+                <button className="flex flex-row items-center text-3xl w-full px-4 py-4 mt-4 text-left bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4 focus:outline-none font-montserrat ">
+                  <span className="text-black">Login</span>
+                </button>
+                <div className=" z-10 hidden absolute -my-4 ml-10  group-hover:block">
+                  <div className="px-3 py-4 pt-2 pb-2 bg-slate-200 w-36 h-40 rounded-md text-black">
+                    {/* <div className="grid grid-cols-1 gap-4 md:grid-cols-2"> */}
+                    <ul>
+                      <li>
+                        <NavLink to="/Login1" className="navbar-link">
+                          User
+                        </NavLink>
+                      </li>
+                      <hr />
+                      <li>
+                        <NavLink to="/AdminLogin" className="navbar-link">
+                          Admin
+                        </NavLink>
+                      </li>
+                      <hr />
+                      <li>
+                        <NavLink to="/ArtistLogin" className="navbar-link">
+                          Artist
+                        </NavLink>
+                      </li>
+                    </ul>
+                    {/* </div> */}
+                  </div>
                 </div>
               </div>
-            </div>
-          </nav>
+            </nav>
 
-          <li >
-            <NavLink
-              to="/artist"
-              className="navbar-link"
-              onClick={() => setMenuIcon(false)}>
-              <span className="text-3xl">Artist</span>
-            </NavLink>
-          </li>
+            <li>
+              <NavLink
+                to="/artist"
+                className="navbar-link"
+                onClick={() => setMenuIcon(false)}
+              >
+                <span className="text-3xl">Artist</span>
+              </NavLink>
+            </li>
 
+            <li>
+              <NavLink
+                to="/Admin"
+                className="navbar-link "
+                onClick={() => setMenuIcon(false)}
+              >
+                <span className="text-3xl">Admin</span>
+              </NavLink>
+            </li>
 
-          <li>
-            <NavLink
-              to="/Admin"
-              className="navbar-link "
-              onClick={() => setMenuIcon(false)}>
-              <span className="text-3xl">Admin</span>
-            </NavLink>
-          </li>
+            <li>
+              <NavLink to="/cart" className="navbar-link cart-trolley--link">
+                <FiShoppingCart className="cart-trolley" />
+                <span className="cart-total--item"> 10 </span>
+              </NavLink>
+            </li>
+          </ul>
 
-          <li>
-            <NavLink to="/cart" className="navbar-link cart-trolley--link">
-              <FiShoppingCart className="cart-trolley" />
-              <span className="cart-total--item"> 10 </span>
-            </NavLink>
-          </li>
-        </ul>
-
-        {/* two button for open and close of menu */}
-        <div className="mobile-navbar-btn">
-          <CgMenu
-            name="menu-outline"
-            className="mobile-nav-icon"
-            onClick={() => setMenuIcon(true)}
-          />
-          <CgClose
-            name="close-outline"
-            className="mobile-nav-icon close-outline"
-            onClick={() => setMenuIcon(false)}
-          />
+          {/* two button for open and close of menu */}
+          <div className="mobile-navbar-btn">
+            <CgMenu
+              name="menu-outline"
+              className="mobile-nav-icon"
+              onClick={() => setMenuIcon(true)}
+            />
+            <CgClose
+              name="close-outline"
+              className="mobile-nav-icon close-outline"
+              onClick={() => setMenuIcon(false)}
+            />
+          </div>
         </div>
-      </div>
-    </Nav>
-  </>
+      </Nav>
+    </>
   );
 };
 

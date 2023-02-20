@@ -3,7 +3,9 @@ const { body, validationResult } = require("express-validator");
 const router = express.Router();
 const { isValidObjectId } = require("mongoose");
 const Artist = require("../models/ArtistSchema");
+const User = require("../models/UserSchema")
 const cloudinary = require("../cloud");
+const { default: Admin } = require("../../client/src/Admin");
 
 //deleting artist request
 router.post("/deleteArtist/:public_id", async (req, res) => {
@@ -24,7 +26,7 @@ router.post("/deleteArtist/:public_id", async (req, res) => {
   }
 });
 
-//
+//verify Artist
 router.put("/verifyArtist/:id", async (req, res) => {
   try {
     const aritstId = req.params.id;
@@ -54,5 +56,43 @@ router.get("/getPendingArtist", async (req, res) => {
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Internal server Error\n" + error.message);
+  }
+});
+
+//fotgot Password
+router.post("/resetPassword", async (req, res) => {
+  try {
+    const password = req.body;
+    const salt = bcrypt.genSaltSync(10);
+    const secPass = await bcrypt.hash(password, salt);
+    const adminData = User.findByIdAndUpdate(
+      { _id: tokenData._id },
+      { $set: { password: secPass } },
+      { new: true }
+    );
+    res.status(200).send("Password has been reset", adminData);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error\n" + error.message);
+  }
+});
+
+//Reset Password
+router.post("/forgetPassword", async (req, res) => {
+  try {
+    const { emailAddress } = req.body;
+    let data = await User.findOne({ emailAddress });
+    if (!data) {
+      res.status(200).send("Email Id doesn't exist");
+    }
+    const OTP = Math.floor(Math.random() * 100000);
+    const to = emailAddress;
+    let subject = "Forget Password";
+    let text = "Your OTP is " + OTP;
+    sendMail(to, subject, text);
+    res.status(200).send("Check your Mail\n");
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error\n" + error.message);
   }
 });

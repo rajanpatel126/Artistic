@@ -16,7 +16,7 @@ const AddArt = () => {
                 <div className="p-2 w-full">
                   <div className="relative">
                     <label
-                      for="name"
+                      htmlFor="name"
                       className="leading-7 text-3xl text-black font-bold"
                     >
                       Name
@@ -29,12 +29,11 @@ const AddArt = () => {
                     />
                   </div>
                 </div>
-               
 
                 <div className="p-2 w-full">
                   <div className="relative">
                     <label
-                      for="country"
+                      htmlFor="country"
                       className="leading-7 text-3xl text-black font-bold mt-4"
                     >
                       Description of Product
@@ -46,7 +45,7 @@ const AddArt = () => {
                 <div className="p-2 w-full">
                   <div className="relative">
                     <label
-                      for="country"
+                      htmlFor="country"
                       className="leading-7 text-3xl text-black font-bold mt-4"
                     >
                       Price
@@ -62,7 +61,7 @@ const AddArt = () => {
                 <div className="p-2 w-full">
                   <div className="relative">
                     <label
-                      for="country"
+                      htmlFor="country"
                       className="leading-7 text-3xl text-black font-bold mt-4"
                     >
                       Image File

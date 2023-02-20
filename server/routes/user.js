@@ -82,10 +82,8 @@ router.post("/signinUser", async (req, res) => {
   }
 
   const { emailAddress, password } = req.body;
-
   try {
     let user = await User.findOne({ emailAddress });
-    console.log(user);
     if (!user) {
       success = false;
       return res
@@ -104,6 +102,7 @@ router.post("/signinUser", async (req, res) => {
         errors: "Email address can not be blank",
       });
     }
+    console.log("PAssword ", password);
     const passwordCompare = await bcrypt.compare(password, user.password);
     if (!passwordCompare) {
       success = false;
@@ -112,15 +111,9 @@ router.post("/signinUser", async (req, res) => {
         errors: "Please try to login with correct credentials",
       });
     }
-    const data = {
-      user: {
-        id: user.id,
-      },
-    };
 
-    const authToken = jwt.sign(data, process.env.JWT_SECRET);
     success = true;
-    res.json({ success, authToken });
+    res.json({ success, user });
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Internal server error");
@@ -250,10 +243,10 @@ router.post("/resetPassword", async (req, res) => {
 router.post("/forgetPassword", async (req, res) => {
   try {
     const { emailAddress } = req.body;
-    // let data = await User.findOne({ emailAddress });
-    // if (!data) {
-    //   res.status(200).send("Email Id doesn't exist");
-    // }
+    let data = await User.findOne({ emailAddress });
+    if (!data) {
+      res.status(200).send("Email Id doesn't exist");
+    }
     const OTP = Math.floor(Math.random() * 100000);
     const to = emailAddress;
     let subject = "Forget Password";
