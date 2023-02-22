@@ -11,6 +11,8 @@ export const AdminLogin = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { data } = await verifyUser({ emailAddress: email, password: pass });
+    localStorage.setItem("email",email);
+    console.log(localStorage.getItem(email))
     // console.log(data.user.isAdmin);
     if (data.user.isAdmin) {
       navigate("/Admin");

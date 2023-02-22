@@ -49,7 +49,7 @@ export const Login = (props) => {
         </button>
       </form>
 
-      <label htmlhtmlFor="" className="l1 text-2xl">
+      <label htmlFor="" className="l1 text-2xl">
         Don't have an account?
         <button
           className="link-btn"
@@ -59,7 +59,7 @@ export const Login = (props) => {
         </button>
       </label>
 
-      <label htmlhtmlFor="" className="or text-2xl">
+      <label htmlFor="" className="or text-2xl">
         OR
       </label>
       <button className="btn-l btn-google-l">

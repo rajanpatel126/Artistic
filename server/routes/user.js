@@ -102,7 +102,7 @@ router.post("/signinUser", async (req, res) => {
         errors: "Email address can not be blank",
       });
     }
-    console.log("PAssword ", password);
+    console.log("Password ", password);
     const passwordCompare = await bcrypt.compare(password, user.password);
     if (!passwordCompare) {
       success = false;
@@ -242,15 +242,12 @@ router.post("/resetPassword", async (req, res) => {
 //Forgot Password
 router.post("/forgetPassword", async (req, res) => {
   try {
-    const { emailAddress } = req.body;
-    let data = await User.findOne({ emailAddress });
+    const { emailAddress, subject, text } = req.body;
+    let data = await User.findOne({ emailAddress: emailAddress });
     if (!data) {
       res.status(200).send("Email Id doesn't exist");
     }
-    const OTP = Math.floor(Math.random() * 100000);
     const to = emailAddress;
-    let subject = "Forget Password";
-    let text = "Your OTP is " + OTP;
     sendMail(to, subject, text);
     res.status(200).send("Check your Mail\n");
   } catch (error) {

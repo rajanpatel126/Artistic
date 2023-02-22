@@ -48,7 +48,7 @@ export const ArtistLogin = (props) => {
         </button>
       </form>
 
-      <label htmlhtmlFor="" className="l1 text-2xl">
+      <label htmlFor="" className="l1 text-2xl">
         Don't have an account?
         <button
           className="link-btn hover:text-blue-800"
@@ -58,7 +58,7 @@ export const ArtistLogin = (props) => {
         </button>
       </label>
 
-      <label htmlhtmlFor="" className="or text-2xl">
+      <label htmlFor="" className="or text-2xl">
         OR
       </label>
       <button className="btn-l btn-google-l">

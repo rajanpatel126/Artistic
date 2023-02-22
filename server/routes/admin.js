@@ -3,7 +3,7 @@ const { body, validationResult } = require("express-validator");
 const router = express.Router();
 const { isValidObjectId } = require("mongoose");
 const Artist = require("../models/ArtistSchema");
-const User = require("../models/UserSchema")
+const User = require("../models/UserSchema");
 const cloudinary = require("../cloud");
 const { default: Admin } = require("../../client/src/Admin");
 
@@ -59,7 +59,7 @@ router.get("/getPendingArtist", async (req, res) => {
   }
 });
 
-//fotgot Password
+//Reset Password
 router.post("/resetPassword", async (req, res) => {
   try {
     const password = req.body;
@@ -77,19 +77,17 @@ router.post("/resetPassword", async (req, res) => {
   }
 });
 
-//Reset Password
+//Forfot Password
 router.post("/forgetPassword", async (req, res) => {
   try {
-    const { emailAddress } = req.body;
-    let data = await User.findOne({ emailAddress });
-    if (!data) {
-      res.status(200).send("Email Id doesn't exist");
-    }
-    const OTP = Math.floor(Math.random() * 100000);
-    const to = emailAddress;
-    let subject = "Forget Password";
-    let text = "Your OTP is " + OTP;
-    sendMail(to, subject, text);
+    const { emailAddress, subject, text } = req.body;
+    console.log(emailAddress);
+    // let data = await User.findOne({ emailAddress: emailAddress });
+    // if (!data) {
+    //   res.status(200).send("Email Id doesn't exist");
+    // }
+    // const to = emailAddress;
+    // sendMail(to, subject, text);
     res.status(200).send("Check your Mail\n");
   } catch (error) {
     console.error(error.message);

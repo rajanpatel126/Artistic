@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Login } from "./Login";
@@ -21,7 +22,7 @@ export const Register = (props) => {
         </div>
 
         <form className="register-form " onSubmit={handleSubmit}>
-          <label htmlhtmlFor="name"></label>
+          <label htmlFor="name"></label>
           <input
             value={name}
             name="name"
@@ -29,7 +30,7 @@ export const Register = (props) => {
             className="text-xl h-16"
             placeholder="Username"
           ></input>
-          <label htmlhtmlFor="email"></label>
+          <label htmlFor="email"></label>
           <input
             value={email}
             className="text-xl h-16"
@@ -39,7 +40,7 @@ export const Register = (props) => {
             id="email"
             name="email"
           ></input>
-          <label htmlhtmlFor="password"></label>
+          <label htmlFor="password"></label>
           <input
             value={pass}
             onChange={(e) => setPass(e.target.value)}
@@ -54,17 +55,17 @@ export const Register = (props) => {
           </button>
         </form>
 
-        <label htmlhtmlFor="" className="l1-r text-2xl ">
+        <label htmlFor="" className="l1-r text-2xl ">
           Already have an account?
           <button
             className="link-btn"
-            onClick={() => props.onFormSwitch("login")}
+            onClick={() => props.NavLink("login")}
           >
             Login here.
           </button>
         </label>
 
-        <label htmlhtmlFor="" className="or-r text-2xl">
+        <label htmlFor="" className="or-r text-2xl">
           OR
         </label>
         <button className="btn-r btn-google-r">
