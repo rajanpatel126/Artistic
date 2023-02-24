@@ -5,7 +5,6 @@ import About from "./About";
 import Home from "./Home";
 import Products from "./Products";
 import Contact from "./Contact";
-import SingleProduct from "./components/SingleProduct";
 import Cart from "./Cart";
 import ErrorPage from "./ErrorPage";
 import { GlobalStyle } from "./GlobalStyle";
@@ -31,6 +30,11 @@ import { ArtistResetPassword } from "./components/ArtistLogin/ArtistResetPasswor
 import { AdminForgotPassword } from "./components/AdminLogin/AdminForgotPassword";
 import { AdminVerifyOTP } from "./components/AdminLogin/AdminVerifyOTP";
 import { AdminResetPassword } from "./components/AdminLogin/AdminResetPassword";
+import Tshirt from "./components/Tshirt";
+import Hoodie from "./components/Hoodie";
+import Shirt from "./components/Shirt";
+import Kurti from "./components/Kurti";
+import ScrollToTopButton from "./components/scrollToTop";
 
 const App = () => {
   const theme = {
@@ -68,7 +72,10 @@ const App = () => {
 
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/singleproduct" element={<SingleProduct />} />
+          <Route path="/Tshirt" element={<Tshirt />} />
+          <Route path="/Hoodie" element={<Hoodie />} />
+          <Route path="/Shirt" element={<Shirt />} />
+          <Route path="/Kurti" element={<Kurti />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/AddArt" element={<AddArt />} />
           <Route path="/Login1" element={<LogReg/>} />
@@ -85,6 +92,8 @@ const App = () => {
           <Route path="/AdminForgotPassword" element={<AdminForgotPassword />} />
           <Route path="/AdminVerifyOTP" element={<AdminVerifyOTP />} />
           <Route path="/AdminResetPassword" element={<AdminResetPassword />} />
+          <Route path="/HOME" element={<ScrollToTopButton/>} />
+
 
           <Route path="/Aartist" element={<Aartist />} />
           <Route path="/ArtistLogin" element={<LogrArtist />} />

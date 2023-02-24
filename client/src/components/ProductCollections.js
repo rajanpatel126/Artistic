@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function ProductCollections() {
   return (
@@ -7,13 +8,13 @@ export default function ProductCollections() {
         <div className="container px-5 py-20 mx-auto">
           <div className="flex flex-wrap -mx-14 -m-4">
             <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-              <a className="block relative h-4/5 rounded overflow-hidden">
+              <Link className="block relative h-4/5 rounded overflow-hidden" to="/Kurti">
                 <img
                   src="./images/kurti.jpg"
                   alt="ecommerce"
-                  className="object-cover object-center w-full h-full block"
+                  className="object-cover object-center w-full h-full block hover:cursor-pointer transform hover:scale-95 hover:shadow-2xl"
                 />
-              </a>
+              </Link>
               <div className="mt-4">
                 {/* <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3> */}
                 <label className="bg-blue-500 text-2xl p-2 text-white font-semibold">
@@ -23,7 +24,7 @@ export default function ProductCollections() {
                   Deal Of The Day
                 </label>
                 <h2 className="text-black title-font font-bold text-3xl">
-                  The Great Wave Of Coffee
+                  A line Kurtis
                 </h2>
                 <h2 className="text-gray-600 title-font  text-xl">
                   Design by GloopZ
@@ -33,13 +34,13 @@ export default function ProductCollections() {
               </div>
             </div>
             <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-              <a className="block relative h-4/5 rounded overflow-hidden">
+              <Link className="block relative h-4/5 rounded overflow-hidden" to="/Shirt">
                 <img
                   alt="ecommerce"
-                  className="object-cover object-center w-full h-full block"
+                  className="object-cover object-center w-full h-full block hover:cursor-pointer transform hover:scale-95 hover:shadow-2xl"
                   src="./images/shirt.jpg"
                 />
-              </a>
+              </Link>
               <div className="mt-4">
                 <label className="bg-blue-500 text-2xl p-2 text-white font-semibold">
                   15% OFF
@@ -48,7 +49,7 @@ export default function ProductCollections() {
                   Best Selling
                 </label>
                 <h2 className="text-black title-font font-bold text-3xl">
-                  The Great Wave Of Coffee
+                Dennis Lingo
                 </h2>
 
                 <h2 className="text-gray-600 title-font  text-xl">
@@ -60,22 +61,22 @@ export default function ProductCollections() {
             </div>
 
             <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-              <a
+              <Link
                 className="block relative h-4/5 rounded overflow-hidden"
-                href="/singleproduct"
+                to="/Hoodie"
               >
                 <img
                   alt="ecommerce"
-                  className="object-cover object-center w-full h-full block"
-                  src="./images/hoodie.png"
+                  className="object-cover object-center w-full h-full block hover:cursor-pointer transform hover:scale-95 hover:shadow-2xl"
+                  src="./images/hoodie.jpg"
                 />
-              </a>
+              </Link>
               <div className="mt-4">
                 <label className="bg-blue-500 text-2xl p-2 text-white font-semibold">
                   15% OFF
                 </label>
                 <h2 className="text-black title-font font-bold text-3xl">
-                  The Great Wave Of Coffee
+                  Lymio
                 </h2>
                 <h2 className="text-gray-600 title-font  text-xl">
                   Design by GloopZ
@@ -86,16 +87,14 @@ export default function ProductCollections() {
             </div>
 
             <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-              <a
-                className="block relative h-4/5 rounded overflow-hidden"
-                href="/singleproduct"
-              >
+              <Link to="/Tshirt"
+                className="block relative h-4/5 rounded overflow-hidden" >
                 <img
                   src="./images/OptimistPrime.jpeg"
                   alt="ecommerce"
-                  className="object-cover object-center w-full h-full block"
+                  className="object-cover object-center w-full h-full block hover:cursor-pointer transform hover:scale-95 hover:shadow-2xl"
                 />
-              </a>
+              </Link>
               <div className="mt-4">
                 <label className="bg-blue-500 text-2xl p-2 text-white font-semibold">
                   12% OFF
@@ -104,7 +103,7 @@ export default function ProductCollections() {
                   Limited Time Deal
                 </label>
                 <h2 className="text-black title-font font-bold text-3xl">
-                  The Great Wave Of Coffee
+                  OPTIMIST PRIME
                 </h2>
                 <h2 className="text-gray-600 title-font  text-xl">
                   Design by GloopZ

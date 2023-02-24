@@ -16,8 +16,6 @@ const Home = () => {
       <Sliders />
       <HeroSection myData={data} />;
       <ProductCollections />
-      <Services />
-      <Trusted />
       <Footer />
     </div>
   );

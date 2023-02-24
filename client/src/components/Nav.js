@@ -5,6 +5,8 @@ import styled from "styled-components";
 import { FiShoppingCart } from "react-icons/fi";
 import { CgMenu, CgClose } from "react-icons/cg";
 import LogReg from "./UserLogin/LogR";
+import { IoMdArrowDropdown } from "react-icons/io"
+
 
 const Nav = () => {
   const [menuIcon, setMenuIcon] = useState();
@@ -175,8 +177,12 @@ const Nav = () => {
               className="relative z-20 flex-col flex-grow hidden pb-4 md:pb-0 md:flex md:justify-end md:flex-row"
             >
               <div className="relative group">
-                <button className="flex flex-row items-center text-3xl w-full px-4 py-4 mt-4 text-left bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4 focus:outline-none font-montserrat ">
-                  <span className="text-black">Login</span>
+                <button class="flex flex-row items-center text-3xl w-full px-4 py-4 mt-4 text-left bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4 focus:outline-none font-montserrat ">
+
+                  <span className="text-black flex">Login
+                    <IoMdArrowDropdown className=" text-black" /></span>
+                  {/* <MdArrowDropDown/> */}
+
                 </button>
                 <div className=" z-10 hidden absolute -my-4 ml-10  group-hover:block">
                   <div className="px-3 py-4 pt-2 pb-2 bg-slate-200 w-36 h-40 rounded-md text-black">

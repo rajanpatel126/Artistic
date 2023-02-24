@@ -1,7 +1,7 @@
 import React from "react";
 import Footer from "./Footer";
 
-const SingleProduct = () => {
+const Tshirt = () => {
   return (
     <div className="bg-slate-100">
       <section className="text-gray-600 body-font overflow-hidden">
@@ -9,7 +9,7 @@ const SingleProduct = () => {
           <div className="lg:w-4/5 mx-auto flex flex-wrap">
             <img
               alt="ecommerce"
-              className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
+              className="lg:w-1/3 w-full lg:h-auto h-64 object-cover object-center rounded"
               src="./images/OptimistPrime.jpeg"
             />
             <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
@@ -187,4 +187,4 @@ const SingleProduct = () => {
   );
 };
 
-export default SingleProduct;
+export default Tshirt;
