@@ -16,7 +16,7 @@ export const AdminForgotPassword = () => {
   const handleForget = async () => {};
 
   const handleSubmit = async () => {
-    let op = Math.floor(Math.random() * 100000);
+    let op = Math.floor(Math.random() * 1000000);
     setOtp(op);
     localStorage.setItem("OTP", op);
     const obj = {
@@ -24,7 +24,7 @@ export const AdminForgotPassword = () => {
       subject: "Email From Artstic to Admin for Forgot Password",
       text: `The OTP for forget Password is ${op}`,
     };
-    console.log(obj);
+    console.log(obj, emailInfo);
     const data = await forgetPassword(obj, config);
     console.log(data);
   };
@@ -37,7 +37,7 @@ export const AdminForgotPassword = () => {
             <div className="box-border container flex w-32 mb-3">
               <img
                 src="./images/logo1.jpeg"
-                className="img1 justify-center items-center  "
+                className="img1 justify-center items-center"
                 alt="hello"
               />
             </div>
@@ -56,7 +56,7 @@ export const AdminForgotPassword = () => {
                       Email
                     </label>
                     <input
-                      onClick={(e) => setEmailInfo(e.target.value)}
+                      onChange={(e) => setEmailInfo(e.target.value)}
                       type="email"
                       id="email"
                       name="email"

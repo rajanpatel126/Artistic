@@ -162,10 +162,10 @@ router.get("/findUser/:id", async (req, res) => {
     if (!data) {
       return res.status(404).send("Member not found");
     }
-    res.json({ data: data });
+    return res.json({ data: data });
   } catch (error) {
     console.error(error.message);
-    res.status(500).send("Internal Server Error");
+    return res.status(500).send("Internal Server Error");
   }
 });
 
@@ -186,10 +186,10 @@ router.put("/updateUser/:id", async (req, res) => {
     user.phone = phone;
 
     await user.save();
-    res.json({ user: user });
+    return res.json({ user: user });
   } catch (error) {
     console.error(error.message);
-    res.status(500).send("Internal server Error\n" + error.message);
+    return res.status(500).send("Internal server Error\n" + error.message);
   }
 });
 
@@ -214,10 +214,10 @@ router.post("/emailSend/:id", async (req, res) => {
     });
     let otpResponse = await otpData.save();
 
-    res.json();
+    return res.json();
   } catch (error) {
     console.error(error.message);
-    res.status(500).send("Internal Server Error\n" + error.message);
+    return res.status(500).send("Internal Server Error\n" + error.message);
   }
 });
 
@@ -232,10 +232,10 @@ router.post("/resetPassword", async (req, res) => {
       { $set: { password: secPass } },
       { new: true }
     );
-    res.status(200).send("Password has been reset", userData);
+    return res.status(200).send("Password has been reset", userData);
   } catch (error) {
     console.error(error.message);
-    res.status(500).send("Internal Server Error\n" + error.message);
+    return res.status(500).send("Internal Server Error\n" + error.message);
   }
 });
 
@@ -244,15 +244,34 @@ router.post("/forgetPassword", async (req, res) => {
   try {
     const { emailAddress, subject, text } = req.body;
     let data = await User.findOne({ emailAddress: emailAddress });
+    console.log(data);
     if (!data) {
-      res.status(200).send("Email Id doesn't exist");
+      return res.status(200).send("Email Id doesn't exist");
     }
-    const to = emailAddress;
-    sendMail(to, subject, text);
-    res.status(200).send("Check your Mail\n");
+    // const to = emailAddress;
+    sendMail(emailAddress, subject, text);
+    return res.status(200).send("Check your Mail\n");
   } catch (error) {
     console.error(error.message);
-    res.status(500).send("Internal Server Error\n" + error.message);
+    return res.status(500).send("Internal Server Error\n" + error.message);
+  }
+});
+
+//Reset Password for
+router.post("/resetPassword", async (req, res) => {
+  try {
+    const password = req.body;
+    const salt = bcrypt.genSaltSync(10);
+    const secPass = await bcrypt.hash(password, salt);
+    const adminData = User.findByIdAndUpdate(
+      { _id: tokenData._id },
+      { $set: { password: secPass } },
+      { new: true }
+    );
+    return res.status(200).send("Password has been reset", adminData);
+  } catch (error) {
+    console.error(error.message);
+    return res.status(500).send("Internal Server Error\n" + error.message);
   }
 });
 
