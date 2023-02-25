@@ -1,8 +1,34 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { forgetPassword } from "../../api/admin";
+
+let config = {
+  method: "POST",
+  headers: {
+    "content-type": "application/json",
+  },
+};
 
 export const AdminForgotPassword = () => {
+  const [emailInfo, setEmailInfo] = useState({});
+  const [otp, setOtp] = useState("");
+  const handleForget = async () => {};
+
+  const handleSubmit = async () => {
+    let op = Math.floor(Math.random() * 1000000);
+    setOtp(op);
+    localStorage.setItem("OTP", op);
+    const obj = {
+      emailAddress: emailInfo,
+      subject: "Email From Artstic to Admin for Forgot Password",
+      text: `The OTP for forget Password is ${op}`,
+    };
+    console.log(obj, emailInfo);
+    const data = await forgetPassword(obj, config);
+    console.log(data);
+  };
+
   return (
     <>
       <section className="text-gray-800 h-full body-font py-72 bg-slate-200 bg-[url('https://images.template.net/wp-content/uploads/2015/11/25190558/Plain-Dark-Blue-Background-Images-Download.jpg')] bg-cover ">
@@ -11,40 +37,36 @@ export const AdminForgotPassword = () => {
             <div className="box-border container flex w-32 mb-3">
               <img
                 src="./images/logo1.jpeg"
-                className="img1 justify-center items-center  "
+                className="img1 justify-center items-center"
                 alt="hello"
               />
             </div>
             <p className="text-Black justify-center text-center   text-4xl mt-2 px-2 font-bold">
-              Provide Account Information
+              Enter the provided Email-Address
             </p>
 
             <div className="lg:w-5/6 md:w-2/3 mx-auto ">
               <div className="flex flex-wrap -m-2">
-                <p className="px-2 text-xl mb-4 mt-3 text-left">
-                  {" "}
-                  Enter the email address or mobile phone number associated with
-                  your Artistic account.
-                </p>
-
                 <div className="p-2 w-full">
                   <div className="relative">
                     <label
-                      htmlFor="name"
-                      className="leading-7 text-3xl text-black font-bold mb-3"
+                      htmlFor="email"
+                      className="leading-7 mt-6 text-3xl text-black font-bold mb-3"
                     >
                       Email
                     </label>
                     <input
+                      onChange={(e) => setEmailInfo(e.target.value)}
                       type="email"
-                      id="name"
-                      name="name"
+                      id="email"
+                      name="email"
                       className="w-full h-14 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-xl outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </div>
                 <div className=" w-full">
                   <NavLink
+                    onClick={handleSubmit}
                     className="mt-4 flex w-full justify-center text-center mx-auto text-3xl text-white bg-indigo-500 border-0 p-3 font-semibold focus:outline-none hover:bg-indigo-600 rounded-md mb-10 "
                     to="/AdminVerifyOTP"
                   >

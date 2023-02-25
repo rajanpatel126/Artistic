@@ -22,7 +22,7 @@ export const AdminRegister = (props) => {
         </div>
 
         <form className="register-form " onSubmit={handleSubmit}>
-          <label htmlhtmlFor="name"></label>
+          <label htmlFor="name"></label>
           <input
             value={name}
             name="name"
@@ -30,7 +30,7 @@ export const AdminRegister = (props) => {
             className="text-xl"
             placeholder="Username"
           ></input>
-          <label htmlhtmlFor="email"></label>
+          <label htmlFor="email"></label>
           <input
             value={email}
             className="text-xl"
@@ -40,7 +40,7 @@ export const AdminRegister = (props) => {
             id="email"
             name="email"
           ></input>
-          <label htmlhtmlFor="password"></label>
+          <label htmlFor="password"></label>
           <input
             value={pass}
             onChange={(e) => setPass(e.target.value)}
@@ -55,7 +55,7 @@ export const AdminRegister = (props) => {
           </button>
         </form>
 
-        <label htmlhtmlFor="" className="l1-r text-2xl ">
+        <label htmlFor="" className="l1-r text-2xl ">
           Already have an account?
           <button
             className="link-btn"
@@ -65,7 +65,7 @@ export const AdminRegister = (props) => {
           </button>
         </label>
         {/* 
-        <label htmlhtmlFor="" className="or-r text-2xl">
+        <label htmlFor="" className="or-r text-2xl">
           OR
         </label>
         <button className="btn-r btn-google-r">

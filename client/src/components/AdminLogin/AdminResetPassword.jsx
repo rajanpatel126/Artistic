@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
@@ -8,7 +9,7 @@ export const AdminResetPassword = () => {
   return (
     <section className="text-gray-800 body-font py-24 relative bg-[url('https://images.template.net/wp-content/uploads/2015/11/25190558/Plain-Dark-Blue-Background-Images-Download.jpg')] bg-cover">
       <div className="container  py-24 mx-auto  ">
-        <div className="box-border rounded-2xl border-white border-2 container py-12 px-6 bg-slate-400 bg-opacity-75 md:bg-opacity-75 justify-center w-96 mx-auto  md:box-content  w-1/2 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] bg-slate-100">
+        <div className="box-border rounded-2xl border-white border-2 container py-12 px-6 bg-slate-400 bg-opacity-75 md:bg-opacity-75 justify-center mx-auto  md:box-content  w-1/2 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]">
           <div className="box-border container w-1/2 text-left  mx-auto mb-12">
             <h1 className=" text-4xl font-bold title-font text-center  text-gray-900 sm:text-4xl">
               Create New Password

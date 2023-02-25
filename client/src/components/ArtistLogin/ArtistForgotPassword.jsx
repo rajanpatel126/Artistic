@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
@@ -6,7 +7,7 @@ export const ArtistForgotPassword = () => {
     <>
       <section className="text-gray-800 h-full body-font py-72 bg-slate-200 bg-[url('https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcm0yMS1jb25jcmV0ZS1hZXctMzRfNC5qcGc.jpg?s=GB3i4ojlRjxuoNEP15uPOGbZum9HQLYVxseUwGWr10U')] bg-cover ">
         <div className="container h-full py-1 mx-auto   ">
-          <div className="box-border rounded-2xl container py-10 px-6 mx-auto  md:box-content  w-1/2  bg-slate-100 bg-slate-400 bg-opacity-75 md:bg-opacity-75  justify-center w-96 border-white border-2">
+          <div className="box-border rounded-2xl container py-10 px-6 mx-auto  md:box-content  w-1/2 bg-slate-400 bg-opacity-75 md:bg-opacity-75  justify-center border-white border-2">
             <div className="box-border container flex w-32 mb-3">
               <img
                 src="./images/logo1.jpeg"
@@ -15,16 +16,15 @@ export const ArtistForgotPassword = () => {
               />
               {/* <p className="mt-4 ml-2 text-4xl">Artistic</p> */}
             </div>
-            <p className="text-Black justify-center text-center   text-4xl mt-2 px-2 font-bold">
-              Provide Account Information
+            <p className="text-Black justify-center text-center text-4xl mt-2 px-2 font-bold">
+              Enter the provided Email-Address
             </p>
 
             <div className="lg:w-5/6 md:w-2/3 mx-auto ">
               <div className="flex flex-wrap -m-2">
                 <p className="px-2 text-xl mb-4 mt-3 text-left">
                   {" "}
-                  Enter the email address or mobile phone number associated with
-                  your Amazon account.
+                  The mail will be send to you on this register EmailId containing OTP.
                 </p>
 
                 <div className="p-2 w-full">

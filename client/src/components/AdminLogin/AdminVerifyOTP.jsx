@@ -1,15 +1,38 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Navigate, useNavigate, NavLink } from "react-router-dom";
 
 // import logo from "./images/logo1.jpeg";
 // import google from "./images/google.png";
 
+let config = {
+  method: "POST",
+  headers: {
+    "content-type": "application/json",
+  },
+};
+
 export const AdminVerifyOTP = () => {
+  const [verifyOtp, setVerifyOtp] = useState({});
+  const [isbuttonDisabled, setIsButtonDisabled] = useState(true);
+  const navigation = useNavigate();
+  const handleChange = async (e) => {
+    if (e.target.value.length === 5) {
+      setIsButtonDisabled(false);
+    }
+  };
+  const handleContinue = async () => {
+    let otp = localStorage.getItem("OTP");
+    if (verifyOtp === otp) {
+      navigation("/AdminResetPassword");
+    }
+  };
+
   return (
     <>
-      <section className="text-gray-800 h-full body-font py-72 bg-[url('https://images.template.net/wp-content/uploads/2015/11/25190558/Plain-Dark-Blue-Background-Images-Download.jpg')] bg-cover">
-        <div className="container h-full mx-auto   ">
-          <div className="box-border rounded-2xl container py-14 px-6 mx-auto  md:box-content  w-1/2 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] bg-slate-100 border-white border-2 bg-slate-400 bg-opacity-75 md:bg-opacity-75 justify-center w-96">
+      <section className="text-gray-800 h-full body-font py-72 bg-cover">
+        <div className="container h-full mx-auto">
+          <div className="box-border rounded-2xl container py-14 px-6 mx-auto  md:box-content  w-1/2 shadow-2xl border-white border-2 bg-slate-400 bg-opacity-75 md:bg-opacity-75 justify-center">
             <div className="box-border container flex w-32 mb-3">
               <img
                 src="./images/logo1.jpeg"
@@ -26,7 +49,7 @@ export const AdminVerifyOTP = () => {
               <div className="flex flex-wrap -m-2">
                 <p className="px-2 text-xl mb-4 mt-4 text-left">
                   To continue, complete this verification step. We've sent an
-                  OTP to the mobile number. Please enter it below to complete
+                  OTP to the mobile number. Enter it below to complete
                   verification.
                 </p>
 
@@ -39,6 +62,8 @@ export const AdminVerifyOTP = () => {
                       Enter OTP
                     </label>
                     <input
+                      onClick={(e) => setVerifyOtp(e.target.value)}
+                      onChange={handleChange}
                       type="text"
                       id="name"
                       name="name"
@@ -47,20 +72,22 @@ export const AdminVerifyOTP = () => {
                   </div>
                 </div>
                 <div className=" w-full">
-                  <NavLink
-                    className=" flex w-full justify-center text-center mx-auto text-2xl text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded mb-4 h-12 "
-                    to="/AdminResetPassword"
-                  >
-                    Continue
+                  <NavLink onClick={handleContinue} to="/AdminResetPassword">
+                    <button
+                      disabled={isbuttonDisabled}
+                      className=" flex w-full justify-center text-center mx-auto text-2xl text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded mb-4 h-12"
+                    >
+                      Continue
+                    </button>
                   </NavLink>
                 </div>
 
-                <NavLink
+                {/* <NavLink
                   className=" flex w-full justify-center text-center mx-auto text-2xl text-blue border-0 py-2 px-8 focus:outline-none text-blue-600 rounded"
                   to="/AdminVerifyOTP"
                 >
                   Resend OTP
-                </NavLink>
+                </NavLink> */}
               </div>
             </div>
           </div>
