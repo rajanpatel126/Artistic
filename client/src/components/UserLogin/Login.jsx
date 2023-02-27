@@ -14,17 +14,21 @@ export const Login = (props) => {
   };
 
   return (
-    <div className="auth-form-container bg-slate-400 bg-opacity-75 md:bg-opacity-75 justify-center w-96">
+    <div className="auth-form-container mx-auto bg-slate-700 bg-opacity-75 md:bg-opacity-75 justify-center w-96">
       <div className="logoimg">
-        <img src="./images/logo1.jpeg" className="img1 " alt="hello" />
-        <p className="text-white text-4xl mt-1 mb-4 "> Login</p>
+        <img
+          src="./images/logo1.jpeg"
+          className="rounded-full w-24 h-24"
+          alt="hello"
+        />
+        <p className="text-white text-4xl mt-2 mb-4 "> Login</p>
       </div>
 
       <form className="login-form" onSubmit={handleSubmit}>
         <input
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="text-xl h-16"
+          className="text-3xl normal-case h-20 "
           type="email"
           placeholder="Username or Email Address"
           id="email"
@@ -35,36 +39,38 @@ export const Login = (props) => {
           value={pass}
           onChange={(e) => setPass(e.target.value)}
           type="password"
-          className="text-xl h-16"
+          className="text-3xl normal-case h-20 "
           placeholder="Password"
           id="password"
           name="password"
         />
-        <NavLink to="/forgotPassword" className="forgot text-2xl">
+        <NavLink to="/forgotPassword" className="text-[#21deeb] mx-2 text-3xl">
           Forgot Password?
         </NavLink>
 
-        <button className="button1 bg-blue-700" type="submit">
+        <button
+          className="text-3xl mx-auto w-fit mt-4 p-3 bg-blue-900 "
+          type="submit"
+        >
           Login
         </button>
       </form>
 
-      <label htmlFor="" className="l1 text-2xl">
-        Don't have an account?
-        <button
-          className="link-btn"
-          onClick={() => props.onFormSwitch("register")}
-        >
-          Register here.
-        </button>
+      <label htmlFor="" className="l1 mx-auto text-3xl">
+        Don't have an account?{" "}
+        <NavLink to={"/Register"}>
+          <button className="text-3xl bg-transparent text-[#21deeb] cursor-pointer hover:text-[#e9a511]">
+            Register here.
+          </button>
+        </NavLink>
       </label>
 
       <label htmlFor="" className="or text-2xl">
         OR
       </label>
-      <button className="btn-l btn-google-l">
-        <span className="icon-l texting-l">
-          <img src="./images/google.png" alt="google" className="imgc" />
+      <button className="btn-r btn-google-r">
+        <span className="icon-r p-1 mb-2">
+          <img src="./images/google.png" className="imgc" alt="google" />
           Sign-in with Google
         </span>
       </button>

@@ -26,13 +26,13 @@ export default function Sliders() {
                         alt="First slide"
                     />
                 </Carousel.Item>
-                <Carousel.Item>
+                {/* <Carousel.Item>
                     <img
                         className="d-block w-100"
                         src="https://assets.myntassets.com/f_webp,w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2022/1/10/c647c96a-15d8-4eba-a04b-b4a011d565931641832422157-Casual-Shoes_Desk.jpg"
                         alt="First slide"
                     />
-                </Carousel.Item>
+                </Carousel.Item> */}
             </Carousel>
         </div>
     );

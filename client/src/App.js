@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -35,6 +36,7 @@ import Hoodie from "./components/Hoodie";
 import Shirt from "./components/Shirt";
 import Kurti from "./components/Kurti";
 import ScrollToTopButton from "./components/scrollToTop";
+import Footer from "./components/Footer";
 
 const App = () => {
   const theme = {
@@ -78,7 +80,7 @@ const App = () => {
           <Route path="/Kurti" element={<Kurti />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/AddArt" element={<AddArt />} />
-          <Route path="/Login1" element={<LogReg/>} />
+          <Route path="/UserLogin" element={<LogReg />} />
           <Route path="/artist" element={<Artist />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/verifyOTP" element={<VerifyOTP />} />
@@ -86,24 +88,31 @@ const App = () => {
           <Route path="/ArtistList" element={<ArtistList />} />
           <Route path="/viewArt" element={<ViewArt />} />
           <Route path="/forgotPassword" element={<ForgotPassword />} />
-          <Route path="/ArtistForgotPassword" element={<ArtistForgotPassword />} />
+          <Route
+            path="/ArtistForgotPassword"
+            element={<ArtistForgotPassword />}
+          />
           <Route path="/ArtistVerifyOTP" element={<ArtistVerifyOTP />} />
-          <Route path="/ArtistResetPassword" element={<ArtistResetPassword />} />
-          <Route path="/AdminForgotPassword" element={<AdminForgotPassword />} />
+          <Route
+            path="/ArtistResetPassword"
+            element={<ArtistResetPassword />}
+          />
+          <Route
+            path="/AdminForgotPassword"
+            element={<AdminForgotPassword />}
+          />
           <Route path="/AdminVerifyOTP" element={<AdminVerifyOTP />} />
           <Route path="/AdminResetPassword" element={<AdminResetPassword />} />
-          <Route path="/HOME" element={<ScrollToTopButton/>} />
-
+          <Route path="/HOME" element={<ScrollToTopButton />} />
 
           <Route path="/Aartist" element={<Aartist />} />
           <Route path="/ArtistLogin" element={<LogrArtist />} />
           <Route path="/AdminLogin" element={<LogrAdmin />} />
           <Route path="/resetPassword" element={<ResetPassword />} />
 
-
-
           <Route path="*" element={<ErrorPage />} />
         </Routes>
+        <Footer/>
       </Router>
     </ThemeProvider>
   );

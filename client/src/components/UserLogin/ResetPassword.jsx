@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
@@ -6,11 +7,11 @@ import { NavLink } from "react-router-dom";
 
 export const ResetPassword = () => {
   return (
-    <section className="text-gray-800 body-font py-24 relative bg-[url('https://img.freepik.com/premium-photo/abstract-modern-black-background-black-paper-texture-black-dark-gray-textured-design-paper_183577-792.jpg')] bg-cover">
-      <div className="container  py-24 mx-auto  ">
-        <div className="box-border rounded-2xl border-white border-2 container py-12 px-6 bg-slate-400 bg-opacity-75 md:bg-opacity-75 justify-center w-96 mx-auto  md:box-content  w-1/2 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] bg-slate-100">
+    <section className="text-gray-800 h-full body-font py-72 bg-[#75a0e1] bg-cover ">
+      <div className="container h-full mx-auto">
+        <div className="box-border rounded-2xl container py-10 px-6 mx-auto  md:box-content  w-1/2  bg-slate-400 bg-opacity-75 md:bg-opacity-75  justify-center border-2">
           <div className="box-border container w-1/2 text-left  mx-auto mb-12">
-            <h1 className=" text-4xl font-bold title-font text-center  text-gray-900 sm:text-4xl">
+            <h1 className=" text-4xl font-bold text-center  text-gray-900 sm:text-4xl">
               Create New Password
             </h1>
           </div>
@@ -28,7 +29,7 @@ export const ResetPassword = () => {
                     type="email"
                     id="name"
                     name="name"
-                    className="w-full h-14 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-xl outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    className="w-full h-16 normal-case text-3xl rounded-xl border-gray-500 focus:border-gray-900 outline-none text-black duration-200 ease-in-out"
                   />
                 </div>
 
@@ -43,7 +44,7 @@ export const ResetPassword = () => {
                     type="password"
                     id="name"
                     name="name"
-                    className="w-full h-14 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-xl outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    className="w-full h-16 normal-case text-3xl rounded-xl border-gray-500 focus:border-gray-900 outline-none text-black duration-200 ease-in-out"
                   />
                 </div>
 
@@ -58,14 +59,14 @@ export const ResetPassword = () => {
                     type="password"
                     id="name"
                     name="name"
-                    className="w-full rounded h-14 border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-xl outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    className="w-full h-16 normal-case text-3xl rounded-xl border-gray-500 focus:border-gray-900 outline-none text-black duration-200 ease-in-out"
                   />
                 </div>
               </div>
-              <div className="p-2 w-full">
+              <div className="mx-auto rounded-full w-fit mb-3">
                 <NavLink
-                  className=" flex w-full justify-center text-center  mx-auto text-2xl text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded mb-4 h-12 "
-                  to="/Login1"
+                  className="text-3xl mx-auto text-white w-fit mt-4 p-3 bg-blue-900 rounded-3xl"
+                  to="/Login"
                 >
                   Sign In
                 </NavLink>

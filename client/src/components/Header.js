@@ -6,7 +6,7 @@ import Nav from "./Nav";
 const Header = () => {
   return (
       <>
-        <MainHeader className="fixed bg-slate-100">
+        <MainHeader className="sticky bg-white">
             <NavLink to="/">
                 <img className="logo" src="./images/Logo.jpeg" alt="my logo img" />
             </NavLink>
@@ -15,11 +15,11 @@ const Header = () => {
         <Nav />
         
       </MainHeader>
-      <div className="w-screen bg-[#00023D] font-semibold text-white">
-			{/* <p className="text-center mb-2">
+      {/* <div className="w-screen bg-[#00023D] font-semibold text-white">
+			<p className="text-center mb-2">
 				Get 50% Off on first 2 orders from different categories
-			</p> */}
-      </div>
+			</p>
+      </div> */}
     </>
     );
 };

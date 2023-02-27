@@ -5,8 +5,7 @@ import styled from "styled-components";
 import { FiShoppingCart } from "react-icons/fi";
 import { CgMenu, CgClose } from "react-icons/cg";
 import LogReg from "./UserLogin/LogR";
-import { IoMdArrowDropdown } from "react-icons/io"
-
+import { IoMdArrowDropdown } from "react-icons/io";
 
 const Nav = () => {
   const [menuIcon, setMenuIcon] = useState();
@@ -166,34 +165,37 @@ const Nav = () => {
       }
     </div> */}
 
-      <h2 className="text-6xl flex font-bold justify-center bg-slate-100 items-center text-center ">
+      <h2 className="text-6xl flex font-bold justify-center bg-white items-center text-center ">
         Artistic
       </h2>
-      <Nav className="bg-slate-200">
+      <Nav className="text-xl">
         <div className={menuIcon ? "navbar active" : "navbar"}>
-          <ul className="navbar-lists h-8 bg-slate-100">
+          <ul className="navbar-lists h-8">
             <nav
               aria-label="primary"
               className="relative z-20 flex-col flex-grow hidden pb-4 md:pb-0 md:flex md:justify-end md:flex-row"
             >
               <div className="relative group">
-                <button class="flex flex-row items-center text-3xl w-full px-4 py-4 mt-4 text-left bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4 focus:outline-none font-montserrat ">
-
-                  <span className="text-black flex">Login
-                    <IoMdArrowDropdown className=" text-black" /></span>
+                <button className="flex flex-row items-center text-3xl w-full px-4 py-4 mt-4 text-left bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4 focus:outline-none font-montserrat ">
+                  <span className="text-4xl text-black flex">
+                    Login
+                    <IoMdArrowDropdown className=" text-black" />
+                  </span>
                   {/* <MdArrowDropDown/> */}
-
                 </button>
                 <div className=" z-10 hidden absolute -my-4 ml-10  group-hover:block">
-                  <div className="px-3 py-4 pt-2 pb-2 bg-slate-200 w-36 h-40 rounded-md text-black">
+                  <div className="px-3 py-4 pt-2 pb-2 bg-slate-200 w-36 h-40 rounded-xl text-black">
                     {/* <div className="grid grid-cols-1 gap-4 md:grid-cols-2"> */}
-                    <ul>
+                    <ul className="space-y-2">
                       <li>
-                        <NavLink to="/Login1" className="navbar-link">
+                        <NavLink
+                          to="/UserLogin"
+                          className="navbar-link text-xl"
+                        >
                           User
                         </NavLink>
                       </li>
-                      <hr />
+                      <hr className="leading-tight" />
                       <li>
                         <NavLink to="/AdminLogin" className="navbar-link">
                           Admin
@@ -212,7 +214,7 @@ const Nav = () => {
               </div>
             </nav>
 
-            <li>
+            {/* <li>
               <NavLink
                 to="/artist"
                 className="navbar-link"
@@ -230,7 +232,7 @@ const Nav = () => {
               >
                 <span className="text-3xl">Admin</span>
               </NavLink>
-            </li>
+            </li> */}
 
             <li>
               <NavLink to="/cart" className="navbar-link cart-trolley--link">
