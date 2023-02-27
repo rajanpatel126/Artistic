@@ -37,6 +37,7 @@ import Shirt from "./components/Shirt";
 import Kurti from "./components/Kurti";
 import ScrollToTopButton from "./components/scrollToTop";
 import Footer from "./components/Footer";
+import { Nav } from "react-bootstrap";
 
 const App = () => {
   const theme = {
