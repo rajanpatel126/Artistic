@@ -1,8 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import HeroSection from "./components/HeroSection";
-import Services from "./components/Services";
-import Trusted from "./components/Trusted";
 import Footer from "./components/Footer";
 import Sliders from "./components/Sliders";
 import ProductCollections from "./components/ProductCollections";
@@ -17,7 +15,7 @@ const Home = () => {
       <Sliders />
       <HeroSection myData={data} />;
       <ProductCollections />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

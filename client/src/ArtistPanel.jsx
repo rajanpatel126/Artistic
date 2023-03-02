@@ -1,11 +1,8 @@
 import React from "react";
-import AddArt from "./AddArt";
 import { NavLink } from "react-router-dom";
-import artistList from "./ArtistList";
 
-import ViewArt from "./ViewArt";
 
-export default function Artist() {
+export default function ArtistPanel() {
   return (
     <div className="flex">
       <div className="flex flex-col h-screen p-3 bg-white  shadow w-96">

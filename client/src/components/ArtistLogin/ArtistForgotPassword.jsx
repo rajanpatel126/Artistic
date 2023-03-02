@@ -1,30 +1,40 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+// import logo from "./images/logo1.jpeg";
+// import google from "./images/google.png";
 
 export const ArtistForgotPassword = () => {
+  const [email, setEmail] = useState("");
+  const [isbuttonDisabled, setIsButtonDisabled] = useState(false);
+
+  const handleChange = async (e) => {
+    // if (e.target.value.length=== null) {
+    //   setIsButtonDisabled(false);
+    // }
+  };
+
   return (
-    <>
-      <section className="text-gray-800 h-full body-font py-72 bg-slate-200 bg-[url('https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcm0yMS1jb25jcmV0ZS1hZXctMzRfNC5qcGc.jpg?s=GB3i4ojlRjxuoNEP15uPOGbZum9HQLYVxseUwGWr10U')] bg-cover ">
-        <div className="container h-full py-1 mx-auto   ">
-          <div className="box-border rounded-2xl container py-10 px-6 mx-auto  md:box-content  w-1/2 bg-slate-400 bg-opacity-75 md:bg-opacity-75  justify-center border-white border-2">
+    <div className="Register bg-gradient-to-r from-blue-300 to-slate-400 ">
+      <section className="text-gray-800 h-full body-font py-72 bg-cover ">
+        <div className="container h-full mx-auto">
+          <div className="box-border rounded-2xl container py-10 px-6 mx-auto  md:box-content  w-1/2  bg-slate-200 bg-opacity-75 md:bg-opacity-75  justify-center border-black border-2">
             <div className="box-border container flex w-32 mb-3">
               <img
-                src="./images/logo1.jpeg"
-                className="img1 justify-center items-center  "
-                alt="hello"
+                src="./images/Logo.jpeg"
+                className=" justify-center rounded-full w-28 h-20"
+                alt="img"
               />
-              {/* <p className="mt-4 ml-2 text-4xl">Artistic</p> */}
             </div>
             <p className="text-Black justify-center text-center text-4xl mt-2 px-2 font-bold">
-              Enter the provided Email-Address
+              Enter the Email-Id
             </p>
 
             <div className="lg:w-5/6 md:w-2/3 mx-auto ">
               <div className="flex flex-wrap -m-2">
-                <p className="px-2 text-xl mb-4 mt-3 text-left">
+                <p className="px-2 text-2xl mx-auto font-semibold mb-4 mt-3 text-left">
                   {" "}
-                  The mail will be send to you on this register EmailId containing OTP.
+                  Enter the email address associated with your Artistic account.
                 </p>
 
                 <div className="p-2 w-full">
@@ -36,19 +46,23 @@ export const ArtistForgotPassword = () => {
                       Email
                     </label>
                     <input
+                      onClick={(e) => setEmail(e.target.value)}
+                      // onChange={handleChange};
                       type="email"
                       id="name"
                       name="name"
-                      className="w-full h-14 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-xl outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      className="w-full h-16 normal-case text-3xl rounded-xl border-gray-500 focus:border-gray-900 outline-none text-black duration-200 ease-in-out"
                     />
                   </div>
                 </div>
-                <div className=" w-full">
-                  <NavLink
-                    className="mt-4 flex w-full justify-center text-center mx-auto text-2xl text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded mb-10 h-12 "
-                    to="/ArtistVerifyOTP"
-                  >
-                    Continue
+                <div className="mx-auto rounded-full w-fit mb-3">
+                  <NavLink to="/ArtistLogin/ArtistForgotPassword/ArtistVerifyOTP">
+                    <button
+                      disabled={isbuttonDisabled}
+                      className="text-3xl mx-auto text-white w-fit mt-4 p-3 bg-blue-900 rounded-3xl"
+                    >
+                      Continue
+                    </button>
                   </NavLink>
                 </div>
               </div>
@@ -56,6 +70,6 @@ export const ArtistForgotPassword = () => {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 };

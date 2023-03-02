@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { FiShoppingCart } from "react-icons/fi";
 import { CgMenu, CgClose } from "react-icons/cg";
-import LogReg from "./UserLogin/LogR";
 import { IoMdArrowDropdown } from "react-icons/io";
 
 const Nav = () => {
@@ -189,7 +188,7 @@ const Nav = () => {
                     <ul className="space-y-2">
                       <li>
                         <NavLink
-                          to="/UserLogin"
+                          to="/Login"
                           className="navbar-link text-xl"
                         >
                           User

@@ -181,7 +181,6 @@ const Kurti = () => {
             </div>
           </div>
         </div>
-        <Footer />
       </section>
     </div>
   );

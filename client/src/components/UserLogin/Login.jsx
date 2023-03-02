@@ -1,9 +1,5 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-
-// import logo from "./images/logo1.jpeg";
-// import google from "./images/google.png";
-
 export const Login = (props) => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
@@ -14,6 +10,7 @@ export const Login = (props) => {
   };
 
   return (
+    <div className="Register bg-gradient-to-r from-slate-400 to-blue-300 py-24">
     <div className="auth-form-container mx-auto bg-slate-700 bg-opacity-75 md:bg-opacity-75 justify-center w-96">
       <div className="logoimg">
         <img
@@ -44,7 +41,7 @@ export const Login = (props) => {
           id="password"
           name="password"
         />
-        <NavLink to="/forgotPassword" className="text-[#21deeb] mx-2 text-3xl">
+        <NavLink to="/Login/forgotPassword" className="text-[#21deeb] mx-2 text-3xl">
           Forgot Password?
         </NavLink>
 
@@ -59,7 +56,7 @@ export const Login = (props) => {
       <label htmlFor="" className="l1 mx-auto text-3xl">
         Don't have an account?{" "}
         <NavLink to={"/Register"}>
-          <button className="text-3xl bg-transparent text-[#21deeb] cursor-pointer hover:text-[#e9a511]">
+            <button className="text-3xl focus:outline-none bg-transparent text-[#21deeb] cursor-pointer hover:text-[#e9a511]">
             Register here.
           </button>
         </NavLink>
@@ -74,6 +71,7 @@ export const Login = (props) => {
           Sign-in with Google
         </span>
       </button>
-    </div>
+      </div>
+      </div>
   );
 };

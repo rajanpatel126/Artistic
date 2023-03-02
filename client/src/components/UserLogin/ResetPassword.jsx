@@ -7,9 +7,10 @@ import { NavLink } from "react-router-dom";
 
 export const ResetPassword = () => {
   return (
-    <section className="text-gray-800 h-full body-font py-72 bg-[#75a0e1] bg-cover ">
+    <div className="Register bg-gradient-to-r from-slate-400 to-blue-300 ">
+    <section className="text-gray-800 h-full body-font py-72 bg-cover ">
       <div className="container h-full mx-auto">
-        <div className="box-border rounded-2xl container py-10 px-6 mx-auto  md:box-content  w-1/2  bg-slate-400 bg-opacity-75 md:bg-opacity-75  justify-center border-2">
+        <div className="box-border rounded-2xl container py-10 px-6 mx-auto  md:box-content  w-1/2  bg-slate-200 bg-opacity-75 md:bg-opacity-75  justify-center border-2">
           <div className="box-border container w-1/2 text-left  mx-auto mb-12">
             <h1 className=" text-4xl font-bold text-center  text-gray-900 sm:text-4xl">
               Create New Password
@@ -23,7 +24,7 @@ export const ResetPassword = () => {
                     htmlFor="name"
                     className="mt-12 text-3xl text-black font-bold"
                   >
-                    Email
+                  Email
                   </label>
                   <input
                     type="email"
@@ -75,6 +76,7 @@ export const ResetPassword = () => {
           </div>
         </div>
       </div>
-    </section>
+      </section>
+      </div>
   );
 };

@@ -1,8 +1,6 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Login } from "./Login";
-
 export const Register = (props) => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
@@ -14,8 +12,8 @@ export const Register = (props) => {
   };
 
   return (
-    <>
-      <div className="auth-form-container mx-auto bg-slate-700 bg-opacity-75 md:bg-opacity-75 justify-center w-96 ">
+    <div className="Register bg-gradient-to-r from-slate-400 to-blue-300 py-24">
+      <div className="auth-form-container mx-auto bg-slate-700  bg-opacity-75 md:bg-opacity-75 justify-center w-96 ">
         <div className="logoimg">
           <img
             src="./images/logo1.jpeg"
@@ -62,9 +60,12 @@ export const Register = (props) => {
 
         <label className="l1-r text-white text-3xl mx-auto">
           Already have an account?
-          <button className="text-3xl bg-transparent text-[#21deeb] cursor-pointer hover:text-[#e9a511]"><NavLink to={"/Login"}>
-            Login here.</NavLink>
-          </button>
+          <NavLink to={"/Login"}>
+            <button className="text-3xl focus:outline-none bg-transparent text-[#21deeb] cursor-pointer  hover:text-[#e9a511]">
+              Login here.
+            </button>
+          </NavLink>
+
         </label>
 
         <label className="or-r text-2xl">
@@ -77,6 +78,6 @@ export const Register = (props) => {
           </span>
         </button>
       </div>
-    </>
+    </div>
   );
 };

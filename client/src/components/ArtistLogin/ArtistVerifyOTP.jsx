@@ -1,22 +1,37 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Navigate, useNavigate, NavLink } from "react-router-dom";
 
 // import logo from "./images/logo1.jpeg";
 // import google from "./images/google.png";
 
 export const ArtistVerifyOTP = () => {
+  const [verifyOtp, setVerifyOtp] = useState({});
+  const [isbuttonDisabled, setIsButtonDisabled] = useState(true);
+  const navigation = useNavigate();
+  const handleChange = async (e) => {
+    if (e.target.value.length === 5) {
+      setIsButtonDisabled(false);
+    }
+  };
+  const handleContinue = async () => {
+    let otp = localStorage.getItem("OTP");
+    if (verifyOtp === otp) {
+      navigation("/ArtistLogin/ArtistForgotPassword/ArtistVerifyOTP/ArtistResetPassword");
+    }
+  };
+
   return (
-    <>
-      <section className="text-gray-800 h-full body-font py-72 bg-[url('https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcm0yMS1jb25jcmV0ZS1hZXctMzRfNC5qcGc.jpg?s=GB3i4ojlRjxuoNEP15uPOGbZum9HQLYVxseUwGWr10U')] bg-cover">
+    <div className="Register bg-gradient-to-r from-blue-300 to-gray-400">
+      <section className="text-gray-800 h-full body-font py-72 bg-cover ">
         <div className="container h-full mx-auto   ">
-          <div className="box-border rounded-2xl container py-14 px-6 mx-auto  md:box-content  w-1/2 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] bg-slate-100 border-white border-2 bg-slate-400 bg-opacity-75 md:bg-opacity-75 justify-center w-96">
-            <div className="box-border container flex w-32 mb-3">
+          <div className="box-border rounded-2xl container py-14 px-6 mx-auto  md:box-content  w-1/2 shadow-2xl bg-slate-300 border-black border-2 bg-opacity-75 md:bg-opacity-75 justify-center">
+            <div className="box-border container flex mb-3">
               <img
                 src="./images/logo1.jpeg"
-                className="img1 justify-center items-center w-64"
+                className="justify-center mx-auto items-center rounded-full h-24 w-24"
                 alt="hello"
               />
-              {/* <p className="mt-4 ml-2 text-4xl">Artistic</p> */}
             </div>
             <p className="text-Black justify-center text-center   text-4xl mt-1 px-2 font-bold">
               Verification Required
@@ -24,9 +39,9 @@ export const ArtistVerifyOTP = () => {
 
             <div className="px-16 mx-auto ">
               <div className="flex flex-wrap -m-2">
-                <p className="px-2 text-xl mb-4 mt-4 text-left">
+                <p className="px-2 text-2xl  mb-4 mt-4 text-left">
                   To continue, complete this verification step. We've sent an
-                  OTP to the mobile number. Please enter it below to complete
+                  OTP to the Email Address. Please enter it below to complete
                   verification.
                 </p>
 
@@ -42,30 +57,27 @@ export const ArtistVerifyOTP = () => {
                       type="text"
                       id="name"
                       name="name"
-                      className="w-full h-14 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-xl outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      onChange={(e) => setVerifyOtp(e.target.value)}
+                      className="w-full h-16 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-3xl outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </div>
-                <div className=" w-full">
-                  <NavLink
-                    className=" flex w-full justify-center text-center mx-auto text-2xl text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded mb-4 h-12 "
-                    to="/ArtistResetPassword"
-                  >
-                    Continue
+
+                <div className="mx-auto rounded-full w-fit mb-3">
+                  <NavLink onClick={handleContinue} to="/ArtistResetPassword">
+                    <button
+                      disabled={isbuttonDisabled}
+                      className="text-3xl mx-auto text-white w-fit mt-4 p-3 bg-blue-900 rounded-3xl"
+                    >
+                      Continue
+                    </button>
                   </NavLink>
                 </div>
-
-                <NavLink
-                  className=" flex w-full justify-center text-center mx-auto text-2xl text-blue border-0 py-2 px-8 focus:outline-none text-blue-600 rounded"
-                  to="/ArtistVerifyOTP"
-                >
-                  Resend OTP
-                </NavLink>
               </div>
             </div>
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 };

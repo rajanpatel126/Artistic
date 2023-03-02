@@ -15,10 +15,10 @@ export const ForgotPassword = () => {
   };
 
   return (
-    <>
-      <section className="text-gray-800 h-full body-font py-72 bg-[#75a0e1] bg-cover ">
+    <div className="Register bg-gradient-to-r from-slate-400 to-blue-300 ">
+      <section className="text-gray-800 h-full body-font py-72 bg-cover ">
         <div className="container h-full mx-auto">
-          <div className="box-border rounded-2xl container py-10 px-6 mx-auto  md:box-content  w-1/2  bg-slate-400 bg-opacity-75 md:bg-opacity-75  justify-center border-2">
+          <div className="box-border rounded-2xl container py-10 px-6 mx-auto  md:box-content  w-1/2  bg-slate-200 bg-opacity-75 md:bg-opacity-75  justify-center border-2">
             <div className="box-border container flex w-32 mb-3">
               <img
                 src="./images/logo1.jpeg"
@@ -56,7 +56,7 @@ export const ForgotPassword = () => {
                   </div>
                 </div>
                 <div className="mx-auto rounded-full w-fit mb-3">
-                  <NavLink to="/verifyOTP">
+                  <NavLink to="/Login/forgotPassword/verifyOTP">
                     <button
                       disabled={isbuttonDisabled}
                       className="text-3xl mx-auto text-white w-fit mt-4 p-3 bg-blue-900 rounded-3xl"
@@ -70,6 +70,6 @@ export const ForgotPassword = () => {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 };

@@ -22,6 +22,7 @@ export const AdminLogin = (props) => {
   };
 
   return (
+    <>
     <div className="auth-form-container bg-slate-400 bg-opacity-75 md:bg-opacity-75 justify-center w-96">
       <div className="logoimg">
         <img src="./images/logo1.jpeg" className="img1 " alt="hello" />
@@ -58,6 +59,7 @@ export const AdminLogin = (props) => {
           Login
         </button>
       </form>
-    </div>
+      </div>
+    </>
   );
 };

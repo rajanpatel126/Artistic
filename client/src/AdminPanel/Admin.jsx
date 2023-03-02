@@ -3,9 +3,9 @@
 import React from "react";
 // import Selller from "./Selller";
 import { Navigate, NavLink } from "react-router-dom";
-import Artist from "./Artist";
-import ArtistList from "./ArtistList";
-import ViewArt from "./ViewArt";
+
+import ArtistList from "./Artists";
+import ViewArt from "../ViewArt";
 import { useNavigate } from "react-router-dom";
 
 export default function Admin() {
@@ -27,7 +27,7 @@ export default function Admin() {
               <ul className="pt-2 pb-4 space-y-1 text-sm">
                 <li className="rounded-sm ">
                   <NavLink
-                    to="/viewArt"
+                    to="/"
                     className="flex items-center p-2 space-x-3 rounded-md hover:bg-slate-500 hover:text-white"
                   >
                     <span className="text-4xl">Dashboard</span>
@@ -35,7 +35,7 @@ export default function Admin() {
                 </li>
                 <li className="rounded-sm">
                   <NavLink
-                    to="/viewArt"
+                    to="/Admin/Product"
                     className="flex items-center p-2 space-x-3 rounded-md hover:bg-slate-500 hover:text-white"
                   >
                     {" "}
@@ -44,7 +44,7 @@ export default function Admin() {
                 </li>
                 <li className="rounded-sm ">
                   <NavLink
-                    to="/ArtistList"
+                    to="/Admin/Artist"
                     className="flex items-center p-2 space-x-3 rounded-md hover:bg-slate-500 hover:text-white"
                   >
                     <span className="text-4xl">Artists</span>

@@ -12,26 +12,30 @@ export const ArtistRegister = (props) => {
   };
 
   return (
-    <>
-      <div className="auth-form-container bg-slate-400 bg-opacity-75 md:bg-opacity-75 justify-center w-96 ">
+    <div className="Register bg-gradient-to-r from-blue-300 to-slate-400 py-24">
+      <div className="auth-form-container mx-auto bg-slate-700  bg-opacity-75 md:bg-opacity-75 justify-center w-96 ">
         <div className="logoimg">
-          <img src="./images/logo1.jpeg" className="img1" alt="hello" />
-          <p className=" text-white text-4xl mt-1 mb-4">Artist Register</p>
+          <img
+            src="./images/logo1.jpeg"
+            className="w-24 h-24 rounded-full"
+            alt="hello"
+          />
+          <p className=" text-white text-4xl mt-2 mb-4">Register</p>
         </div>
 
         <form className="register-form " onSubmit={handleSubmit}>
-          <label htmlFor="name"></label>
           <input
             value={name}
+            onChange={(e) => setName(e.target.value)}
             name="name"
             id="name"
-            className="text-xl h-16"
+            className="text-3xl normal-case h-20"
             placeholder="Username"
           ></input>
           <label htmlFor="email"></label>
           <input
             value={email}
-            className="text-xl h-16"
+            className="text-3xl normal-case h-20"
             onChange={(e) => setEmail(e.target.value)}
             type="email"
             placeholder="Mobile number or Email"
@@ -43,36 +47,36 @@ export const ArtistRegister = (props) => {
             value={pass}
             onChange={(e) => setPass(e.target.value)}
             type="password"
-            className="text-xl"
+            className="text-3xl normal-case h-20"
             placeholder="Password"
             id="password"
             name="password"
           />
-          <button className="button1 bg-blue-700" type="submit">
+          <button className="text-3xl mx-auto w-fit p-3 bg-blue-900" type="submit">
             Register
           </button>
         </form>
 
-        <label htmlFor="" className="l1-r text-2xl ">
+        <label className="l1-r text-white text-3xl mx-auto">
           Already have an account?
-          <button
-            className="link-btn"
-            onClick={() => props.onFormSwitch("login")}
-          >
-            Login here.
-          </button>
+          <NavLink to={"/ArtistLogin"}>
+            <button className="text-3xl focus:outline-none bg-transparent text-[#21deeb] cursor-pointer  hover:text-[#e9a511]">
+              Login here.
+            </button>
+          </NavLink>
+
         </label>
 
-        <label htmlFor="" className="or-r text-2xl">
+        <label className="or-r text-2xl">
           OR
         </label>
         <button className="btn-r btn-google-r">
-          <span className="icon-r texting-r">
+          <span className="icon-r p-1 mb-2">
             <img src="./images/google.png" className="imgc" alt="google" />
             Sign-in with Google
           </span>
         </button>
       </div>
-    </>
+    </div>
   );
 };

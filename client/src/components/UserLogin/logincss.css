@@ -1,17 +1,3 @@
-.App {
-    text-align: center;
-    display: flex;
-    min-height: 100vh;
-    align-items: center;
-    justify-content: center;
-    color: black;
-
-    background-image: url("https://img.freepik.com/premium-photo/abstract-modern-black-background-black-paper-texture-black-dark-gray-textured-design-paper_183577-792.jpg"); 
-    background-size: cover;
-    /* opacity: 0.5; */
-}
-
-
 
 label{
     color: white;
@@ -84,9 +70,7 @@ button {
     /* margin-bottom: 10%; */
 }
 
-.button1:hover {
-    background-color: #1620b5;
-}
+
 
 .link-btn {
     background: none;
@@ -94,9 +78,7 @@ button {
     text-decoration: underline;
 }
 
-.link-btn:hover{
-    color: #1620b5;
-}
+
 
 .forgot {
    

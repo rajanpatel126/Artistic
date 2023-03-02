@@ -17,15 +17,15 @@ export const VerifyOTP = () => {
   const handleContinue = async () => {
     let otp = localStorage.getItem("OTP");
     if (verifyOtp === otp) {
-      navigation("/AdminResetPassword");
+      navigation("/Login/forgotPassword/verifyOTP/resetPassword");
     }
   };
 
   return (
-    <>
-      <section className="text-gray-800 h-full body-font py-72 bg-[#75a0e1] bg-cover">
+    <div className="Register bg-gradient-to-r from-slate-400 to-blue-300">
+      <section className="text-gray-800 h-full body-font py-72 bg-cover ">
         <div className="container h-full mx-auto   ">
-          <div className="box-border rounded-2xl container py-14 px-6 mx-auto  md:box-content  w-1/2 shadow-2xl bg-slate-100 border-black border-2 bg-opacity-75 md:bg-opacity-75 justify-center">
+          <div className="box-border rounded-2xl container py-14 px-6 mx-auto  md:box-content  w-1/2 shadow-2xl bg-slate-200 border-black border-2 bg-opacity-75 md:bg-opacity-75 justify-center">
             <div className="box-border container flex mb-3">
               <img
                 src="./images/logo1.jpeg"
@@ -64,7 +64,8 @@ export const VerifyOTP = () => {
                 </div>
 
                 <div className="mx-auto rounded-full w-fit mb-3">
-                  <NavLink onClick={handleContinue} to="/ResetPassword">
+                  <NavLink onClick={handleContinue}
+                    to="/Login/forgotPassword/verifyOTP/resetPassword">
                     <button
                       disabled={isbuttonDisabled}
                       className="text-3xl mx-auto text-white w-fit mt-4 p-3 bg-blue-900 rounded-3xl"
@@ -78,6 +79,6 @@ export const VerifyOTP = () => {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 };

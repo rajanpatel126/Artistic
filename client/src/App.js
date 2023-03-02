@@ -12,15 +12,13 @@ import { GlobalStyle } from "./GlobalStyle";
 import { ThemeProvider } from "styled-components";
 import Header from "./components/Header";
 import AddArt from "./AddArt";
-import Artist from "./Artist";
-import ArtistList from "./ArtistList";
-import Admin from "./Admin";
+import ArtistList from "./AdminPanel/Artists";
+import Admin from "./AdminPanel/Admin";
 import ViewArt from "./ViewArt";
-import Aartist from "./Aartist";
+import ArtistPanel from "./ArtistPanel";
 import { Login } from "./components/UserLogin/Login";
 import { Register } from "./components/UserLogin/Register";
-import LogReg from "./components/UserLogin/LogR";
-import LogrArtist from "./components/ArtistLogin/LogrArtist";
+
 import LogrAdmin from "./components/AdminLogin/LogrAdmin";
 import { ForgotPassword } from "./components/UserLogin/ForgotPassword";
 import { VerifyOTP } from "./components/UserLogin/VerifyOTP";
@@ -38,6 +36,10 @@ import Kurti from "./components/Kurti";
 import ScrollToTopButton from "./components/scrollToTop";
 import Footer from "./components/Footer";
 import { Nav } from "react-bootstrap";
+import Product from "./AdminPanel/Product";
+import Artists from "./AdminPanel/Artists";
+import { ArtistLogin } from "./components/ArtistLogin/ArtistLogin";
+import { ArtistRegister } from "./components/ArtistLogin/ArtistRegister";
 
 const App = () => {
   const theme = {
@@ -81,22 +83,27 @@ const App = () => {
           <Route path="/Kurti" element={<Kurti />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/AddArt" element={<AddArt />} />
-          <Route path="/UserLogin" element={<LogReg />} />
-          <Route path="/artist" element={<Artist />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/verifyOTP" element={<VerifyOTP />} />
+     
+         
 
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/Login/forgotPassword/verifyOTP" element={<VerifyOTP />} />
+          
           <Route path="/ArtistList" element={<ArtistList />} />
           <Route path="/viewArt" element={<ViewArt />} />
-          <Route path="/forgotPassword" element={<ForgotPassword />} />
+          <Route path="/Login/forgotPassword" element={<ForgotPassword />} />
           <Route
-            path="/ArtistForgotPassword"
+            path="/ArtistLogin/ArtistForgotPassword"
             element={<ArtistForgotPassword />}
           />
-          <Route path="/ArtistVerifyOTP" element={<ArtistVerifyOTP />} />
+          <Route path="/Admin/Product" element={<Product />} />
+          <Route path="/Admin/Artist" element={<Artists />} />
+
+
+          <Route path="/ArtistLogin/ArtistForgotPassword/ArtistVerifyOTP" element={<ArtistVerifyOTP />} />
           <Route
-            path="/ArtistResetPassword"
-            element={<ArtistResetPassword />}
+            path="/ArtistLogin/ArtistForgotPassword/ArtistVerifyOTP/ArtistResetPassword"
+            element={<ArtistResetPassword/>}
           />
           <Route
             path="/AdminForgotPassword"
@@ -105,12 +112,14 @@ const App = () => {
           <Route path="/AdminVerifyOTP" element={<AdminVerifyOTP />} />
           <Route path="/AdminResetPassword" element={<AdminResetPassword />} />
           <Route path="/HOME" element={<ScrollToTopButton />} />
-
-          <Route path="/Aartist" element={<Aartist />} />
-          <Route path="/ArtistLogin" element={<LogrArtist />} />
+          <Route path="/ArtistPanel" element={<ArtistPanel />} />
+          <Route path="/ArtistLogin" element={<ArtistLogin />} />
+          <Route path="/ArtistRegister" element={<ArtistRegister />} />
           <Route path="/AdminLogin" element={<LogrAdmin />} />
-          <Route path="/resetPassword" element={<ResetPassword />} />
 
+          
+          {/* <Route path="/AdminLogin" element={<LogrAdmin />} /> */}
+          <Route path="/Login/forgotPassword/verifyOTP/resetPassword" element={<ResetPassword />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
         <Footer/>
