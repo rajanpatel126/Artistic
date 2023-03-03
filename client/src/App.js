@@ -1,6 +1,6 @@
+
 /* eslint-disable no-unused-vars */
 import React from "react";
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import About from "./About";
 import Home from "./Home";
@@ -10,7 +10,6 @@ import Cart from "./Cart";
 import ErrorPage from "./ErrorPage";
 import { GlobalStyle } from "./GlobalStyle";
 import { ThemeProvider } from "styled-components";
-import Header from "./components/Header";
 import AddArt from "./AddArt";
 import ArtistList from "./AdminPanel/Artists";
 import Admin from "./AdminPanel/Admin";
@@ -18,7 +17,6 @@ import ViewArt from "./ViewArt";
 import ArtistPanel from "./ArtistPanel";
 import { Login } from "./components/UserLogin/Login";
 import { Register } from "./components/UserLogin/Register";
-
 import LogrAdmin from "./components/AdminLogin/LogrAdmin";
 import { ForgotPassword } from "./components/UserLogin/ForgotPassword";
 import { VerifyOTP } from "./components/UserLogin/VerifyOTP";
@@ -40,6 +38,12 @@ import Product from "./AdminPanel/Product";
 import Artists from "./AdminPanel/Artists";
 import { ArtistLogin } from "./components/ArtistLogin/ArtistLogin";
 import { ArtistRegister } from "./components/ArtistLogin/ArtistRegister";
+import NavBar from "./NavBar/NavBar";
+import Shirts from "./NavBar/Shirts";
+import Kurtis from "./NavBar/Kurtis";
+import Hoodies from "./NavBar/Hoodies";
+import Tshirts from "./NavBar/Tshirts";
+
 
 const App = () => {
   const theme = {
@@ -66,7 +70,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <Router>
         <GlobalStyle />
-        <Header />
+        <NavBar/>
         <Routes>
           <Route path="/" element={<Home />}>
             {" "}
@@ -74,7 +78,6 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/products" element={<Products />} />
           <Route path="/contact" element={<Contact />} />
-
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/Tshirt" element={<Tshirt />} />
@@ -83,12 +86,12 @@ const App = () => {
           <Route path="/Kurti" element={<Kurti />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/AddArt" element={<AddArt />} />
-     
-         
+
+
 
           <Route path="/admin" element={<Admin />} />
           <Route path="/Login/forgotPassword/verifyOTP" element={<VerifyOTP />} />
-          
+
           <Route path="/ArtistList" element={<ArtistList />} />
           <Route path="/viewArt" element={<ViewArt />} />
           <Route path="/Login/forgotPassword" element={<ForgotPassword />} />
@@ -99,11 +102,16 @@ const App = () => {
           <Route path="/Admin/Product" element={<Product />} />
           <Route path="/Admin/Artist" element={<Artists />} />
 
+          <Route path="/Shirts" element={<Shirts />} />
+          <Route path="/Kurtis" element={<Kurtis />} />
+          <Route path="/Hoodies" element={<Hoodies />} />
+          <Route path="/Tshirts" element={<Tshirts />} />
+
 
           <Route path="/ArtistLogin/ArtistForgotPassword/ArtistVerifyOTP" element={<ArtistVerifyOTP />} />
           <Route
             path="/ArtistLogin/ArtistForgotPassword/ArtistVerifyOTP/ArtistResetPassword"
-            element={<ArtistResetPassword/>}
+            element={<ArtistResetPassword />}
           />
           <Route
             path="/AdminForgotPassword"
@@ -117,12 +125,12 @@ const App = () => {
           <Route path="/ArtistRegister" element={<ArtistRegister />} />
           <Route path="/AdminLogin" element={<LogrAdmin />} />
 
-          
+
           {/* <Route path="/AdminLogin" element={<LogrAdmin />} /> */}
           <Route path="/Login/forgotPassword/verifyOTP/resetPassword" element={<ResetPassword />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
-        <Footer/>
+        <Footer />
       </Router>
     </ThemeProvider>
   );
