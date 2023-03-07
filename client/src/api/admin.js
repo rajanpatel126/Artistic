@@ -14,7 +14,7 @@ export const addUser = async (userInfo) => {
   }
 };
 
-//foegot passweord
+//forget passweord
 export const forgetPassword = async (obj, config) => {
   try {
     const data = await client.post("/user/forgetPassword", obj, config);
@@ -29,9 +29,9 @@ export const forgetPassword = async (obj, config) => {
 };
 
 //reset password
-export const resetPassword = async () => {
+export const resetPassword = async (obj, config) => {
   try {
-    const data = await client.post("/user/resetPassword");
+    const { data } = await client.put("/user/resetPassword", obj, config);
     console.log(data);
   } catch (error) {
     const { response } = error;

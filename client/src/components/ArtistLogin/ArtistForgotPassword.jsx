@@ -1,17 +1,29 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-// import logo from "./images/logo1.jpeg";
-// import google from "./images/google.png";
-
+import { NavLink, useNavigate } from "react-router-dom";
+import { forgetPassword } from "../../api/artist";
+let config = {
+  method: "POST",
+  headers: {
+    "content-type": "application/json",
+  },
+};
 export const ArtistForgotPassword = () => {
-  const [email, setEmail] = useState("");
-  const [isbuttonDisabled, setIsButtonDisabled] = useState(false);
-
-  const handleChange = async (e) => {
-    // if (e.target.value.length=== null) {
-    //   setIsButtonDisabled(false);
-    // }
+  const [emailInfo, setEmailInfo] = useState({});
+  const navigation = useNavigate();
+  const [otp, setOtp] = useState("");
+  const handleSubmit = async (e) => {
+    let op = Math.floor(Math.random() * 1000000);
+    setOtp(op);
+    localStorage.setItem("OTP", op);
+    const obj = {
+      emailAddress: emailInfo,
+      subject: "Email From Artstic to Artist for Forget Password",
+      text: `The OTP for forget Password is ${op}`,
+    };
+    localStorage.setItem("Artist Email", emailInfo);
+    const data = await forgetPassword(obj, config);
+    console.log(data);
   };
 
   return (
@@ -46,11 +58,10 @@ export const ArtistForgotPassword = () => {
                       Email
                     </label>
                     <input
-                      onClick={(e) => setEmail(e.target.value)}
-                      // onChange={handleChange};
+                      onChange={(e) => setEmailInfo(e.target.value)}
                       type="email"
                       id="name"
-                      name="name"
+                      name="email"
                       className="w-full h-16 normal-case text-3xl rounded-xl border-gray-500 focus:border-gray-900 outline-none text-black duration-200 ease-in-out"
                     />
                   </div>
@@ -58,7 +69,7 @@ export const ArtistForgotPassword = () => {
                 <div className="mx-auto rounded-full w-fit mb-3">
                   <NavLink to="/ArtistLogin/ArtistForgotPassword/ArtistVerifyOTP">
                     <button
-                      disabled={isbuttonDisabled}
+                      onClick={handleSubmit}
                       className="text-3xl mx-auto text-white w-fit mt-4 p-3 bg-blue-900 rounded-3xl"
                     >
                       Continue

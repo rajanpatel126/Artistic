@@ -1,11 +1,31 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-
-// import logo from "./images/logo1.jpeg";
-// import google from "./images/google.png";
-
+import { useNavigate } from "react-router-dom";
+import { resetPassword } from "../../api/artist";
+let config = {
+  method: "PUT",
+  headers: {
+    "content-type": "application/json",
+  },
+};
 export const ArtistResetPassword = () => {
+  const [newPassword, setNewPass] = useState("");
+  const [confirmPass, setConfirmPass] = useState("");
+
+  const navigation = useNavigate();
+  const handleResetPass = async () => {
+    if (confirmPass === newPassword) {
+      const data = resetPassword(
+        { password: newPassword, email: localStorage.getItem("Artist Email") },
+        config
+      );
+      console.log(data);
+      navigation("/ArtistLogin");
+    } else {
+      alert("New Password and Confirm Password should be same");
+    }
+  };
+
   return (
     <div className="Register bg-gradient-to-r from-blue-300 to-gray-400 ">
       <section className="text-gray-800 h-full body-font py-72 bg-cover ">
@@ -22,29 +42,15 @@ export const ArtistResetPassword = () => {
                   <div className="relative">
                     <label
                       htmlFor="name"
-                      className="mt-12 text-3xl text-black font-bold"
-                    >
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      id="name"
-                      name="name"
-                      className="w-full h-16 normal-case text-3xl rounded-xl border-gray-500 focus:border-gray-900 outline-none text-black duration-200 ease-in-out"
-                    />
-                  </div>
-
-                  <div className="relative">
-                    <label
-                      htmlFor="name"
                       className="mt-2 text-3xl text-black font-bold"
                     >
                       New Password
                     </label>
                     <input
                       type="password"
+                      onChange={(e) => setNewPass(e.target.value)}
                       id="name"
-                      name="name"
+                      name="New Password"
                       className="w-full h-16 normal-case text-3xl rounded-xl border-gray-500 focus:border-gray-900 outline-none text-black duration-200 ease-in-out"
                     />
                   </div>
@@ -58,19 +64,20 @@ export const ArtistResetPassword = () => {
                     </label>
                     <input
                       type="password"
+                      onChange={(e) => setConfirmPass(e.target.value)}
                       id="name"
-                      name="name"
+                      name="Confirm Password"
                       className="w-full h-16 normal-case text-3xl rounded-xl border-gray-500 focus:border-gray-900 outline-none text-black duration-200 ease-in-out"
                     />
                   </div>
                 </div>
                 <div className="mx-auto rounded-full w-fit mb-3">
-                  <NavLink
-                    className="text-3xl mx-auto text-white w-fit mt-4 p-3 bg-blue-900 rounded-3xl"
-                    to="/Login"
+                  <button
+                    onClick={handleResetPass}
+                    className=" flex w-full justify-center text-center  mx-auto text-2xl text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded mb-4 h-12 "
                   >
-                    Sign In
-                  </NavLink>
+                    Submit
+                  </button>
                 </div>
               </div>
             </div>

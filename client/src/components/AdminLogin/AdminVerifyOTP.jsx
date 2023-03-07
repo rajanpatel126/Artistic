@@ -17,7 +17,7 @@ export const AdminVerifyOTP = () => {
   const [isbuttonDisabled, setIsButtonDisabled] = useState(true);
   const navigation = useNavigate();
   const handleChange = async (e) => {
-    if (e.target.value.length === 5) {
+    if (e.target.value.length === 6) {
       setIsButtonDisabled(false);
     }
   };

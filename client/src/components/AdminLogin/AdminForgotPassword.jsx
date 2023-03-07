@@ -13,7 +13,6 @@ let config = {
 export const AdminForgotPassword = () => {
   const [emailInfo, setEmailInfo] = useState({});
   const [otp, setOtp] = useState("");
-  const handleForget = async () => {};
 
   const handleSubmit = async () => {
     let op = Math.floor(Math.random() * 1000000);
@@ -24,14 +23,14 @@ export const AdminForgotPassword = () => {
       subject: "Email From Artstic to Admin for Forgot Password",
       text: `The OTP for forget Password is ${op}`,
     };
-    console.log(obj, emailInfo);
+    localStorage.setItem("email", emailInfo);
     const data = await forgetPassword(obj, config);
     console.log(data);
   };
 
   return (
     <>
-      <section className="text-gray-800 h-full body-font py-72 bg-slate-200 bg-[url('https://images.template.net/wp-content/uploads/2015/11/25190558/Plain-Dark-Blue-Background-Images-Download.jpg')] bg-cover ">
+      <section className="text-gray-800 h-full body-font py-72 bg-[#568848] bg-cover ">
         <div className="container h-full py-1 mx-auto   ">
           <div className="box-border rounded-2xl container py-10 px-6 mx-auto  md:box-content  w-1/2 bg-slate-400 bg-opacity-75 md:bg-opacity-75  justify-center border-white border-2">
             <div className="box-border container flex w-32 mb-3">

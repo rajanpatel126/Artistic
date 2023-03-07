@@ -3,16 +3,19 @@ import { Link } from "react-router-dom";
 
 export default function ProductCollections() {
   return (
-    <div className="bg-slate-100">
+    <div className="bg-[#d1af5a]">
       <section className="text-black body-font">
         <div className="container px-5 py-20 mx-auto">
           <div className="flex flex-wrap -mx-14 -m-4">
-            <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-              <Link className="block relative h-4/5 rounded overflow-hidden" to="/Kurti">
+            <div className="lg:w-1/4 md:w-1/2 p-4 w-full hover:scale-110 hover:bg-[#e2dcce] hover:shadow-2xl">
+              <Link
+                className="block relative h-4/5 rounded overflow-hidden"
+                to="/Kurti"
+              >
                 <img
                   src="./images/kurti.jpg"
                   alt="ecommerce"
-                  className="object-cover object-center w-full h-full block hover:cursor-pointer transform hover:scale-95 hover:shadow-2xl"
+                  className="object-cover object-center w-full h-full block  hover:cursor-pointer transform "
                 />
               </Link>
               <div className="mt-4">
@@ -29,15 +32,20 @@ export default function ProductCollections() {
                 <h2 className="text-gray-600 title-font  text-xl">
                   Design by GloopZ
                 </h2>
-                <span className="mt-1 line-through text-2xl">₹320</span>
-                <span className="mx-3 text-2xl font-bold">₹250</span>
+                <div className="">
+                  <span className="mt-1 line-through text-2xl">₹320</span>
+                  <span className="mx-3 text-2xl font-bold">₹250</span>
+                </div>
               </div>
             </div>
-            <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-              <Link className="block relative h-4/5 rounded overflow-hidden" to="/Shirt">
+            <div className="lg:w-1/4 md:w-1/2 p-4 w-full hover:scale-110 hover:shadow-2xl hover:bg-[#e2dcce]">
+              <Link
+                className="block relative h-4/5 rounded overflow-hidden"
+                to="/Shirt"
+              >
                 <img
                   alt="ecommerce"
-                  className="object-cover object-center w-full h-full block hover:cursor-pointer transform hover:scale-95 hover:shadow-2xl"
+                  className="object-cover object-center w-full h-full block hover:cursor-pointer transform hover:scale-110 hover:shadow-2xl"
                   src="./images/shirt.jpg"
                 />
               </Link>
@@ -49,7 +57,7 @@ export default function ProductCollections() {
                   Best Selling
                 </label>
                 <h2 className="text-black title-font font-bold text-3xl">
-                Dennis Lingo
+                  Dennis Lingo
                 </h2>
 
                 <h2 className="text-gray-600 title-font  text-xl">
@@ -60,14 +68,14 @@ export default function ProductCollections() {
               </div>
             </div>
 
-            <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
+            <div className="lg:w-1/4 md:w-1/2 p-4 w-full hover:scale-110 hover:shadow-2xl hover:bg-[#e2dcce]">
               <Link
                 className="block relative h-4/5 rounded overflow-hidden"
                 to="/Hoodie"
               >
                 <img
                   alt="ecommerce"
-                  className="object-cover object-center w-full h-full block hover:cursor-pointer transform hover:scale-95 hover:shadow-2xl"
+                  className="object-cover object-center w-full h-full block hover:cursor-pointer transform hover:scale-110 hover:shadow-2xl"
                   src="./images/hoodie.jpg"
                 />
               </Link>
@@ -86,13 +94,15 @@ export default function ProductCollections() {
               </div>
             </div>
 
-            <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-              <Link to="/Tshirt"
-                className="block relative h-4/5 rounded overflow-hidden" >
+            <div className="lg:w-1/4 md:w-1/2 p-4 w-full hover:scale-110 hover:shadow-2xl hover:bg-[#e2dcce]">
+              <Link
+                to="/Tshirt"
+                className="block relative h-4/5 rounded overflow-hidden"
+              >
                 <img
                   src="./images/OptimistPrime.jpeg"
                   alt="ecommerce"
-                  className="object-cover object-center w-full h-full block hover:cursor-pointer transform hover:scale-95 hover:shadow-2xl"
+                  className="object-cover object-center w-full h-full block hover:cursor-pointer transform hover:scale-110 hover:shadow-2xl"
                 />
               </Link>
               <div className="mt-4">

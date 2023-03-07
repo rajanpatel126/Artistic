@@ -1,12 +1,24 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { verifyArtist } from "../../api/artist";
+
 export const ArtistLogin = (props) => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefualt();
-    console.log(email);
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { data } = await verifyArtist({
+      emailAddress: email,
+      password: pass,
+    });
+    localStorage.setItem("ArtistEmail", email);
+    localStorage.setItem("ArtistId", data?.artist?.id);
+    if (data?.artist) {
+      navigate("/ArtistPanel");
+    }
   };
 
   return (
@@ -21,7 +33,7 @@ export const ArtistLogin = (props) => {
           <p className="text-white text-4xl mt-2 mb-4 "> Login</p>
         </div>
 
-        <form className="login-form" onSubmit={handleSubmit}>
+        <form className="login-form">
           <input
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -41,17 +53,19 @@ export const ArtistLogin = (props) => {
             id="password"
             name="password"
           />
-          <NavLink to="/ArtistLogin/ArtistForgotPassword" className="text-[#21deeb] mx-2 text-3xl">
-            Forgot Password?
-          </NavLink>
-
-          <button
-            className="text-3xl mx-auto w-fit mt-4 p-3 bg-blue-900 "
-            type="submit"
+          <NavLink
+            to="/ArtistLogin/ArtistForgotPassword"
+            className="text-[#21deeb] mx-2 text-3xl"
           >
-            Login
-          </button>
+            Forget Password?
+          </NavLink>
         </form>
+        <button
+          onClick={handleSubmit}
+          className="text-3xl mx-auto w-fit mt-4 p-3 bg-blue-900 "
+        >
+          Login
+        </button>
 
         <label htmlFor="" className="l1 mx-auto text-3xl">
           Don't have an account?{" "}

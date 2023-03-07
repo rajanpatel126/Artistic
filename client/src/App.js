@@ -110,7 +110,7 @@ const App = () => {
 
           <Route path="/ArtistLogin/ArtistForgotPassword/ArtistVerifyOTP" element={<ArtistVerifyOTP />} />
           <Route
-            path="/ArtistLogin/ArtistForgotPassword/ArtistVerifyOTP/ArtistResetPassword"
+            path="/ArtistResetPassword"
             element={<ArtistResetPassword />}
           />
           <Route

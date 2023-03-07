@@ -90,20 +90,19 @@ router.post("/signinUser", async (req, res) => {
         .status(400)
         .json({ errors: "Please try to login with correct credentials" });
     }
+
+    // console.log(user);
     if (password === "") {
       return res.status(400).json({
         success,
         errors: "Password can not be blank",
       });
     }
-    if (emailAddress === "") {
-      return res.status(400).json({
-        success,
-        errors: "Email address can not be blank",
-      });
-    }
-    console.log("Password ", password);
-    const passwordCompare = await bcrypt.compare(password, user.password);
+
+    const passwordCompare =  bcrypt.compare(password, user.password);
+
+    
+    console.log(user);
     if (!passwordCompare) {
       success = false;
       return res.status(400).json({
@@ -258,13 +257,13 @@ router.post("/forgetPassword", async (req, res) => {
 });
 
 //Reset Password for
-router.post("/resetPassword", async (req, res) => {
+router.put("/resetPassword", async (req, res) => {
   try {
-    const password = req.body;
+    const { email, password } = req.body;
     const salt = bcrypt.genSaltSync(10);
     const secPass = await bcrypt.hash(password, salt);
-    const adminData = User.findByIdAndUpdate(
-      { _id: tokenData._id },
+    const adminData = User.findOneAndUpdate(
+      { emailAddress: email },
       { $set: { password: secPass } },
       { new: true }
     );

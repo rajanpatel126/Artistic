@@ -14,10 +14,10 @@ export const addArtist = async (ArtistInfo) => {
   }
 };
 
-//verify Artist connection
+//verify Artist
 export const verifyArtist = async (ArtistInfo) => {
   try {
-    const data = await client.post("/auth/signinArtist", ArtistInfo);
+    const { data } = await client.post("/artist/signinArtist", ArtistInfo);
     return data;
   } catch (error) {
     const { response } = error;
@@ -28,7 +28,7 @@ export const verifyArtist = async (ArtistInfo) => {
   }
 };
 
-//delete artist connection
+//delete artist
 export const deleteArtist = async (ArtistId) => {
   try {
     const { message } = await client.delete(`/auth/deleteArtist/${ArtistId}`);
@@ -42,7 +42,7 @@ export const deleteArtist = async (ArtistId) => {
   }
 };
 
-//getting all users
+//get the specific artist
 export const getArtist = async (ArtistId) => {
   try {
     const { data } = await client.get(`/auth/findArtist/${ArtistId}`);
@@ -80,6 +80,33 @@ export const addDesignDetails = async (ArtistId, object, config) => {
       config
     );
     return data;
+  } catch (error) {
+    const { response } = error;
+    if (response?.data) {
+      return response.data;
+    }
+    return { error: error.message || error };
+  }
+};
+//forget passweord
+export const forgetPassword = async (obj, config) => {
+  try {
+    const data = await client.post("/artist/forgetPassword", obj, config);
+    return data;
+  } catch (error) {
+    const { response } = error;
+    if (response?.data) {
+      return response.data;
+    }
+    return { error: error.message || error };
+  }
+};
+
+//reset password
+export const resetPassword = async (obj, config) => {
+  try {
+    const { data } = await client.put("/artist/resetPassword", obj, config);
+    console.log(data);
   } catch (error) {
     const { response } = error;
     if (response?.data) {

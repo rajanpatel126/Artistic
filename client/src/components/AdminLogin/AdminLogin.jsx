@@ -11,10 +11,8 @@ export const AdminLogin = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { data } = await verifyUser({ emailAddress: email, password: pass });
-    localStorage.setItem("email",email);
-    console.log(localStorage.getItem(email))
-    // console.log(data.user.isAdmin);
-    if (data.user.isAdmin) {
+    localStorage.setItem("email", email);
+    if (data?.user?.isAdmin) {
       navigate("/Admin");
     } else {
     }
@@ -23,42 +21,42 @@ export const AdminLogin = (props) => {
 
   return (
     <>
-    <div className="auth-form-container bg-slate-400 bg-opacity-75 md:bg-opacity-75 justify-center w-96">
-      <div className="logoimg">
-        <img src="./images/logo1.jpeg" className="img1 " alt="hello" />
-        <p className="text-white text-4xl mt-1 mb-20">Admin Login</p>
-      </div>
+      <div className="auth-form-container bg-slate-400 bg-opacity-75 md:bg-opacity-75 justify-center w-96">
+        <div className="logoimg">
+          <img src="./images/logo1.jpeg" className="img1 " alt="hello" />
+          <p className="text-white text-4xl mt-1 mb-20">Admin Login</p>
+        </div>
 
-      <form className="login-form">
-        <input
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="text-xl h-16"
-          type="email"
-          placeholder="Username or Email Address"
-          id="email"
-          name="email"
-        ></input>
+        <form className="login-form">
+          <input
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="text-xl h-16"
+            type="email"
+            placeholder="Username or Email Address"
+            id="email"
+            name="email"
+          ></input>
 
-        <input
-          value={pass}
-          onChange={(e) => {
-            setPass(e.target.value);
-            console.log(pass);
-          }}
-          type="password"
-          className="text-xl h-16"
-          placeholder="Password"
-          id="password"
-          name="password"
-        />
-        <NavLink to="/AdminForgotPassword" className="forgot text-2xl">
-          Forgot Password?
-        </NavLink>
-        <button onClick={handleSubmit} className="button1 bg-blue-700 mb-4">
-          Login
-        </button>
-      </form>
+          <input
+            value={pass}
+            onChange={(e) => {
+              setPass(e.target.value);
+              console.log(pass);
+            }}
+            type="password"
+            className="text-xl h-16"
+            placeholder="Password"
+            id="password"
+            name="password"
+          />
+          <NavLink to="/AdminForgotPassword" className="forgot text-2xl">
+            Forgot Password?
+          </NavLink>
+          <button onClick={handleSubmit} className="button1 bg-blue-700 mb-4">
+            Login
+          </button>
+        </form>
       </div>
     </>
   );

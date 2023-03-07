@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { useState, useEffect } from "react";
 import { addDesignDetails } from "./api/artist";
@@ -9,7 +10,7 @@ let config = {
 };
 const AddArt = () => {
   const [artistInfo, setArtistInfo] = useState({});
-  const [userId, setUserId] = useState("63dc21f2dda8160c29e95f54");
+  const [userId, setUserId] = useState(localStorage.getItem("ArtistId"));
 
   const handleImage = async (resolve, reject, file) => {
     const filereader = new FileReader();
@@ -57,7 +58,7 @@ const AddArt = () => {
                       type="text"
                       id="name"
                       name="name"
-                      className="w-full p-3 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-3xl outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      className="normal-case w-full p-3 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-3xl outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </div>
@@ -73,7 +74,7 @@ const AddArt = () => {
                     <br />
                     <textarea
                       onChange={handleChange}
-                      className="w-full p-3 text-3xl bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      className="normal-case w-full p-3 text-3xl bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </div>
@@ -88,7 +89,7 @@ const AddArt = () => {
                     <br />
                     <input
                       type="text"
-                      className="w-full p-3 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-xl outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      className="normal-case w-full p-3 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-xl outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </div>
@@ -109,7 +110,7 @@ const AddArt = () => {
                       }}
                       type="file"
                       placeholder="file"
-                      className="w-full p-3  bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-2xl outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      className="normal-case w-full p-3  bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-2xl outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </div>
@@ -117,7 +118,7 @@ const AddArt = () => {
                 <div className="p-2 w-full">
                   <button
                     onClick={handleSubmit}
-                    className="mt-3 flex mx-auto text-3xl text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-700 rounded "
+                    className="mt-3 flex mx-auto text-3xl text-white bg-indigo-500 py-2 px-8 focus:outline-none hover:bg-indigo-700 rounded "
                   >
                     Send
                   </button>

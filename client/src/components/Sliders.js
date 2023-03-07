@@ -3,7 +3,7 @@ import { Carousel } from "react-bootstrap";
 
 export default function Sliders() {
     return (
-        <div className="hidden md:block mx-2">
+        <div className="hidden z-0 md:block mx-2">
             <Carousel fade>
                 <Carousel.Item>
                     <img

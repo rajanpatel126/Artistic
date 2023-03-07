@@ -3,6 +3,8 @@ const bcrypt = require("bcrypt");
 const { body, validationResult } = require("express-validator");
 const router = express.Router();
 const { isValidObjectId } = require("mongoose");
+const nodemailer = require("nodemailer");
+const sendMail = require("../nodemailer");
 const Artist = require("../models/ArtistSchema");
 
 //Route1: creating Artist
@@ -189,5 +191,42 @@ router.put("/addDesignDetails/:id", async (req, res) => {
     res.status(500).send("Internal server Error\n" + error.message);
   }
 });
+
+//Forgot Password
+router.post("/forgetPassword", async (req, res) => {
+  try {
+    const { emailAddress, subject, text } = req.body;
+    let data = await Artist.findOne({ emailAddress: emailAddress });
+    console.log(data);
+    if (!data) {
+      return res.status(200).send("Email Id doesn't exist");
+    }
+    // const to = emailAddress;
+    sendMail(emailAddress, subject, text);
+    return res.status(200).send("Check your Mail\n");
+  } catch (error) {
+    console.error(error.message);
+    return res.status(500).send("Internal Server Error\n" + error.message);
+  }
+});
+
+//Reset Password for
+router.put("/resetPassword", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const salt = bcrypt.genSaltSync(10);
+    const secPass = await bcrypt.hash(password, salt);
+    const artistData = Artist.findOneAndUpdate(
+      { emailAddress: email },
+      { $set: { password: secPass } },
+      { new: true }
+    );
+    return res.status(200).send("Password has been reset", artistData);
+  } catch (error) {
+    console.error(error.message);
+    return res.status(500).send("Internal Server Error\n" + error.message);
+  }
+});
+
 
 module.exports = router;

@@ -100,7 +100,6 @@ export default function Admin() {
           </div>
         </div>
       </div>
-      <button></button>
     </>
   );
 }
