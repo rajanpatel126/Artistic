@@ -31,36 +31,18 @@ function NavBar() {
             </span>
           </Link>
           <div className="flex md:order-2">
-            {/* <button
-              type="button"
-              data-collapse-toggle="navbar-search"
-              aria-controls="navbar-search"
-              aria-expanded="false"
-              className="md:hidden text-gray-500  hover:bg-gray-100  focus:outline-none focus:ring-4 focus:ring-gray-200  rounded-lg text-sm p-2.5 mr-1"
-            >
-              <svg
-                className="w-5 h-5"
-                aria-hidden="true"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                  clipRule="evenodd"
-                ></path>
-              </svg>
-              <span className="sr-only">Search</span>
-            </button> */}
+            <form className="w-full -mb-14 mt-10 justify-end text-right">
+              <div className="relative flex w-full h-20 justify-end text-right">
+                <AiOutlineSearch className="absolute mt-3 mr-3  flex w-6 h-8 text-6xl text-gray-400" />
+                <input
+                  type="text"
+                  placeholder="Search"
+                  className="w-full py-3 normal-case  text-4xl h-16  text-black border rounded-md outline-none bg-gray-50 focus:bg-white focus:border-indigo-600">
+                </input>
+              </div>
+            </form>
             <div className="relative hidden md:flex">
-              <input
-                type="text"
-                id="search-navbar"
-                className="border-gray-500 hover:border-gray-800 block w-[300px] mt-12 p-2.5 text-3xl normal-case text-black border-2  rounded-xl bg-[#f3d9e8] focus:ring-blue-500 focus:border-blue-500"
-                placeholder="Search..."
-              />
-              <AiOutlineSearch className="text-white h-16 w-20 mt-12 p-2 ml-3 mr-1 focus:border-blue-500 bg-blue-900 rounded-3xl" />
+             
 
               <div className="relative group z-20">
                 {/* <button className="flex flex-row items-center text-3xl w-full px-4 py-4 mt-4 text-left bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4 focus:outline-none font-montserrat ">

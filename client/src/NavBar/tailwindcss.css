@@ -1,0 +1,17 @@
+@media (min-width: 640px) {
+
+
+    .input[type="text"] {
+        margin-bottom: 10px;
+    }
+
+    .select {
+        margin-bottom: 10px;
+    }
+
+    .li,
+    .span {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
