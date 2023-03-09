@@ -2,9 +2,9 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
-import Slider1 from "./Slider1";
 
 import Sidebar from "./Sidebar";
+import Slider1 from "./Slider1";
 import Slider2 from "./Slider2";
 
 const Kurtis = () => {
@@ -17,21 +17,20 @@ const Kurtis = () => {
           <Sidebar></Sidebar>
         </div>
 
-        {/* slider1 */}
-
+        {/* slider1 */} 
         <div>
           <div className="mr-40 w-[60vw] h-1/2 mt-16 ">
             <span className="text-sm md:text-2xl lg:text-4xl font-bold ml-10">
               Plain Kurtis
             </span>
-            {/* <Slider1></Slider1> */}
+             <Slider1></Slider1>
           </div>
 
           <div className="mr-40  w-[60vw] h-1/2 -mt-0 ">
             <span className="text-sm md:text-2xl lg:text-4xl font-bold ml-10">
               Designed Kurtis
             </span>
-            {/* <Slider2></Slider2> */}
+            <Slider2></Slider2>
           </div>
         </div>
       </div>

@@ -8,7 +8,7 @@ const Sidebar = () => {
       <div className="flex flex-col mb-12 h-screen w-2/3 p-20 ml-60 mt-16 bg-slate-200 shadow-orange-200 ">
         <div className="space-y-3">
           <div className="flex-1">
-            <ul className="pt-2 pb-4 space-y-1 text-sm">
+            <ul className="pt-2 pb-10 space-y-1 text-sm">
               <li class="text-base md:text-lg lg:text-xl mb-10">
                 <span class="text-sm md:text-base lg:text-4xl font-bold">
                   Category
@@ -19,7 +19,7 @@ const Sidebar = () => {
                   to="/"
                   className="flex items-center p-2 space-x-3 rounded-md text-blue-700 underline"
                 >
-                  <span class="text-sm md:text-base lg:text-4xl font-bold text-blue-500">
+                  <span class="text-sm md:text-base text-black lg:text-4xl font-bold hover:text-blue-700">
                     All
                   </span>
                 </NavLink>
@@ -41,7 +41,7 @@ const Sidebar = () => {
                 </NavLink>
               </li>
 
-              <li className="rounded-sm py-4 mb-36">
+              <li className="rounded-sm py-20">
                 <span class="text-sm md:text-base lg:text-4xl font-bold">
                   Company
                 </span>
@@ -52,8 +52,9 @@ const Sidebar = () => {
                 >
                   <option value="Aurelia">Aurelia</option>
                   <option value="Varanga">Varanga</option>
-                  <option value="Rangriti">Rangriti 3</option>
+                  <option value="Rangriti">Rangriti</option>
                   <option value="Biba">Biba</option>
+                  <option value="Janasya">Janasya</option>
                 </select>
               </li>
 
@@ -63,7 +64,7 @@ const Sidebar = () => {
                 </span>
               </li>
 
-              <li className="flex pb-16">
+              <li className="flex pb-32">
                 <NavLink
                   to="#"
                   className="text-sm md:text-base mr-3 lg:text-2xl font-bold"
@@ -84,7 +85,7 @@ const Sidebar = () => {
                 </span>
               </li>
 
-              <li className="rounded-sm">
+              <li className="rounded-sm pb-24">
                 <select
                   id="select-option"
                   name="select-option"
@@ -96,6 +97,38 @@ const Sidebar = () => {
                   <option value="Biba">1500</option>
                 </select>
               </li>
+
+
+
+              <li classNameName="rounded-sm flex">
+                <span className="text-sm md:text-base pb-4 flex lg:text-4xl font-bold">
+                  Deals and Discounts
+                </span>
+              </li>
+
+              <li className="rounded-sm">
+                <NavLink
+                  to="/"
+                  className="flex items-center p-1 space-x-3 rounded-md text-blue-700"
+                >
+                  <span class="text-sm md:text-base text-black lg:text-3xl  hover:text-blue-700">
+                    All Discounts
+                  </span>
+                </NavLink>
+              </li>
+
+              <li className="rounded-sm">
+                <NavLink
+                  to="/"
+                  className="flex items-center p-1 space-x-3 rounded-md  text-blue-700"
+                >
+                  <span class="text-sm md:text-base text-black lg:text-3xl  hover:text-blue-700">
+                    Best Deals
+                  </span>
+                </NavLink>
+              </li>
+
+
             </ul>
           </div>
         </div>
