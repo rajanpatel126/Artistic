@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Login } from "./Login";
+
 export const Register = (props) => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
@@ -53,7 +55,10 @@ export const Register = (props) => {
             id="password"
             name="password"
           />
-          <button className="text-3xl mx-auto w-fit p-3 bg-blue-900" type="submit">
+          <button
+            className="text-3xl mx-auto w-fit p-3 bg-blue-900"
+            type="submit"
+          >
             Register
           </button>
         </form>
@@ -65,12 +70,9 @@ export const Register = (props) => {
               Login here.
             </button>
           </NavLink>
-
         </label>
 
-        <label className="or-r text-2xl">
-          OR
-        </label>
+        <label className="or-r text-2xl">OR</label>
         <button className="btn-r btn-google-r">
           <span className="icon-r p-1 mb-2">
             <img src="./images/google.png" className="imgc" alt="google" />

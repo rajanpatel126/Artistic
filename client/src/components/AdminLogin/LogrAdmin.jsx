@@ -12,7 +12,7 @@ function LogrAdmin() {
     }
 
     return (
-        <div className="App2 bg-[url('https://images.template.net/wp-content/uploads/2015/11/25190558/Plain-Dark-Blue-Background-Images-Download.jpg')]" >
+        <div className="App2 bg-[#6593ee]" >
             {
                 currentForm === "login" ? <AdminLogin onFormSwitch={toggleForm} /> : <AdminRegister onFormSwitch={toggleForm} />
             }

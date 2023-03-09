@@ -53,7 +53,7 @@ export const AdminLogin = (props) => {
           <NavLink to="/AdminForgotPassword" className="forgot text-2xl">
             Forgot Password?
           </NavLink>
-          <button onClick={handleSubmit} className="button1 bg-blue-700 mb-4">
+          <button onClick={handleSubmit} className="bg-blue-700">
             Login
           </button>
         </form>

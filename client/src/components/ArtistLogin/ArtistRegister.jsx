@@ -5,6 +5,7 @@ export const ArtistRegister = (props) => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [name, setName] = useState("");
+  const [phoneNo, setphoneNo] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefualt();
@@ -12,38 +13,53 @@ export const ArtistRegister = (props) => {
   };
 
   return (
-    <div className="Register bg-gradient-to-r from-blue-300 to-slate-400 py-24">
-      <div className="auth-form-container mx-auto bg-slate-700  bg-opacity-75 md:bg-opacity-75 justify-center w-96 ">
+    <div className="bg-gradient-to-r from-blue-300 to-slate-400 mb-4 py-24">
+      <div className="auth-form-container mx-auto bg-slate-700 border-2 border-black md:bg-opacity-75 justify-center">
         <div className="logoimg">
           <img
             src="./images/logo1.jpeg"
-            className="w-24 h-24 rounded-full"
+            className="w-28 h-28 -mt-7 rounded-full"
             alt="hello"
           />
           <p className=" text-white text-4xl mt-2 mb-4">Register</p>
         </div>
 
-        <form className="register-form " onSubmit={handleSubmit}>
+        <form className="register-form h-[100px]" onSubmit={handleSubmit}>
           <input
+            required
             value={name}
             onChange={(e) => setName(e.target.value)}
             name="name"
             id="name"
             className="text-3xl normal-case h-20"
-            placeholder="Username"
+            placeholder="Name"
           ></input>
           <label htmlFor="email"></label>
           <input
+            required
             value={email}
             className="text-3xl normal-case h-20"
             onChange={(e) => setEmail(e.target.value)}
             type="email"
-            placeholder="Mobile number or Email"
+            placeholder="Email"
             id="email"
             name="email"
           ></input>
+
+          <label htmlFor="Phone no"></label>
+          <input
+            required
+            value={phoneNo}
+            className="text-3xl normal-case h-20"
+            onChange={(e) => setphoneNo(e.target.value)}
+            type="number"
+            placeholder="Phone no"
+            id="phoneno"
+            name="phoneno"
+          ></input>
           <label htmlFor="password"></label>
           <input
+            required
             value={pass}
             onChange={(e) => setPass(e.target.value)}
             type="password"
@@ -52,7 +68,10 @@ export const ArtistRegister = (props) => {
             id="password"
             name="password"
           />
-          <button className="text-3xl mx-auto w-fit p-3 bg-blue-900" type="submit">
+          <button
+            className="text-3xl mx-auto w-fit p-3 bg-blue-900"
+            type="submit"
+          >
             Register
           </button>
         </form>
@@ -64,13 +83,10 @@ export const ArtistRegister = (props) => {
               Login here.
             </button>
           </NavLink>
-
         </label>
 
-        <label className="or-r text-2xl">
-          OR
-        </label>
-        <button className="btn-r btn-google-r">
+        <label className="or-r text-2xl">OR</label>
+        <button className="btn-r btn-google-r my-3">
           <span className="icon-r p-1 mb-2">
             <img src="./images/google.png" className="imgc" alt="google" />
             Sign-in with Google
