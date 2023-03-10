@@ -15,6 +15,9 @@ function NavBar() {
     } else if (e.target.value === "Artist") {
       navigation("/ArtistLogin");
     }
+    // else if (e.target.value === "Login") {
+    //   navigation("/");
+    // }
   };
   return (
     <>

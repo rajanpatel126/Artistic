@@ -20,14 +20,14 @@ const Kurtis = () => {
         {/* slider1 */} 
         <div>
           <div className="mr-40 w-[60vw] h-1/2 mt-16 ">
-            <span className="text-sm md:text-2xl lg:text-4xl font-bold ml-10">
+            <span className="text-2xl md:text-2xl lg:text-4xl font-bold ml-10">
               Plain Kurtis
             </span>
              <Slider1></Slider1>
           </div>
 
           <div className="mr-40  w-[60vw] h-1/2 -mt-0 ">
-            <span className="text-sm md:text-2xl lg:text-4xl font-bold ml-10">
+            <span className="text-2xl md:text-2xl lg:text-4xl font-bold ml-10">
               Designed Kurtis
             </span>
             <Slider2></Slider2>

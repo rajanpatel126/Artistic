@@ -86,7 +86,7 @@ const TshirtSlider2 = () => {
             <Slider {...settings}>
                 <div className="p-4  lg:w-1/4 md:w-1/2" >
                     <div className="h-full flex flex-col items-center text-center">
-                        <img alt="team" className="flex-shrink-0 rounded-lg viol w-96 h-[300px] object-center mb-4 border border-purple-700" src="./images/dtshirt1.png" />
+                        <img alt="team" className="flex-shrink-0 rounded-lg viol w-96 h-[350px] object-center mb-4 border border-purple-700" src="./images/dtshirt1.png" />
                         <div className="">
 
 
@@ -97,12 +97,12 @@ const TshirtSlider2 = () => {
                             <span className="mt-1 line-through text-3xl mb-3">₹320</span>
                             <span className="mx-3 text-3xl font-bold mb-3">₹250</span>
                         </div>
-                        <Button className='bg-orange-200 text-black text-2xl rounded-xl'>Add to Cart</Button>
+                        <Button className='bg-orange-200 text-black font-bold font-serif border-2 mt-2 text-2xl rounded-xl'>Add to Cart</Button>
                     </div>
                 </div>
                 <div className="p-4  lg:w-1/4 md:w-1/2" >
                     <div className="h-full flex flex-col items-center text-center">
-                        <img alt="team" className="flex-shrink-0 rounded-lg viol w-96 h-[300px] object-center mb-4 border border-purple-700" src="./images/dtshirt2.png" />
+                        <img alt="team" className="flex-shrink-0 rounded-lg viol w-96 h-[350px] object-center mb-4 border border-purple-700" src="./images/dtshirt2.png" />
                         <div className="">
 
 
@@ -113,13 +113,13 @@ const TshirtSlider2 = () => {
                             <span className="mt-1 line-through text-3xl mb-3">₹320</span>
                             <span className="mx-3 text-3xl font-bold mb-3">₹250</span>
                         </div>
-                        <Button className='bg-orange-200 text-black text-2xl rounded-xl'>Add to Cart</Button>
+                        <Button className='bg-orange-200 text-black font-bold font-serif border-2 mt-2 text-2xl rounded-xl'>Add to Cart</Button>
                     </div>
                 </div>
 
                 <div className="p-4  lg:w-1/4 md:w-1/2" >
                     <div className="h-full flex flex-col items-center text-center">
-                        <img alt="team" className="flex-shrink-0 rounded-lg viol w-96 h-[300px] object-center mb-4 border border-purple-700" src="./images/dtshirt3.png" />
+                        <img alt="team" className="flex-shrink-0 rounded-lg viol w-96 h-[350px] object-center mb-4 border border-purple-700" src="./images/dtshirt3.png" />
                         <div className="">
 
 
@@ -130,12 +130,12 @@ const TshirtSlider2 = () => {
                             <span className="mt-1 line-through text-3xl mb-3">₹320</span>
                             <span className="mx-3 text-3xl font-bold mb-3">₹250</span>
                         </div>
-                        <Button className='bg-orange-200 text-black text-2xl rounded-xl'>Add to Cart</Button>
+                        <Button className='bg-orange-200 text-black font-bold font-serif border-2 mt-2 text-2xl rounded-xl'>Add to Cart</Button>
                     </div>
                 </div>
                 <div className="p-4  lg:w-1/4 md:w-1/2" >
                     <div className="h-full flex flex-col items-center text-center">
-                        <img alt="team" className="flex-shrink-0 rounded-lg viol w-96 h-[300px] object-center mb-4 border border-purple-700" src="./images/dtshirt4.png" />
+                        <img alt="team" className="flex-shrink-0 rounded-lg viol w-96 h-[350px] object-center mb-4 border border-purple-700" src="./images/dtshirt4.png" />
                         <div className="">
 
 
@@ -145,12 +145,12 @@ const TshirtSlider2 = () => {
                             <span className="mt-1 line-through text-3xl mb-3">₹320</span>
                             <span className="mx-3 text-3xl font-bold mb-3">₹250</span>
                         </div>
-                        <Button className='bg-orange-200 text-black text-2xl rounded-xl'>Add to Cart</Button>
+                        <Button className='bg-orange-200 text-black font-bold font-serif border-2 mt-2 text-2xl rounded-xl'>Add to Cart</Button>
                     </div>
                 </div>
                 <div className="p-4  lg:w-1/4 md:w-1/2" >
                     <div className="h-full flex flex-col items-center text-center">
-                        <img alt="team" className="flex-shrink-0 rounded-lg viol w-96 h-[300px] object-center mb-4 border border-purple-700" src="./images/dtshirt5.png" />
+                        <img alt="team" className="flex-shrink-0 rounded-lg viol w-96 h-[350px] object-center mb-4 border border-purple-700" src="./images/dtshirt5.png" />
                         <div className="">
 
 
@@ -161,12 +161,12 @@ const TshirtSlider2 = () => {
                             <span className="mt-1 line-through text-3xl mb-3">₹320</span>
                             <span className="mx-3 text-3xl font-bold mb-3">₹250</span>
                         </div>
-                        <Button className='bg-orange-200 text-black text-2xl rounded-xl'>Add to Cart</Button>
+                        <Button className='bg-orange-200 text-black font-bold font-serif border-2 mt-2 text-2xl rounded-xl'>Add to Cart</Button>
                     </div>
                 </div>
                 <div className="p-4  lg:w-1/4 md:w-1/2" >
                     <div className="h-full flex flex-col items-center text-center">
-                        <img alt="team" className="flex-shrink-0 rounded-lg viol w-96 h-[300px] object-center mb-4 border border-purple-700" src="./images/dtshirt6.png" />
+                        <img alt="team" className="flex-shrink-0 rounded-lg viol w-96 h-[350px] object-center mb-4 border border-purple-700" src="./images/dtshirt6.png" />
                         <div className="">
 
 
@@ -177,13 +177,13 @@ const TshirtSlider2 = () => {
                             <span className="mt-1 line-through text-3xl mb-3">₹320</span>
                             <span className="mx-3 text-3xl font-bold mb-3">₹250</span>
                         </div>
-                        <Button className='bg-orange-200 text-black text-2xl rounded-xl'>Add to Cart</Button>
+                        <Button className='bg-orange-200 text-black font-bold font-serif border-2 mt-2 text-2xl rounded-xl'>Add to Cart</Button>
                     </div>
                 </div>
 
                 <div className="p-4  lg:w-1/4 md:w-1/2" >
                     <div className="h-full flex flex-col items-center text-center">
-                        <img alt="team" className="flex-shrink-0 rounded-lg viol w-96 h-[300px] object-center mb-4 border border-purple-700" src="./images/dtshirt7.png" />
+                        <img alt="team" className="flex-shrink-0 rounded-lg viol w-96 h-[350px] object-center mb-4 border border-purple-700" src="./images/dtshirt7.png" />
                         <div className="">
 
 
@@ -194,13 +194,13 @@ const TshirtSlider2 = () => {
                             <span className="mt-1 line-through text-3xl mb-3">₹320</span>
                             <span className="mx-3 text-3xl font-bold mb-3">₹250</span>
                         </div>
-                        <Button className='bg-orange-200 text-black text-2xl rounded-xl'>Add to Cart</Button>
+                        <Button className='bg-orange-200 text-black font-bold font-serif border-2 mt-2 text-2xl rounded-xl'>Add to Cart</Button>
                     </div>
                 </div>
 
                 <div className="p-4  lg:w-1/4 md:w-1/2" >
                     <div className="h-full flex flex-col items-center text-center">
-                        <img alt="team" className="flex-shrink-0 rounded-lg viol w-96 h-[300px] object-center mb-4 border border-purple-700" src="./images/dtshirt8.png" />
+                        <img alt="team" className="flex-shrink-0 rounded-lg viol w-96 h-[350px] object-center mb-4 border border-purple-700" src="./images/dtshirt8.png" />
                         <div className="">
 
 
@@ -211,7 +211,7 @@ const TshirtSlider2 = () => {
                             <span className="mt-1 line-through text-3xl mb-3">₹320</span>
                             <span className="mx-3 text-3xl font-bold mb-3">₹250</span>
                         </div>
-                        <Button className='bg-orange-200 text-black text-2xl rounded-xl'>Add to Cart</Button>
+                        <Button className='bg-orange-200 text-black font-bold font-serif mb-14 border-2 mt-2 text-2xl rounded-xl'>Add to Cart</Button>
                     </div>
                 </div>
             </Slider>

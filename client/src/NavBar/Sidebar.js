@@ -5,7 +5,7 @@ import { BiRupee } from "react-icons/bi";
 const Sidebar = () => {
   return (
     <>
-      <div className="flex flex-col mb-12 h-screen w-2/3 p-20 ml-60 mt-16 bg-slate-200 shadow-orange-200 ">
+      <div className="flex flex-col mb-8 h-screen border-2 border-black w-2/3 p-20 ml-60 mt-52 bg-slate-200 shadow-orange-200 ">
         <div className="space-y-3">
           <div className="flex-1">
             <ul className="pt-2 pb-10 space-y-1 text-sm">
@@ -35,20 +35,20 @@ const Sidebar = () => {
               <li className="rounded-sm ">
                 <NavLink
                   to="/"
-                  className="flex items-center p-2 space-x-3 mb-16 rounded-md  hover:text-blue-500"
+                  className="flex items-center p-2 space-x-3 rounded-md  hover:text-blue-500"
                 >
                   <span class="text-sm md:text-base lg:text-4xl">Designed</span>
                 </NavLink>
               </li>
 
-              <li className="rounded-sm py-20">
+              <li className="rounded-sm py-10">
                 <span class="text-sm md:text-base lg:text-4xl font-bold">
                   Company
                 </span>
                 <select
                   id="select-option"
                   name="select-option"
-                  class="w-full text-3xl mt-4 px-4 py-2 border rounded-lg mb-4"
+                  class="w-full text-3xl mt-4 px-4 py-2 border rounded-lg"
                 >
                   <option value="Aurelia">Aurelia</option>
                   <option value="Varanga">Varanga</option>
@@ -64,7 +64,7 @@ const Sidebar = () => {
                 </span>
               </li>
 
-              <li className="flex pb-32">
+              <li className="flex pb-10">
                 <NavLink
                   to="#"
                   className="text-sm md:text-base mr-3 lg:text-2xl font-bold"
