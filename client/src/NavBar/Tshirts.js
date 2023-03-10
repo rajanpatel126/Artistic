@@ -22,14 +22,14 @@ const Tshirts = () => {
         <div>
           <div className="mr-40 w-[60vw] h-1/2 mt-16 ">
             <span className="text-sm md:text-2xl lg:text-4xl font-bold ml-10">
-              Plain Hoodies
+              Plain Tshirts
             </span>
            <TshirtSlider1></TshirtSlider1>
           </div>
 
           <div className="mr-40  w-[60vw] h-1/2 -mt-0 ">
             <span className="text-sm md:text-2xl lg:text-4xl font-bold ml-10">
-              Designed Hoodies
+              Designed Tshirts
             </span>
          <TshirtSlider2></TshirtSlider2>
           </div>

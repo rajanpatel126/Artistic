@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { MdGridView } from "react-icons/md";
+import { AiOutlineSearch } from "react-icons/ai";
 import { BiEdit } from "react-icons/bi";
 import { MdDeleteOutline } from "react-icons/md";
 import { BiRupee } from "react-icons/bi"
@@ -50,6 +51,18 @@ export default function Product() {
             </div> */}
             <section className="w-full text-gray-600 body-font">
                 <div className="container h-full px-5 py-10 mx-auto">
+                    <form className="w-full -mb-14 justify-end text-right">
+                        <div className="relative flex w-full justify-end text-right">
+                            <input
+                                type="text"
+                                placeholder="Search"
+                                className="w-full mr-2 py-3 normal-case text-3xl  text-black border rounded-md outline-none bg-gray-50 focus:bg-white focus:border-indigo-600"
+                            ></input>
+                            <button className="bg-transparent mr-5 -mt-40">
+                                <AiOutlineSearch className="cursor-pointer absolute mt-2 mr-3  w-14 h-14 text-black" />
+                            </button>
+                        </div>
+                    </form>
                     <div className="w-full mx-auto overflow-auto box-border shadow-lg">
                         <table className="table-auto w-full text-left ">
                             <thead>

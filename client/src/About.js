@@ -1,5 +1,5 @@
 import React from 'react'
-import HeroSection from './components/HeroSection'
+import HeroSection from './HomePage/HeroSection'
 import styled from 'styled-components';
 // import { Button } from '../styles/Button';
 const About = () => {

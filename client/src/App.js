@@ -43,6 +43,7 @@ import Shirts from "./NavBar/Shirts";
 import Kurtis from "./NavBar/Kurtis";
 import Hoodies from "./NavBar/Hoodies";
 import Tshirts from "./NavBar/Tshirts";
+import Customization from "./HomePage/Customization";
 
 
 const App = () => {
@@ -86,6 +87,7 @@ const App = () => {
           <Route path="/Kurti" element={<Kurti />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/AddArt" element={<AddArt />} />
+          <Route path="/Home/Customization" element={<Customization />} />
 
 
 

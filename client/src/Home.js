@@ -1,9 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-import HeroSection from "./components/HeroSection";
+import HeroSection from "./HomePage/HeroSection";
 import Footer from "./components/Footer";
 import Sliders from "./components/Sliders";
-import ProductCollections from "./components/ProductCollections";
+import ProductCollections from "./HomePage/ProductCollections";
+import Customize from "./HomePage/Custoimze";
 
 const Home = () => {
   const data = {
@@ -15,6 +16,8 @@ const Home = () => {
       <Sliders />
       <HeroSection myData={data} />;
       <ProductCollections />
+      <Customize></Customize>
+
       {/* <Footer /> */}
     </div>
   );
