@@ -1,18 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-// import logo from "./images/logo1.jpeg";
-// import google from "./images/google.png";
 
 export const ForgotPassword = () => {
   const [email, setEmail] = useState("");
-  const [isbuttonDisabled, setIsButtonDisabled] = useState(false);
-
-  const handleChange = async (e) => {
-    // if (e.target.value.length=== null) {
-    //   setIsButtonDisabled(false);
-    // }
-  };
 
   return (
     <div className="Register bg-gradient-to-r from-slate-400 to-blue-300 ">
@@ -58,7 +49,6 @@ export const ForgotPassword = () => {
                 <div className="mx-auto rounded-full w-fit mb-3">
                   <NavLink to="/Login/forgotPassword/verifyOTP">
                     <button
-                      disabled={isbuttonDisabled}
                       className="text-3xl mx-auto text-white w-fit mt-4 p-3 bg-blue-900 rounded-3xl"
                     >
                       Continue

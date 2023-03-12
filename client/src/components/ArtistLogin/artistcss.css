@@ -37,14 +37,14 @@ label {
 
 
 .auth-form-container,
-.register-form,
 .login-form {
 
     display: flex;
     flex-direction: column;
-    height: 550px;
 }
-
+/* .register-form{
+    height: 1000px;
+} */
 
 
 @media screen and (min-width:600px) {
@@ -120,6 +120,7 @@ button {
     margin-top: -245px;
     justify-content: center;
     display: flex;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .link-btn:hover {

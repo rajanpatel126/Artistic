@@ -94,3 +94,9 @@ router.post("/forgetPassword", async (req, res) => {
     res.status(500).send("Internal Server Error\n" + error.message);
   }
 });
+
+router.get("/addProductDetails", async (req, res) => {
+  // let admin = await User.find();
+});
+
+module.exports = router;

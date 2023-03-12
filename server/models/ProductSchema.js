@@ -1,4 +1,5 @@
 const { default: mongoose } = require("mongoose");
+const moment = require("moment");
 const { Schema } = mongoose;
 
 const ProductSchema = new Schema({
@@ -11,14 +12,11 @@ const ProductSchema = new Schema({
     require: true,
   },
   prodImage: {
-    type: Object,
-    url: {
-      true: URL,
-    },
+    type: String,
   },
   date: {
     type: Date,
-    default: Date.now,
+    default: moment(Date.now()).format("DD-MM-YYYY"),
   },
   price: {
     type: Number,

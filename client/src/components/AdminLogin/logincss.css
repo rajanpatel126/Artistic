@@ -73,16 +73,16 @@ input {
     border-radius: 10px;
 }
 
-button {
+/* button {
     border: none;
     background-color: red;
-    /* background-color: rgb(24, 24, 237); */
+    background-color: rgb(24, 24, 237);
     padding: 10px;
     border-radius: 10px;
     cursor: pointer;
     color: white;
-    /* margin-bottom: 10%; */
-}
+    margin-bottom: 10%;
+} */
 
 .button1:hover {
     background-color: #1620b5;

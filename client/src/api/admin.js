@@ -14,6 +14,23 @@ export const addUser = async (userInfo) => {
   }
 };
 
+export const addProductDetails = async ( object, config) => {
+  try {
+    const { data } = await client.put(
+      "/admin/addProductDetails/",
+      object,
+      config
+    );
+    return data;
+  } catch (error) {
+    const { response } = error;
+    if (response?.data) {
+      return response.data;
+    }
+    return { error: error.message || error };
+  }
+};
+
 //forget passweord
 export const forgetPassword = async (obj, config) => {
   try {

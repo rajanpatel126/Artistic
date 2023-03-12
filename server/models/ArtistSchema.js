@@ -1,4 +1,5 @@
 const { default: mongoose } = require("mongoose");
+const moment = require('moment');
 const { Schema } = mongoose;
 
 const ArtistSchema = new Schema({
@@ -24,7 +25,18 @@ const ArtistSchema = new Schema({
     default: false,
   },
   Pattern: {
-    type: [Object],
+    type: [
+      mongoose.Schema({
+        name: String,
+        description: String,
+        patternImg: String,
+        price: { type: Number, default: 0 },
+        date: {
+          type: String,
+          default: moment(Date.now()).format("DD-MM-YYYY"),
+        },
+      }),
+    ],
   },
 });
 

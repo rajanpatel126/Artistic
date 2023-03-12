@@ -1,9 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-import { Navigate, useNavigate, NavLink } from "react-router-dom";
-
-// import logo from "./images/logo1.jpeg";
-// import google from "./images/google.png";
+import { useNavigate, NavLink } from "react-router-dom";
 
 export const VerifyOTP = () => {
   const [verifyOtp, setVerifyOtp] = useState({});
@@ -57,7 +54,8 @@ export const VerifyOTP = () => {
                       type="text"
                       id="name"
                       name="name"
-                      onChange={(e) => setVerifyOtp(e.target.value)}
+                      onClick={(e) => setVerifyOtp(e.target.value)}
+                      onChange={handleChange}
                       className="w-full h-16 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-3xl outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>

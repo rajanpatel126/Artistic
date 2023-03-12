@@ -36,11 +36,11 @@ function NavBar() {
           <div className="flex md:order-2">
             <div className="relative hidden md:flex">
               <input
+                name="text"
                 type="text"
-                id="search-navbar"
-                className="border-gray-500 hover:border-gray-800 w-[300px] mt-12 p-2.5 text-3xl normal-case text-black border-2 focus:border-gray-900 shadow-none rounded-xl bg-[#f3d9e8]"
                 placeholder="Search..."
-              />
+                className="w-[300px] mt-12 p-2.5 text-3xl normal-case text-black outline-none bg-[#f3d9e8] focus:bg-white focus:border-gray-900 border-2 focus:shadow-2xl rounded-xl"
+              ></input>
               <AiOutlineSearch className="cursor-pointer text-black h-16 w-20 mt-12 p-1 ml-3 mr-1" />
 
               <div className="relative group z-20">
@@ -70,7 +70,7 @@ function NavBar() {
                   </option>
                   <hr className="w-full" />
                   <option
-                    value="User"
+                    value="Artist"
                     className=" px-3 py-4 cursor-pointer text-3xl  w-36 h-40 rounded-xl text-black"
                   >
                     Artist

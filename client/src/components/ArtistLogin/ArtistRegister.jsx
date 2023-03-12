@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { addArtist } from "../../api/artist";
 
 export const ArtistRegister = (props) => {
   const [email, setEmail] = useState("");
@@ -7,9 +8,23 @@ export const ArtistRegister = (props) => {
   const [name, setName] = useState("");
   const [phoneNo, setphoneNo] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefualt();
-    console.log(email);
+  const navigate = useNavigate();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = await addArtist({
+      emailAddress: email,
+      password: pass,
+      name: name,
+      phone: phoneNo,
+    });
+    if (data.success) {
+      navigate("/ArtistPanel");
+    } else {
+      alert(data.errors);
+    }
+    localStorage.setItem("Artist Email", email);
+    localStorage.setItem("Artist Phone No", phoneNo);
+    console.log(data);
   };
 
   return (
@@ -24,7 +39,7 @@ export const ArtistRegister = (props) => {
           <p className=" text-white text-4xl mt-2 mb-4">Register</p>
         </div>
 
-        <form className="register-form h-[100px]" onSubmit={handleSubmit}>
+        <form className="register-form" >
           <input
             required
             value={name}
@@ -69,14 +84,15 @@ export const ArtistRegister = (props) => {
             name="password"
           />
           <button
-            className="text-3xl mx-auto w-fit p-3 bg-blue-900"
+            onClick={handleSubmit}
+            className="text-4xl rounded-xl mx-auto w-fit mt-2 p-3 bg-green-400 "
             type="submit"
           >
             Register
           </button>
         </form>
 
-        <label className="l1-r text-white text-3xl mx-auto">
+        <label className="l1-r text-white text-3xl mt-2 mx-auto">
           Already have an account?
           <NavLink to={"/ArtistLogin"}>
             <button className="text-3xl focus:outline-none bg-transparent text-[#21deeb] cursor-pointer  hover:text-[#e9a511]">
@@ -84,8 +100,7 @@ export const ArtistRegister = (props) => {
             </button>
           </NavLink>
         </label>
-
-        <label className="or-r text-2xl">OR</label>
+        <label className="or-r text-4xl">OR</label>
         <button className="btn-r btn-google-r my-3">
           <span className="icon-r p-1 mb-2">
             <img src="./images/google.png" className="imgc" alt="google" />

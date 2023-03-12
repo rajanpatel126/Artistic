@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-unused-vars */
-import React from "react";
 // import Selller from "./Selller";
+import React from "react";
 import { Navigate, NavLink } from "react-router-dom";
 
 import ArtistList from "./Artists";
@@ -31,6 +31,14 @@ export default function Admin() {
                     className="flex items-center p-2 space-x-3 rounded-md hover:bg-slate-500 hover:text-white"
                   >
                     <span className="text-4xl">Dashboard</span>
+                  </NavLink>
+                </li>
+                <li className="rounded-sm ">
+                  <NavLink
+                    to="/AddProducts"
+                    className="flex items-center p-2 space-x-3 rounded-md hover:bg-slate-500 hover:text-white"
+                  >
+                    <span className="text-4xl">Add Products</span>
                   </NavLink>
                 </li>
                 <li className="rounded-sm">

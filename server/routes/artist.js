@@ -11,12 +11,15 @@ const Artist = require("../models/ArtistSchema");
 router.post("/createArtist", async (req, res) => {
   try {
     const { phone, password, name, emailAddress } = req.body;
-    console.log(phone);
-    let artist = await Artist.findOne({ emailAddress: req.body.emailAddress });
-    if (artist) {
+    let success = false;
+    let artist = await Artist.find({
+      $or: [{ emailAddress: { $eq: emailAddress } }, { phone: { $eq: phone } }],
+    });
+    if (artist[0]) {
+      console.log(artist[0]);
       return res.status(400).json({
         success,
-        errors: "Artist with this email already exists",
+        errors: "Artist with this email or Phone already exists",
       });
     }
     if (req.body.password === "") {
@@ -54,6 +57,7 @@ router.post("/createArtist", async (req, res) => {
     });
     await newArtist.save();
     res.json({
+      success: true,
       artist: {
         id: newArtist._id,
         phone,
@@ -176,20 +180,46 @@ router.put("/updateArtist/:id", async (req, res) => {
 //Route6: fetching the image uploded by artist using "api/artist/fetchingImage"
 router.put("/addDesignDetails/:id", async (req, res) => {
   try {
-    const { artDetails } = req.body;
+    const { name, description, patternImg, price } = req.body;
     if (!isValidObjectId(req.params.id)) {
       return res.status(401).json({ error: "Invalid Request" });
     }
 
-    let artist = await Artist.updateOne(
+    let artist = await Artist.findOneAndUpdate(
       { _id: req.params.id },
-      { $push: { Pattern: artDetails } }
+      {
+        $push: {
+          Pattern: {
+            name: name[0],
+            description: description[0],
+            patternImg: patternImg,
+            price: price[0],
+          },
+        },
+      }
     );
     res.json({ artist: artist });
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Internal server Error\n" + error.message);
   }
+});
+
+router.get("/getArtDesigns/:id", async (req, res) => {
+  let artist = await Artist.findById(req.params.id);
+  return res.json(artist.Pattern);
+});
+
+router.get("/getArtDesign/:id/:artId", async (req, res) => {
+  let artist = await Artist.findById(req.params.id);
+
+  artist.Pattern.map((item) => {
+    if (item._id === req.params.artId) {
+      return res.json(item);
+    }
+  });
+
+  return res.json({ success: false, msg: "Can't find Pattern" });
 });
 
 //Forgot Password
@@ -227,6 +257,5 @@ router.put("/resetPassword", async (req, res) => {
     return res.status(500).send("Internal Server Error\n" + error.message);
   }
 });
-
 
 module.exports = router;

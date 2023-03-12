@@ -1,4 +1,3 @@
-
 /* eslint-disable no-unused-vars */
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -44,7 +43,7 @@ import Kurtis from "./NavBar/Kurtis";
 import Hoodies from "./NavBar/Hoodies";
 import Tshirts from "./NavBar/Tshirts";
 import Customization from "./HomePage/Customization";
-
+import AddProducts from "./AdminPanel/AddProducts";
 
 const App = () => {
   const theme = {
@@ -71,7 +70,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <Router>
         <GlobalStyle />
-        <NavBar/>
+        <NavBar />
         <Routes>
           <Route path="/" element={<Home />}>
             {" "}
@@ -89,11 +88,12 @@ const App = () => {
           <Route path="/AddArt" element={<AddArt />} />
           <Route path="/Home/Customization" element={<Customization />} />
 
-
-
           <Route path="/admin" element={<Admin />} />
-          <Route path="/Login/forgotPassword/verifyOTP" element={<VerifyOTP />} />
-
+          <Route
+            path="/Login/forgotPassword/verifyOTP"
+            element={<VerifyOTP />}
+          />
+          <Route path="/AddProducts" element={<AddProducts />} />
           <Route path="/ArtistList" element={<ArtistList />} />
           <Route path="/viewArt" element={<ViewArt />} />
           <Route path="/Login/forgotPassword" element={<ForgotPassword />} />
@@ -109,8 +109,10 @@ const App = () => {
           <Route path="/Hoodies" element={<Hoodies />} />
           <Route path="/Tshirts" element={<Tshirts />} />
 
-
-          <Route path="/ArtistLogin/ArtistForgotPassword/ArtistVerifyOTP" element={<ArtistVerifyOTP />} />
+          <Route
+            path="/ArtistLogin/ArtistForgotPassword/ArtistVerifyOTP"
+            element={<ArtistVerifyOTP />}
+          />
           <Route
             path="/ArtistResetPassword"
             element={<ArtistResetPassword />}
@@ -127,9 +129,11 @@ const App = () => {
           <Route path="/ArtistRegister" element={<ArtistRegister />} />
           <Route path="/AdminLogin" element={<LogrAdmin />} />
 
-
           {/* <Route path="/AdminLogin" element={<LogrAdmin />} /> */}
-          <Route path="/Login/forgotPassword/verifyOTP/resetPassword" element={<ResetPassword />} />
+          <Route
+            path="/Login/forgotPassword/verifyOTP/resetPassword"
+            element={<ResetPassword />}
+          />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
         <Footer />

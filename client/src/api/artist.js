@@ -3,7 +3,7 @@ import client from "./client";
 //add artist
 export const addArtist = async (ArtistInfo) => {
   try {
-    const data = await client.post("/auth/createArtist", ArtistInfo);
+    const { data } = await client.post("/artist/createArtist", ArtistInfo);
     return data;
   } catch (error) {
     const { response } = error;
@@ -74,7 +74,7 @@ export const updateArtist = async (ArtistId, ArtistInfo) => {
 //add design detail
 export const addDesignDetails = async (ArtistId, object, config) => {
   try {
-    const data = await client.put(
+    const { data } = await client.put(
       `/artist/addDesignDetails/${ArtistId}`,
       object,
       config

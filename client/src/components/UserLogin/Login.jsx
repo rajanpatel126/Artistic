@@ -1,77 +1,89 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { verifyUser } from "../../api/user";
 export const Login = (props) => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefualt();
+    const { data } = await verifyUser({ emailAddress: email, password: pass });
+    localStorage.setItem("user Email", email);
+    if (data?.user) {
+      navigate("/");
+    } else {
+    }
     console.log(email);
   };
 
   return (
     <div className="Register bg-gradient-to-r from-slate-400 to-blue-300 py-24">
-    <div className="auth-form-container mx-auto bg-slate-700 bg-opacity-75 md:bg-opacity-75 justify-center w-96">
-      <div className="logoimg">
-        <img
-          src="./images/logo1.jpeg"
-          className="rounded-full w-24 h-24"
-          alt="hello"
-        />
-        <p className="text-white text-4xl mt-2 mb-4 "> Login</p>
-      </div>
+      <div className="auth-form-container mx-auto bg-slate-700 bg-opacity-75 md:bg-opacity-75 justify-center w-96">
+        <div className="logoimg">
+          <img
+            src="./images/logo1.jpeg"
+            className="rounded-full w-24 h-24"
+            alt="hello"
+          />
+          <p className="text-white text-4xl mt-2 mb-4 "> Login</p>
+        </div>
 
-      <form className="login-form" onSubmit={handleSubmit}>
-        <input
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="text-3xl normal-case h-20 "
-          type="email"
-          placeholder="Username or Email Address"
-          id="email"
-          name="email"
-        ></input>
+        <form className="login-form">
+          <input
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="text-3xl normal-case h-20 "
+            type="email"
+            placeholder="Email Address"
+            id="email"
+            name="email"
+          ></input>
 
-        <input
-          value={pass}
-          onChange={(e) => setPass(e.target.value)}
-          type="password"
-          className="text-3xl normal-case h-20 "
-          placeholder="Password"
-          id="password"
-          name="password"
-        />
-        <NavLink to="/Login/forgotPassword" className="text-[#21deeb] mx-2 text-3xl">
-          Forgot Password?
-        </NavLink>
+          <input
+            value={pass}
+            onChange={(e) => setPass(e.target.value)}
+            type="password"
+            className="text-3xl normal-case h-20 "
+            placeholder="Password"
+            id="password"
+            name="password"
+          />
+          <NavLink
+            to="/Login/forgotPassword"
+            className="text-[#21deeb] mx-2 text-3xl hover:text-[#dbe36d96]"
+          >
+            Forgot Password?
+          </NavLink>
 
-        <button
-          className="text-3xl mx-auto w-fit mt-4 p-3 bg-blue-900 "
-          type="submit"
-        >
-          Login
-        </button>
-      </form>
-
-      <label htmlFor="" className="l1 mx-auto text-3xl">
-        Don't have an account?{" "}
-        <NavLink to={"/Register"}>
-            <button className="text-3xl focus:outline-none bg-transparent text-[#21deeb] cursor-pointer hover:text-[#e9a511]">
-            Register here.
+          <button
+            onSubmit={handleSubmit}
+            className="text-4xl rounded-xl mx-auto w-fit mt-4 p-3 bg-green-400 "
+            type="submit"
+          >
+            Login
           </button>
-        </NavLink>
-      </label>
+        </form>
 
-      <label htmlFor="" className="or text-2xl">
-        OR
-      </label>
-      <button className="btn-r btn-google-r">
-        <span className="icon-r p-1 mb-2">
-          <img src="./images/google.png" className="imgc" alt="google" />
-          Sign-in with Google
-        </span>
-      </button>
+        <label htmlFor="" className="l1 mx-auto text-3xl">
+          Don't have an account?{" "}
+          <NavLink to={"/Register"}>
+            <button className="text-3xl focus:outline-none bg-transparent text-[#21deeb] cursor-pointer hover:text-[#e9a511]">
+              Register here.
+            </button>
+          </NavLink>
+        </label>
+
+        <label htmlFor="" className="or text-2xl">
+          OR
+        </label>
+        <button className="btn-r btn-google-r rounded-xl">
+          <span className="icon-r p-1 mb-2">
+            <img src="./images/google.png" className="imgc" alt="google" />
+            Sign-in with Google
+          </span>
+        </button>
       </div>
-      </div>
+    </div>
   );
 };
