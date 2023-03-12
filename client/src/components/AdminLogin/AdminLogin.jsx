@@ -12,7 +12,7 @@ export const AdminLogin = (props) => {
     e.preventDefault();
     const { data } = await verifyUser({ emailAddress: email, password: pass });
     if (data?.user?.isAdmin) {
-      localStorage.setItem("email", email);
+      localStorage.setItem("Admin Email", email);
       navigate("/Admin");
     } else {
     }
@@ -31,7 +31,7 @@ export const AdminLogin = (props) => {
           <input
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="text-xl h-16"
+            className="text-xl h-16 normal-case"
             type="email"
             placeholder="Username or Email Address"
             id="email"
@@ -45,7 +45,7 @@ export const AdminLogin = (props) => {
               console.log(pass);
             }}
             type="password"
-            className="text-xl h-16"
+            className="text-xl normal-case h-16"
             placeholder="Password"
             id="password"
             name="password"
@@ -53,7 +53,7 @@ export const AdminLogin = (props) => {
           <NavLink to="/AdminForgotPassword" className="forgot text-2xl">
             Forgot Password?
           </NavLink>
-          <button onClick={handleSubmit} className="bg-blue-700">
+          <button onClick={handleSubmit} className="text-4xl rounded-xl mx-auto w-fit mt-4 p-3 bg-green-400 ">
             Login
           </button>
         </form>

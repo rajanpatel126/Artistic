@@ -1,13 +1,40 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { MdGridView } from "react-icons/md";
 import { AiOutlineSearch } from "react-icons/ai";
 import { BiEdit } from "react-icons/bi";
 import { MdDeleteOutline } from "react-icons/md";
 import { BiRupee } from "react-icons/bi";
+import client from "../api/client";
+import { DeleteProducts, serchingFunction } from "../api/admin";
 
 export default function Product() {
+  const [prodData, setProdData] = useState([]);
+  const handleProducts = async () => {
+    const { data } = await client.get("/product/fetchAllProducts");
+    setProdData(data);
+  };
+  useEffect(() => {
+    handleProducts();
+  }, []);
+  const handleChange = async (name) => {
+    const data = await serchingFunction(name);
+    setProdData(data);
+  };
+  const handleDelete = async (id) => {
+    const deletedData = await DeleteProducts(id);
+    let proData = prodData;
+    const a = proData.splice(
+      proData.findIndex((e) => e._id === id),
+      1
+    );
+    setProdData(proData);
+  };
+  useEffect(() => {
+    handleProducts();
+  }, [prodData]);
   return (
     <div className="flex">
       <section className="w-full text-gray-600 body-font">
@@ -15,6 +42,9 @@ export default function Product() {
           <form className="w-full -mb-14 justify-end text-right">
             <div className="relative flex w-full justify-end text-right">
               <input
+                onChange={(e) => {
+                  handleChange(e.target.value);
+                }}
                 type="text"
                 placeholder="Search"
                 className="w-full mr-2 py-3 normal-case text-3xl  text-black border rounded-md outline-none bg-gray-50 focus:bg-white focus:border-indigo-600"
@@ -42,43 +72,52 @@ export default function Product() {
                   </th>
                 </tr>
               </thead>
-              <tbody className="mt-5">
-                <tr className="box-border border-t-8 h-24  transform hover:bg-gray-100 hover:shadow-lg">
-                  <td className="px-1 py-3 text-3xl text-black ">
-                    Majestic Man
-                  </td>
-                  <td className="px-1 py-3 text-3xl text-black ">
-                    <div className="flex">
-                      <BiRupee className="-mr-2" />
-                      200
-                    </div>
-                  </td>
-                  <td className="px-1 py-3 text-3xl text-black ">12-02-2022</td>
-                  <td className="w-10 text-center text-3xl text-black px-2">
-                    <div className="flex ">
-                      <div className="flex -mt-15 px-1 ml-1 text-3xl text-blue-500 hover:cursor-pointer">
-                        <MdGridView className="w-6 h-6 mt-1 text-3xl"></MdGridView>
-                        View
+              {prodData?.map((item) => (
+                <tbody className="mt-5">
+                  <tr className="box-border border-t-8 h-24  transform hover:bg-gray-100 hover:shadow-lg">
+                    <td className="px-1 py-3 text-3xl text-black ">
+                      {item?.name}
+                    </td>
+                    <td className="px-1 py-3 text-3xl text-black ">
+                      <div className="flex">
+                        <BiRupee className="-mr-2" />
+                        {item?.price}
                       </div>
-                      <div className="flex -mt-15 px-1 ml-2  text-3xl text-green-500 hover:cursor-pointer">
-                        <BiEdit className=" w-6 h-6  mt-1 text-3xl"></BiEdit>
-                        Edit
+                    </td>
+                    <td className="px-1 py-3 text-3xl text-black ">
+                      {item?.date}
+                    </td>
+                    <td className="w-10 text-center text-3xl text-black px-2">
+                      <div className="flex ">
+                        <div className="flex -mt-15 px-1 ml-1 text-3xl text-blue-500 hover:cursor-pointer">
+                          <MdGridView className="w-6 h-6 mt-1 text-3xl"></MdGridView>
+                          View
+                        </div>
+                        <div className="flex -mt-15 px-1 ml-2  text-3xl text-green-500 hover:cursor-pointer">
+                          <BiEdit className=" w-6 h-6  mt-1 text-3xl"></BiEdit>
+                          Edit
+                        </div>
+                        <div
+                          onClick={(e) => {
+                            handleDelete(item._id);
+                          }}
+                          className="flex -mt-15 px-1 ml-2 text-3xl text-red-500 hover:cursor-pointer"
+                        >
+                          <MdDeleteOutline className=" w-6 h-6  mt-1 text-3xl" />
+                          Delete
+                        </div>
                       </div>
-                      <div className="flex -mt-15 px-1 ml-2 text-3xl text-red-500 hover:cursor-pointer">
-                        <MdDeleteOutline className=" w-6 h-6  mt-1 text-3xl" />
-                        Delete
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
+                    </td>
+                  </tr>
+                </tbody>
+              ))}
             </table>
           </div>
-          <div className="flex pl-4 mt-4  w-full mx-auto">
+          {/* <div className="flex pl-4 mt-4  w-full mx-auto">
             <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
               Next
             </button>
-          </div>
+          </div> */}
         </div>
       </section>
     </div>

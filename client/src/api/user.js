@@ -71,3 +71,15 @@ export const updateUser = async (userId, userInfo) => {
   }
 };
 
+export const getImage = async (prodId) => {
+  try {
+    const { data } = await client.get(`/auth/getImage/${prodId}`);
+    return data;
+  } catch (error) {
+    const { response } = error;
+    if (response?.data) {
+      return response.data;
+    }
+    return { error: error.message || error };
+  }
+};

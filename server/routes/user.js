@@ -4,6 +4,7 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require("../models/UserSchema");
+const Product = require("../models/ProductSchema");
 const { isValidObjectId } = require("mongoose");
 const nodemailer = require("nodemailer");
 const sendMail = require("../nodemailer");
@@ -99,9 +100,8 @@ router.post("/signinUser", async (req, res) => {
       });
     }
 
-    const passwordCompare =  bcrypt.compare(password, user.password);
+    const passwordCompare = bcrypt.compare(password, user.password);
 
-    
     console.log(user);
     if (!passwordCompare) {
       success = false;
@@ -271,6 +271,20 @@ router.put("/resetPassword", async (req, res) => {
   } catch (error) {
     console.error(error.message);
     return res.status(500).send("Internal Server Error\n" + error.message);
+  }
+});
+
+//getting the image from database
+router.get("/getImage/:id", async (req, res) => {
+  try {
+    const newImage = await Product.findById(req.params.id);
+    if (!newImage) {
+      return res.status(404).send("Image not found");
+    }
+    return res.json(newImage);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Internal server error");
   }
 });
 

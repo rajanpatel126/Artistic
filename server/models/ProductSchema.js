@@ -3,7 +3,7 @@ const moment = require("moment");
 const { Schema } = mongoose;
 
 const ProductSchema = new Schema({
-  title: {
+  name: {
     type: String,
     require: true,
   },
@@ -11,11 +11,11 @@ const ProductSchema = new Schema({
     type: String,
     require: true,
   },
-  prodImage: {
+  productImg: {
     type: String,
   },
   date: {
-    type: Date,
+    type: String,
     default: moment(Date.now()).format("DD-MM-YYYY"),
   },
   price: {

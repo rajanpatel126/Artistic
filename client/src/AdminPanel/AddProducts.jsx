@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { addProductDetails } from "../api/admin";
 let config = {
   method: "PUT",
@@ -9,8 +10,8 @@ let config = {
   },
 };
 const AddProducts = () => {
-  const [adminInfo, setAdminInfo] = useState({});
-
+  const [productDetails, setProductDetails] = useState({});
+  const navigation = useNavigate();
   const convertToBase64 = (file) => {
     return new Promise((resolve, reject) => {
       const fileReader = new FileReader();
@@ -33,14 +34,19 @@ const AddProducts = () => {
   const handleChange = async (e) => {
     if (e.target.name === "productImg") {
       let imgBase64 = await handleFileUpload(e);
-      return setAdminInfo({ ...adminInfo, [e.target.name]: imgBase64 });
+      return setProductDetails({
+        ...productDetails,
+        [e.target.name]: imgBase64,
+      });
     }
-    setAdminInfo({ ...adminInfo, [e.target.name]: [e.target.value] });
+    setProductDetails({ ...productDetails, [e.target.name]: [e.target.value] });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await addProductDetails(config);
+    const data = await addProductDetails(productDetails, config);
+
+    // navigation("/Admin");
     console.log(data);
   };
   return (
@@ -101,7 +107,7 @@ const AddProducts = () => {
                       type="text"
                       onChange={handleChange}
                       name="price"
-                      className="normal-case w-full p-3 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-xl outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      className="normal-case w-full p-3 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-3xl outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </div>

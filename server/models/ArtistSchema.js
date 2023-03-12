@@ -1,5 +1,5 @@
 const { default: mongoose } = require("mongoose");
-const moment = require('moment');
+const moment = require("moment");
 const { Schema } = mongoose;
 
 const ArtistSchema = new Schema({

@@ -23,7 +23,7 @@ export const AdminForgotPassword = () => {
       subject: "Email From Artstic to Admin for Forgot Password",
       text: `The OTP for forget Password is ${op}`,
     };
-    localStorage.setItem("email", emailInfo);
+    localStorage.setItem("Admin Email", emailInfo);
     const data = await forgetPassword(obj, config);
     console.log(data);
   };

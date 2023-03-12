@@ -1,10 +1,8 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { BiRupee } from "react-icons/bi";
-
 import { MdGridView } from "react-icons/md";
 import { BiEdit } from "react-icons/bi";
 import { MdDeleteOutline } from "react-icons/md";
@@ -97,11 +95,11 @@ export default function ViewArt() {
               ))}
             </table>
           </div>
-          <div className="flex pl-4 mt-4  w-full mx-auto">
+          {/* <div className="flex pl-4 mt-4  w-full mx-auto">
             <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
               Next
             </button>
-          </div>
+          </div> */}
         </div>
       </section>
     </div>

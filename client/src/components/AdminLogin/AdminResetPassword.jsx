@@ -19,7 +19,7 @@ export const AdminResetPassword = () => {
   const handleResetPass = async () => {
     if (confirmPass === newPassword) {
       const data = resetPassword(
-        { password: newPassword, email: localStorage.getItem("email") },
+        { password: newPassword, email: localStorage.getItem("Admin Email") },
         config
       );
       console.log(data);

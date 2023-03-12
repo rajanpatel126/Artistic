@@ -10,7 +10,7 @@ let config = {
 };
 const AddArt = () => {
   const [artistInfo, setArtistInfo] = useState({});
-  const [userId, setUserId] = useState(localStorage.getItem("ArtistId"));
+  const [artistId, setArtistId] = useState(localStorage.getItem("ArtistId"));
 
   const convertToBase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -41,7 +41,7 @@ const AddArt = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await addDesignDetails(userId, artistInfo, config);
+    const data = await addDesignDetails(artistId, artistInfo, config);
     console.log(data);
   };
   useEffect(() => {}, []);

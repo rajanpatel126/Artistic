@@ -1,10 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-import { Navigate, useNavigate, NavLink } from "react-router-dom";
-
-// import logo from "./images/logo1.jpeg";
-// import google from "./images/google.png";
-
+import { useNavigate, NavLink } from "react-router-dom";
 let config = {
   method: "POST",
   headers: {

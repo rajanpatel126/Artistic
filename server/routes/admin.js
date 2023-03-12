@@ -4,6 +4,7 @@ const router = express.Router();
 const { isValidObjectId } = require("mongoose");
 const Artist = require("../models/ArtistSchema");
 const User = require("../models/UserSchema");
+const Product = require("../models/ProductSchema");
 const cloudinary = require("../cloud");
 const { default: Admin } = require("../../client/src/Admin");
 
@@ -46,6 +47,12 @@ router.put("/verifyArtist/:id", async (req, res) => {
     console.error(error.message);
     res.status(500).send("Internal server Error\n" + error.message);
   }
+});
+
+//getting all uploaded products
+router.get("/getAllProducts", async (req, res) => {
+  let products = await Product.find({});
+  return products;
 });
 
 //getting pending artist
@@ -93,10 +100,6 @@ router.post("/forgetPassword", async (req, res) => {
     console.error(error.message);
     res.status(500).send("Internal Server Error\n" + error.message);
   }
-});
-
-router.get("/addProductDetails", async (req, res) => {
-  // let admin = await User.find();
 });
 
 module.exports = router;

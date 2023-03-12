@@ -14,10 +14,50 @@ export const addUser = async (userInfo) => {
   }
 };
 
-export const addProductDetails = async ( object, config) => {
+export const addProductDetails = async (object, config) => {
   try {
-    const { data } = await client.put(
-      "/admin/addProductDetails/",
+    const { data } = await client.post("/product/addProduct/", object, config);
+    return data;
+  } catch (error) {
+    const { response } = error;
+    if (response?.data) {
+      return response.data;
+    }
+    return { error: error.message || error };
+  }
+};
+
+export const fetchAllProducts = async () => {
+  try {
+    const { data } = await client.get("/product/fetchAllProducts/");
+    return data;
+  } catch (error) {
+    const { response } = error;
+    if (response?.data) {
+      return response.data;
+    }
+    return { error: error.message || error };
+  }
+};
+
+export const serchingFunction = async (name) => {
+  try {
+    const { data } = await client.get(`/product/userByName?name=${name}`);
+    return data;
+  } catch (error) {
+    const { response } = error;
+    if (response?.data) {
+      return response.data;
+    }
+    return { error: error.message || error };
+  }
+};
+
+//deleting products
+export const DeleteProducts = async (prodId, object, config) => {
+  try {
+    const { data } = await client.delete(
+      `/product/deleteProducts/${prodId}`,
       object,
       config
     );
