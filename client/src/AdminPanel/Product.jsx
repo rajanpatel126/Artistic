@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
 import { MdGridView } from "react-icons/md";
 import { AiOutlineSearch } from "react-icons/ai";
 import { BiEdit } from "react-icons/bi";
@@ -12,17 +11,18 @@ import { DeleteProducts, serchingFunction } from "../api/admin";
 
 export default function Product() {
   const [prodData, setProdData] = useState([]);
+
   const handleProducts = async () => {
     const { data } = await client.get("/product/fetchAllProducts");
     setProdData(data);
   };
-  useEffect(() => {
-    handleProducts();
-  }, []);
+
   const handleChange = async (name) => {
+    setProdData([]);
     const data = await serchingFunction(name);
     setProdData(data);
   };
+  
   const handleDelete = async (id) => {
     const deletedData = await DeleteProducts(id);
     let proData = prodData;
@@ -34,11 +34,11 @@ export default function Product() {
   };
   useEffect(() => {
     handleProducts();
-  }, [prodData]);
+  }, []);
   return (
     <div className="flex">
       <section className="w-full text-gray-600 body-font">
-        <div className="container h-full px-5 py-10 mx-auto">
+        <div className="container h-full py-10 mx-auto">
           <form className="w-full -mb-14 justify-end text-right">
             <div className="relative flex w-full justify-end text-right">
               <input
@@ -47,7 +47,7 @@ export default function Product() {
                 }}
                 type="text"
                 placeholder="Search"
-                className="w-full mr-2 py-3 normal-case text-3xl  text-black border rounded-md outline-none bg-gray-50 focus:bg-white focus:border-indigo-600"
+                className="w-full mr-2 py-3 normal-case text-3xl text-black border-2 rounded-md outline-none focus:border-indigo-600"
               ></input>
               <button className="bg-transparent mr-5 -mt-40">
                 <AiOutlineSearch className="cursor-pointer absolute mt-2 mr-4  w-14 h-14 text-black" />
@@ -59,7 +59,10 @@ export default function Product() {
               <thead>
                 <tr className="h-24  transform ">
                   <th className="px-1 py-3 text-4xl title-font  font-medium text-black bg-gray-300">
-                    Product Name
+                    Brand Name
+                  </th>
+                  <th className="px-1 py-3 text-4xl title-font  font-medium text-black bg-gray-300">
+                    Description
                   </th>
                   <th className="px-1 py-3 text-4xl title-font  font-medium text-black bg-gray-300">
                     Price
@@ -74,9 +77,12 @@ export default function Product() {
               </thead>
               {prodData?.map((item) => (
                 <tbody className="mt-5">
-                  <tr className="box-border border-t-8 h-24  transform hover:bg-gray-100 hover:shadow-lg">
+                  <tr className="box-border cursor-pointer border-t-8 h-24 transform hover:bg-[#c0e698] hover:shadow-xl">
                     <td className="px-1 py-3 text-3xl text-black ">
                       {item?.name}
+                    </td>
+                    <td className="px-1 py-1 text-3xl text-black ">
+                      {item?.description}
                     </td>
                     <td className="px-1 py-3 text-3xl text-black ">
                       <div className="flex">

@@ -78,7 +78,7 @@ const ShirtSlider1 = () => {
       />
     ),
   };
-  const [imageUrl, setImageUrl] = useState("");
+  // const [imageUrl, setImageUrl] = useState("");
   const [products, setProducts] = useState([]);
 
   const handleProducts = async () => {
@@ -104,11 +104,11 @@ const ShirtSlider1 = () => {
               />
               <div className="">
                 <h2 className="text-black title-font font-bold text-2xl mb-2">
-                  Shirts by Biba
+                  {item?.name}
                 </h2>
-
-                <span className="mt-1 line-through text-3xl mb-3">₹320</span>
-                <span className="mx-3 text-3xl font-bold mb-3">₹250</span>
+                <span className="mx-3 text-3xl font-bold mb-3">
+                  ₹ {item?.price}
+                </span>
               </div>
               <Button className="bg-orange-200 text-black font-bold font-serif border-2 mt-2 text-2xl rounded-xl">
                 Add to Cart

@@ -44,6 +44,7 @@ import Hoodies from "./NavBar/Hoodies";
 import Tshirts from "./NavBar/Tshirts";
 import Customization from "./HomePage/Customization";
 import AddProducts from "./AdminPanel/AddProducts";
+import Checkout from "./components/Checkout";
 
 const App = () => {
   const theme = {
@@ -87,7 +88,7 @@ const App = () => {
           <Route path="/cart" element={<Cart />} />
           <Route path="/AddArt" element={<AddArt />} />
           <Route path="/Home/Customization" element={<Customization />} />
-
+          <Route path="/Checkout" element={<Checkout />} />
           <Route path="/admin" element={<Admin />} />
           <Route
             path="/Login/forgotPassword/verifyOTP"

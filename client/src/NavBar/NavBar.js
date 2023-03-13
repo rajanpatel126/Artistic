@@ -19,6 +19,9 @@ function NavBar() {
     //   navigation("/");
     // }
   };
+  const handleClick = () => {
+    navigation("/Checkout");
+  };
   return (
     <>
       <nav className="bg-[#e8b3d1] px-2 sm:px-4 py-2.5 mb-4 sticky">
@@ -78,8 +81,11 @@ function NavBar() {
                 </select>
               </div>
             </div>
-
-            <AiOutlineShoppingCart className="ml-4 my-auto mr-2 cursor-pointer text-6xl" />
+            <AiOutlineShoppingCart
+              onClick={handleClick
+              }
+              className="ml-4 my-auto mt-4 mr-2 cursor-pointer text-6xl"
+            />
           </div>
           <div
             className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
