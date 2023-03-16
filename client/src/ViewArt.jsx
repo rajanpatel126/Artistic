@@ -7,20 +7,29 @@ import { MdGridView } from "react-icons/md";
 import { BiEdit } from "react-icons/bi";
 import { MdDeleteOutline } from "react-icons/md";
 import client from "./api/client";
+import { deleteArt } from "./api/artist";
 
 export default function ViewArt() {
   const [artData, setArtData] = useState([]);
   const handleArt = async () => {
-    const { data } = await client.get(
-      `/artist/getArtDesigns/${localStorage.getItem("ArtistId")}`
-    );
+    const { data } = await client.get(`/artist/getArtDesigns`);
     setArtData(data);
-    console.log(artData);
+    console.log("art data", data);
   };
 
-  useEffect(() => {
-    console.log(artData);
-  }, [artData]);
+  const handleDelete = async (id) => {
+    const deletedData = await deleteArt(localStorage.getItem("ArtistId"), id);
+    let proData = artData;
+    const a = proData.splice(
+      proData.findIndex((e) => e._id === id),
+      1
+    );
+    setArtData(proData);
+  };
+
+  // useEffect(() => {
+  //   console.log(artData);
+  // }, [artData]);
   useEffect(() => {
     handleArt();
   }, []);
@@ -84,7 +93,12 @@ export default function ViewArt() {
                           <BiEdit className=" w-6 h-6  mt-1 text-3xl"></BiEdit>
                           Edit
                         </div>
-                        <div className="flex -mt-15 px-1 ml-2 text-3xl text-red-500 hover:cursor-pointer">
+                        <div
+                          onClick={(e) => {
+                            handleDelete(item._id);
+                          }}
+                          className="flex -mt-15 px-1 ml-2 text-3xl text-red-500 hover:cursor-pointer"
+                        >
                           <MdDeleteOutline className=" w-6 h-6  mt-1 text-3xl" />
                           Delete
                         </div>

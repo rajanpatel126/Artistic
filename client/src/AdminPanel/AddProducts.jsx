@@ -50,11 +50,11 @@ const AddProducts = () => {
     console.log(data);
   };
   return (
-    <div className="rounded-xl normal-case">
+    <div className="rounded-2xl normal-case">
       <section className="text-gray-800  body-font relative bg-slate-200">
         <div className="container py-24 mx-auto">
-          <div className=" container w-1/2 text-left mx-auto mb-12">
-            <h1 className=" text-6xl font-bold text-center mb-4 text-gray-900">
+          <div className=" container w-1/2 text-left mx-auto mb-8">
+            <h1 className=" text-6xl font-bold text-center mb-12 text-gray-900">
               Primary Information
             </h1>
           </div>
@@ -91,6 +91,24 @@ const AddProducts = () => {
                       onChange={handleChange}
                       name="description"
                       className="normal-case w-full p-3 text-3xl bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    />
+                  </div>
+                </div>
+
+                <div className="p-2 w-full">
+                  <div className="relative">
+                    <label
+                      htmlFor="tag"
+                      className="leading-7 text-3xl text-black font-bold mt-2"
+                    >
+                      Tag
+                    </label>
+                    <br />
+                    <input
+                      type="text"
+                      onChange={handleChange}
+                      name="tag"
+                      className="normal-case w-full p-3 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-3xl outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </div>

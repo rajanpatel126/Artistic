@@ -60,7 +60,41 @@ export const getArtist = async (ArtistId) => {
 export const updateArtist = async (ArtistId, ArtistInfo) => {
   console.log("ArtistInfo" + ArtistInfo);
   try {
-    const data = await client.put(`/auth/updateArtist/${ArtistId}`, ArtistInfo);
+    const data = await client.put(
+      `/artist/updateArtist/${ArtistId}`,
+      ArtistInfo
+    );
+    return data;
+  } catch (error) {
+    const { response } = error;
+    if (response?.data) {
+      return response.data;
+    }
+    return { error: error.message || error };
+  }
+};
+
+//deleting specifing art
+export const deleteArt = async (artId, productId) => {
+  try {
+    const { data } = await client.put(
+      `/artist/deleteArt/${artId}/${productId}`
+    );
+    console.log(data, artId, productId);
+    return data;
+  } catch (error) {
+    const { response } = error;
+    if (response?.data) {
+      return response.data;
+    }
+    return { error: error.message || error };
+  }
+};
+
+//getting the art designs
+export const getArtDesigns = async () => {
+  try {
+    const { data } = await client.get(`/artist/getArtDesigns`);
     return data;
   } catch (error) {
     const { response } = error;

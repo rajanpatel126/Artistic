@@ -40,6 +40,21 @@ export const fetchAllProducts = async () => {
   }
 };
 
+export const fetchFromTag = async (tag) => {
+  try {
+    const { data } = await client.get(
+      `/product/fetchFromTag?tag=${tag}`
+    );
+    return data;
+  } catch (error) {
+    const { response } = error;
+    if (response?.data) {
+      return response.data;
+    }
+    return { error: error.message || error };
+  }
+};
+
 export const serchingFunction = async (name) => {
   try {
     const { data } = await client.get(`/product/userByName?name=${name}`);
@@ -54,12 +69,10 @@ export const serchingFunction = async (name) => {
 };
 
 //deleting products
-export const DeleteProducts = async (prodId, object, config) => {
+export const DeleteProducts = async (prodId) => {
   try {
     const { data } = await client.delete(
-      `/product/deleteProducts/${prodId}`,
-      object,
-      config
+      `/product/deleteProducts/${prodId}`
     );
     return data;
   } catch (error) {

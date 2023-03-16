@@ -8,7 +8,7 @@ const Product = require("../models/ProductSchema");
 router.post("/addProduct", async (req, res) => {
   let success = false;
   try {
-    const { name, description, price, productImg } = req.body;
+    const { name, description, price, productImg, tag } = req.body;
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
@@ -18,6 +18,7 @@ router.post("/addProduct", async (req, res) => {
       name: name[0],
       description: description[0],
       price: price[0],
+      tag: tag[0],
       productImg,
     });
     const saveProduct = await newProduct.save();
@@ -40,10 +41,24 @@ router.get("/fetchAllProducts", async (req, res) => {
   }
 });
 
+//fetching customised shirts
+router.get("/fetchFromTag", async (req, res) => {
+  try {
+    const { tag } = req.query;
+    const chustomiseShirt = await Product.find({ tag: tag });
+    res.json(chustomiseShirt);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal server error");
+  }
+});
+
 //serching functionality
 router.get("/userByName", async (req, res) => {
   const { name } = req.query;
-  const product = await Product.find({ name: { $regex: `${name}` } });
+  const product = await Product.find({
+    name: { $regex: `^${name}`, $options: "i" },
+  });
   return res.json(product);
 });
 

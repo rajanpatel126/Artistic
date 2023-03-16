@@ -31,7 +31,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[#123822]">
+    <footer className="bg-[#123822] mt-4">
       <div className="w-full h-16 bg-black justify-center text-center text-white text-2xl py-3">
         <NavLink
           ref={linkRef}

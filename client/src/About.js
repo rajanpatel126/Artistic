@@ -1,5 +1,5 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import React from 'react'
-import HeroSection from './HomePage/HeroSection'
 import styled from 'styled-components';
 // import { Button } from '../styles/Button';
 const About = () => {

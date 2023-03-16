@@ -24,11 +24,12 @@ function NavBar() {
   };
   return (
     <>
-      <nav className="bg-[#e8b3d1] px-2 sm:px-4 py-2.5 mb-4 sticky">
+      <nav className="bg-[#c3c6f4] px-2 sm:px-4 py-2.5 mb-4 sticky">
         <div className=" flex flex-wrap  items-center justify-between mx-auto">
           <Link to="/" className="flex items-start">
             <img
-              src="./images/Logo.jpeg"
+              // src={require("../../public/Logo.jpeg")}
+              src={"./images/Logo.jpeg"}
               className="h-24 w-24 mr-3 ml-9 rounded-full "
               alt="Artistic Logo"
             />
@@ -42,7 +43,7 @@ function NavBar() {
                 name="text"
                 type="text"
                 placeholder="Search..."
-                className="w-[300px] mt-12 p-2.5 text-3xl normal-case text-black outline-none bg-[#f3d9e8] focus:bg-white focus:border-gray-900 border-2 focus:shadow-2xl rounded-xl"
+                className="w-[300px] mt-12 p-2.5 text-3xl normal-case text-black outline-none bg-[#d7d9f8] focus:bg-white focus:border-black border-gray-500 border-2 focus:shadow-2xl rounded-xl"
               ></input>
               <AiOutlineSearch className="cursor-pointer text-black h-16 w-20 mt-12 p-1 ml-3 mr-1" />
 
@@ -82,8 +83,7 @@ function NavBar() {
               </div>
             </div>
             <AiOutlineShoppingCart
-              onClick={handleClick
-              }
+              onClick={handleClick}
               className="ml-4 my-auto mt-4 mr-2 cursor-pointer text-6xl"
             />
           </div>

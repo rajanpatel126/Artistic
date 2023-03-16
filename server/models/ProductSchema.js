@@ -11,6 +11,10 @@ const ProductSchema = new Schema({
     type: String,
     require: true,
   },
+  tag: {
+    type: String,
+    default: "Shirt",
+  },
   productImg: {
     type: String,
   },

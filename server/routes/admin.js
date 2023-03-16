@@ -5,7 +5,6 @@ const { isValidObjectId } = require("mongoose");
 const Artist = require("../models/ArtistSchema");
 const User = require("../models/UserSchema");
 const Product = require("../models/ProductSchema");
-const cloudinary = require("../cloud");
 const { default: Admin } = require("../../client/src/Admin");
 
 //deleting artist request

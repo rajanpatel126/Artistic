@@ -1,8 +1,15 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-import { NavLink } from "react-router-dom";
-
+import { NavLink, useNavigate } from "react-router-dom";
 
 export default function ArtistPanel() {
+  const navigation = useNavigate();
+  const handleLogout = async (e) => {
+    e.preventDefault();
+    localStorage.clear();
+    navigation("/");
+  };
+
   return (
     <div className="flex">
       <div className="flex flex-col h-screen p-3 bg-white  shadow w-96">
@@ -30,7 +37,7 @@ export default function ArtistPanel() {
                 </NavLink>
               </li>
 
-              <li className="rounded-sm ">
+              <li onClick={handleLogout} className="rounded-sm ">
                 <a
                   href="#"
                   className="flex items-center p-2 space-x-3 rounded-md hover:bg-slate-500 hover:text-white"

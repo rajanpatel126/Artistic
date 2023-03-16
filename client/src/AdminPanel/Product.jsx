@@ -22,7 +22,7 @@ export default function Product() {
     const data = await serchingFunction(name);
     setProdData(data);
   };
-  
+
   const handleDelete = async (id) => {
     const deletedData = await DeleteProducts(id);
     let proData = prodData;
@@ -57,40 +57,43 @@ export default function Product() {
           <div className="w-full mx-auto overflow-auto box-border shadow-lg">
             <table className="table-auto w-full text-left ">
               <thead>
-                <tr className="h-24  transform ">
-                  <th className="px-1 py-3 text-4xl title-font  font-medium text-black bg-gray-300">
+                <tr className="h-24 text-black text-4xl bg-gray-300">
+                  <th className="px-1 py-4">
                     Brand Name
                   </th>
-                  <th className="px-1 py-3 text-4xl title-font  font-medium text-black bg-gray-300">
+                  <th className="px-1 py-4">
                     Description
                   </th>
-                  <th className="px-1 py-3 text-4xl title-font  font-medium text-black bg-gray-300">
+                  <th className="px-1 py-4 flex justify-center">
+                    Tag
+                  </th>
+                  <th className="px-1 py-4">
                     Price
                   </th>
-                  <th className="px-3 py-3 text-4xl title-font  font-medium text-black  bg-gray-300">
+                  <th className="px-4 mx-2 py-4 ">
                     Date
                   </th>
-                  <th className="pl-20  py-3 text-4xl title-font font-medium text-black  bg-gray-300 rounded-r-md">
-                    Action
+                  <th className="pl-20  py-4 rounded-r-md">
+                    Actions
                   </th>
                 </tr>
               </thead>
               {prodData?.map((item) => (
                 <tbody className="mt-5">
                   <tr className="box-border cursor-pointer border-t-8 h-24 transform hover:bg-[#c0e698] hover:shadow-xl">
-                    <td className="px-1 py-3 text-3xl text-black ">
+                    <td className="px-1 py-4 text-3xl text-black ">
                       {item?.name}
                     </td>
                     <td className="px-1 py-1 text-3xl text-black ">
                       {item?.description}
                     </td>
-                    <td className="px-1 py-3 text-3xl text-black ">
-                      <div className="flex">
-                        <BiRupee className="-mr-2" />
-                        {item?.price}
-                      </div>
+                    <td className="px-1 py-4 flex justify-center text-3xl text-black ">
+                      {item?.tag}
                     </td>
-                    <td className="px-1 py-3 text-3xl text-black ">
+                    <td className="px-1 py-4 text-3xl text-black ">
+                      <div className="flex">₹ {item?.price}</div>
+                    </td>
+                    <td className="px-1 py-4 text-3xl text-black ">
                       {item?.date}
                     </td>
                     <td className="w-10 text-center text-3xl text-black px-2">

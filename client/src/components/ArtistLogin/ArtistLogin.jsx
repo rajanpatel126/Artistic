@@ -30,7 +30,7 @@ export const ArtistLogin = (props) => {
             className="rounded-full w-24 h-24"
             alt="hello"
           />
-          <p className="text-white text-4xl mt-2 mb-4 "> Login</p>
+          <p className="text-white text-4xl mt-2 mb-4 ">Login</p>
         </div>
 
         <form className="login-form">
@@ -62,7 +62,7 @@ export const ArtistLogin = (props) => {
         </form>
         <button
           onClick={handleSubmit}
-          className="text-3xl mx-auto w-fit mt-4 p-3 bg-blue-900 "
+          className="text-3xl mx-auto w-fit rounded-xl mb-4 mt-4 p-3 bg-blue-400 "
         >
           Login
         </button>
@@ -75,7 +75,6 @@ export const ArtistLogin = (props) => {
             </button>
           </NavLink>
         </label>
-
         <label htmlFor="" className="or text-2xl">
           OR
         </label>

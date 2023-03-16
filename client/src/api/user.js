@@ -83,3 +83,16 @@ export const getImage = async (prodId) => {
     return { error: error.message || error };
   }
 };
+
+export const combineImage = async (obj) => {
+  try {
+    const { data } = await client.post(`/user/combineImage`, obj);
+    return data;
+  } catch (error) {
+    const { response } = error;
+    if (response?.data) {
+      return response.data;
+    }
+    return { error: error.message || error };
+  }
+};

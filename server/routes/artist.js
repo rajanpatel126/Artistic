@@ -205,9 +205,36 @@ router.put("/addDesignDetails/:id", async (req, res) => {
   }
 });
 
-router.get("/getArtDesigns/:id", async (req, res) => {
-  let artist = await Artist.findById(req.params.id);
+router.get("/getArtDesigns", async (req, res) => {
+  let artist = await Artist.findById("63dc21f2dda8160c29e95f54");
+
   return res.json(artist.Pattern);
+});
+
+//deleting specific art
+router.put("/deleteArt/:id/:pId", async (req, res) => {
+  try {
+    const { id, pId } = req.params;
+    if (!validationResult(id))
+      return res.status(401).json({ error: "Invalid Request" });
+
+    await Artist.findOneAndUpdate(
+      { _id: id, "Pattern._id": pId },
+      {
+        $pull: { Pattern: { _id: pId } },
+      },
+      { new: true }
+    )
+      .then((result) => {
+        return res.json({ success: true, data: result });
+      })
+      .catch((err) => {
+        return res.json({ success: false, err });
+      });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal server error");
+  }
 });
 
 router.get("/getArtDesign/:id/:artId", async (req, res) => {

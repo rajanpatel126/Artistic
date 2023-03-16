@@ -9,7 +9,7 @@ const { isValidObjectId } = require("mongoose");
 const nodemailer = require("nodemailer");
 const sendMail = require("../nodemailer");
 require("dotenv").config;
-
+const Jimp = require("jimp");
 //Route:1 creating user
 router.post("/createUser", async (req, res) => {
   let success = false;
@@ -285,6 +285,45 @@ router.get("/getImage/:id", async (req, res) => {
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Internal server error");
+  }
+});
+
+router.post("/combineImage", async (req, res) => {
+  try {
+    const { img1, img2 } = req.body;
+
+    if (!img1 || !img2) {
+      return res.json({ error: "img can not null" });
+    }
+
+    const base64Image1 = img1;
+    const base64Image2 = img2;
+    let resultImg = "";
+
+    // Load the two images using Jimp
+    Promise.all([
+      Jimp.read(Buffer.from(base64Image1.split(",")[1], "base64")),
+      Jimp.read(Buffer.from(base64Image2.split(",")[1], "base64")),
+    ])
+      .then((images) => {
+        // Combine the two images into a single image
+        images[0].composite(images[1], 40 , 55);
+
+        // Convert the combined image to base64
+        images[0].getBase64Async(Jimp.MIME_PNG).then((base64CombinedImage) => {
+          // The combined image as a base64 string
+          resultImg = base64CombinedImage;
+          // console.log(base64CombinedImage);
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    setTimeout(() => {
+      return res.json({ combineImg: resultImg });
+    }, 5000);
+  } catch (error) {
+    console.log(error);
   }
 });
 
