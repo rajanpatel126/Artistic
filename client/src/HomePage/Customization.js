@@ -2,7 +2,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { fetchFromTag } from "../api/admin";
 import { getArtDesigns } from "../api/artist";
 import { combineImage } from "../api/user";
@@ -26,10 +25,28 @@ const Customization = () => {
     setArtDesign(arts);
   };
 
+  const handleClick = async () => {
+    console.log(".................");
+  };
   const mergeImages = async () => {
     const data = await combineImage({ img1: image1, img2: image2 });
     setMergedImage(data.combineImg);
     console.log(data);
+  };
+  let imageSrc;
+  let artSrc;
+
+  const handleClick1 = (event) => {
+    const data = event.target;
+    imageSrc = data.src;
+    console.log(data, imageSrc);
+    console.log("image clicked");
+  };
+  const handleClick2 = (event) => {
+    const data = event.target;
+    artSrc = data.src;
+    console.log(data, artSrc);
+    console.log("art clicked");
   };
 
   useEffect(() => {
@@ -58,6 +75,7 @@ const Customization = () => {
           {tshirts.map((item) => (
             <div className="lg:w-1/4 md:w-1/2 p-4 hover:scale-110 hover:bg-[#d1edb6] hover:shadow-2xl">
               <img
+                onClick={handleClick1}
                 src={item?.productImg}
                 alt="ecommerce"
                 className=" object-center h-[250px] block  hover:cursor-pointer transform "
@@ -70,6 +88,7 @@ const Customization = () => {
           {artDesign.map((item) => (
             <div className="lg:w-1/4 md:w-1/2 p-4 hover:scale-110">
               <img
+                onClick={handleClick2}
                 src={item?.patternImg}
                 alt="ecommerce"
                 className="object-cover w-[250px] object-center block  hover:cursor-pointer transform "
@@ -77,6 +96,12 @@ const Customization = () => {
             </div>
           ))}
         </div>
+        <button
+          onClick={handleClick}
+          className="w-fit p-3 flex mx-auto text-4xl rounded-lg hover:text-black hover:scale-110 hover:bg-[#f186e9] justify-center border-0 border-none text-black bg-[#a5cbf0]"
+        >
+          Customise
+        </button>
         <h2 className="mt-2 text-black">Customised Products</h2>
         <div className="lg:w-1/4 md:w-1/2 p-4 hover:scale-110">
           <img

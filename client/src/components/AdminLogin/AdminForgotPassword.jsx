@@ -32,7 +32,7 @@ export const AdminForgotPassword = () => {
     <>
       <section className="text-gray-800 h-full body-font py-72 bg-[#568848] bg-cover ">
         <div className="container h-full py-1 mx-auto   ">
-          <div className="box-border rounded-2xl container py-10 px-6 mx-auto  md:box-content  w-1/2 bg-slate-400 bg-opacity-75 md:bg-opacity-75  justify-center border-white border-2">
+          <div className="box-border rounded-2xl container py-10 px-6 mx-auto  md:box-content  w-1/2 bg-slate-400 bg-opacity-75 md:bg-opacity-75  justify-center border-black border-2">
             <div className="box-border container flex w-32 mb-3">
               <img
                 src="./images/logo1.jpeg"
@@ -59,7 +59,7 @@ export const AdminForgotPassword = () => {
                       type="email"
                       id="email"
                       name="email"
-                      className="w-full h-14 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-xl outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      className="w-full h-14 normal-case rounded border border-black focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 outline-none text-gray-700 text-3xl py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </div>

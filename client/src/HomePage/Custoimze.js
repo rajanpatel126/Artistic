@@ -9,19 +9,19 @@ const Customize = () => {
       <div className="mx-auto flex px-2 pt-10 items-center justify-center flex-col">
         <div className="text-left lg:w-2/3 w-full">
           <div className="flex">
-            <h1 className="text-5xl mb-4 text-black font-bold">
-              Customize in your own way
+            <h1 className="flex text-5xl mb-4 text-black font-bold">
+              Customise in your own way
             </h1>
             <div className="ml-[550px]">
               <Link to="/Home/Customization">
-                <button className=" hover:bg-black mb-4 text-white bg-gray-600 text-3xl cursor-pointer">
-                  Customize now
+                <button className="rounded-lg p-2 hover:bg-black mb-4 text-white bg-gray-600 text-4xl cursor-pointer">
+                  Customise now
                 </button>
               </Link>
             </div>
           </div>
           <p className="mb-4 text-4xl text-justify leading-relaxed">
-            Welcome to Artistic, the ultimate destination for customizable
+            Welcome to Artistic, the ultimate destination for customisable
             clothing online!! We understand that fashion is a reflection of
             individuality and personal expression, which is why we offer a vast
             range of customization options for both men and women. From choosing

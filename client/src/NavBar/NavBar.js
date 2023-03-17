@@ -1,8 +1,7 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { IoMdArrowDropdown } from "react-icons/io";
 import { AiOutlineSearch, AiOutlineShoppingCart } from "react-icons/ai";
 
 function NavBar() {
@@ -14,17 +13,16 @@ function NavBar() {
       navigation("/login");
     } else if (e.target.value === "Artist") {
       navigation("/ArtistLogin");
+    } else if (e.target.value === "Login") {
+      navigation("/");
     }
-    // else if (e.target.value === "Login") {
-    //   navigation("/");
-    // }
   };
   const handleClick = () => {
     navigation("/Checkout");
   };
   return (
     <>
-      <nav className="bg-[#c3c6f4] px-2 sm:px-4 py-2.5 mb-4 sticky">
+      <nav className="bg-[#eabdff] px-2 sm:px-4 py-2.5 mb-4 sticky">
         <div className=" flex flex-wrap  items-center justify-between mx-auto">
           <Link to="/" className="flex items-start">
             <img
@@ -43,7 +41,7 @@ function NavBar() {
                 name="text"
                 type="text"
                 placeholder="Search..."
-                className="w-[300px] mt-12 p-2.5 text-3xl normal-case text-black outline-none bg-[#d7d9f8] focus:bg-white focus:border-black border-gray-500 border-2 focus:shadow-2xl rounded-xl"
+                className="w-[300px] mt-12 p-2.5 text-3xl normal-case text-black outline-none bg-[#f3e1fc] focus:bg-white focus:border-black border-gray-500 border-2 focus:shadow-2xl rounded-xl"
               ></input>
               <AiOutlineSearch className="cursor-pointer text-black h-16 w-20 mt-12 p-1 ml-3 mr-1" />
 

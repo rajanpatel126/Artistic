@@ -51,7 +51,7 @@ const AddArt = () => {
         <div className="container py-24 mx-auto">
           <div className=" container w-1/2 text-left mx-auto mb-12">
             <h1 className=" text-6xl font-bold text-center mb-4 text-gray-900">
-              Primary Information
+              Adding Art
             </h1>
           </div>
           <div className="box-border border-red-800 border-4 container py-12 px-6 mx-auto  md:box-content  w-1/2 shadow-2xl bg-slate-100 rounded-md">

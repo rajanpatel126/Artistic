@@ -47,7 +47,7 @@ export default function Admin() {
                     className="flex items-center p-2 space-x-3 rounded-md hover:bg-slate-500 hover:text-white"
                   >
                     {" "}
-                    <span className="text-4xl">Product</span>
+                    <span className="text-4xl">Products</span>
                   </NavLink>
                 </li>
                 <li className="rounded-sm ">
