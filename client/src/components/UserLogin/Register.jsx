@@ -1,18 +1,27 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-import { Login } from "./Login";
+import { NavLink, useNavigate } from "react-router-dom";
+import { addUser } from "../../api/user";
 
 export const Register = (props) => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [name, setName] = useState("");
-
-  const handleSubmit = (e) => {
-    e.preventDefualt();
-    console.log(email);
+  const [phone, setPhone] = useState("");
+  const navigation = useNavigate();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { data } = await addUser({
+      name: name,
+      emailAddress: email,
+      password: pass,
+      phone: phone,
+    });
+    console.log(data);
+    localStorage.setItem("userEmail", email);
+    localStorage.setItem("userName", name);
+    navigation("/");
   };
-
   return (
     <div className="Register bg-gradient-to-r from-slate-400 to-blue-300 py-24">
       <div className="auth-form-container mx-auto bg-slate-700  bg-opacity-75 md:bg-opacity-75 justify-center w-96 ">
@@ -25,7 +34,7 @@ export const Register = (props) => {
           <p className=" text-white text-4xl mt-2 mb-4">Register</p>
         </div>
 
-        <form className="register-form " onSubmit={handleSubmit}>
+        <form className="register-form ">
           {/* <label className="text-4xl space-x-3" htmlFor="name">User Name: </label> */}
           <input
             value={name}
@@ -41,9 +50,19 @@ export const Register = (props) => {
             className="text-3xl normal-case h-20"
             onChange={(e) => setEmail(e.target.value)}
             type="email"
-            placeholder="Mobile number or Email"
+            placeholder="Email Address"
             id="email"
             name="email"
+          ></input>
+          <label htmlFor="phone"></label>
+          <input
+            value={phone}
+            className="text-3xl normal-case h-20"
+            onChange={(e) => setPhone(e.target.value)}
+            type="phone"
+            placeholder="Mobile number"
+            id="phone"
+            name="phone"
           ></input>
           <label htmlFor="password"></label>
           <input
@@ -55,12 +74,14 @@ export const Register = (props) => {
             id="password"
             name="password"
           />
+          {/* <NavLink to={"/"}> */}
           <button
-            className="text-3xl mx-auto w-fit p-3 bg-blue-900"
-            type="submit"
+            onClick={handleSubmit}
+            className="text-3xl text-white rounded-md mb-4 mx-auto w-fit p-3 bg-blue-900"
           >
             Register
           </button>
+          {/* </NavLink> */}
         </form>
 
         <label className="l1-r text-white text-3xl mx-auto">

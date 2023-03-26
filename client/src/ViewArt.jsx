@@ -32,6 +32,7 @@ export default function ViewArt() {
   // }, [artData]);
   useEffect(() => {
     handleArt();
+    handleDelete();
   }, []);
   return (
     <div className="flex">

@@ -23,6 +23,7 @@ export const ArtistLogin = (props) => {
 
   return (
     <div className=" bg-gradient-to-r from-blue-300 to-slate-400 py-24">
+      <div className="flex justify-center text-7xl mb-2 font-bold">Artist login</div>
       <div className="auth-form-container mx-auto bg-slate-700 bg-opacity-75 md:bg-opacity-75 justify-center w-96">
         <div className="logoimg">
           <img

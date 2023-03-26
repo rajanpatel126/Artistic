@@ -34,6 +34,7 @@ export default function Product() {
   };
   useEffect(() => {
     handleProducts();
+    handleDelete();
   }, []);
   return (
     <div className="flex">
@@ -58,24 +59,12 @@ export default function Product() {
             <table className="table-auto w-full text-left ">
               <thead>
                 <tr className="h-24 text-black text-4xl bg-gray-300">
-                  <th className="px-1 py-4">
-                    Brand Name
-                  </th>
-                  <th className="px-1 py-4">
-                    Description
-                  </th>
-                  <th className="px-1 py-4 flex justify-center">
-                    Tag
-                  </th>
-                  <th className="px-1 py-4">
-                    Price
-                  </th>
-                  <th className="px-4 mx-2 py-4 ">
-                    Date
-                  </th>
-                  <th className="pl-20  py-4 rounded-r-md">
-                    Actions
-                  </th>
+                  <th className="px-1 py-4">Brand Name</th>
+                  <th className="px-1 py-4">Description</th>
+                  <th className="px-1 py-4 flex justify-center">Tag</th>
+                  <th className="px-1 py-4">Price</th>
+                  <th className="px-4 mx-2 py-4 ">Date</th>
+                  <th className="pl-20  py-4 rounded-r-md">Actions</th>
                 </tr>
               </thead>
               {prodData?.map((item) => (

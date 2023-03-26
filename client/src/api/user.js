@@ -3,7 +3,7 @@ import client from "./client";
 //add user connection
 export const addUser = async (userInfo) => {
   try {
-    const data = await client.post("/auth/createUser", userInfo);
+    const data = await client.post("/user/createUser", userInfo);
     return data;
   } catch (error) {
     const { response } = error;

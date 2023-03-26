@@ -55,7 +55,7 @@ const Customization = () => {
   }, []);
 
   useEffect(() => {
-    setImage1(tshirts[7]?.productImg);
+    setImage1(tshirts[0]?.productImg);
     console.log(image1);
   }, [tshirts]);
   useEffect(() => {

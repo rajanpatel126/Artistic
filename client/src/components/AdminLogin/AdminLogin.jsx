@@ -21,7 +21,8 @@ export const AdminLogin = (props) => {
 
   return (
     <>
-      <div className="auth-form-container mb-2 bg-slate-400 bg-opacity-75 md:bg-opacity-75 justify-center w-96">
+      <div className="auth-form-container bg-gradient-to-r from-slate-400 to-blue-300 py-24">
+        <div className="bg-slate-900 bg-opacity-75 md:bg-opacity-75 justify-center w-96"></div>
         <div className="logoimg">
           <img src="./images/logo1.jpeg" className="img1 " alt="hello" />
           <p className="text-black text-4xl mt-2 mb-20">Admin Login</p>
@@ -52,11 +53,14 @@ export const AdminLogin = (props) => {
           <NavLink to="/AdminForgotPassword" className="forgot mx-2 text-3xl">
             Forgot Password?
           </NavLink>
-          <button onClick={handleSubmit} className="text-4xl rounded-xl mx-auto w-fit p-3 bg-green-400 ">
+          <button
+            onClick={handleSubmit}
+            className="text-4xl rounded-xl mx-auto w-fit p-3 bg-green-400 "
+          >
             Login
           </button>
         </form>
-      </div>   
-       </>
+      </div>
+    </>
   );
 };

@@ -7,9 +7,10 @@ export const Login = (props) => {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefualt();
+    e.preventDefault();
     const { data } = await verifyUser({ emailAddress: email, password: pass });
-    localStorage.setItem("user Email", email);
+    console.log(data);
+    localStorage.setItem("userEmail", email);
     if (data?.user) {
       navigate("/");
     } else {
@@ -55,11 +56,9 @@ export const Login = (props) => {
           >
             Forgot Password?
           </NavLink>
-
           <button
-            onSubmit={handleSubmit}
-            className="text-4xl rounded-xl mx-auto w-fit mt-4 p-3 bg-green-400 "
-            type="submit"
+            onClick={handleSubmit}
+            className="text-4xl mb-4 rounded-xl mx-auto w-fit mt-4 p-3 bg-green-400 "
           >
             Login
           </button>

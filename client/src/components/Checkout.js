@@ -1,10 +1,24 @@
-import React from "react";
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect } from "react";
 
 const Checkout = () => {
+  const [cartItems, setCartItems] = useState([]);
+
+  useEffect(() => {
+    // fetch cart items from API or local storage
+  }, []);
+
+  const handleAddToCart = (item) => {
+    // add item to cartItems state
+  };
+
+  const handleRemoveFromCart = (item) => {
+    // remove item from cartItems state
+  };
   return (
     <>
-      <div className="flex flex-col text-3xl items-center border-b bg-white py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32">
-        {/* <a href="#" className="text-2xl font-bold text-gray-800">sneekpeeks</a> */}
+      {/* <div className="flex flex-col text-3xl items-center border-b bg-white py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32">
+        <a href="/" className="text-2xl font-bold text-gray-800">sneekpeeks</a>
         <div className="mt-4 py-2 text-xs sm:mt-0 sm:ml-auto sm:text-base">
           <div className="relative">
             <ul className="relative flex w-full items-center justify-between space-x-2 sm:space-x-4">
@@ -12,7 +26,7 @@ const Checkout = () => {
                 <span className="font-semibold text-gray-900">Shop</span>
               </li>
               <li className="flex items-center space-x-3 text-left sm:space-x-4">
-                {/* <a className="flex h-6 w-6 items-center justify-center rounded-full bg-gray-600 text-xs font-semibold text-white ring ring-gray-600 ring-offset-2" href="#">2</a> */}
+                <a className="flex h-6 w-6 items-center justify-center rounded-full bg-gray-600 text-xs font-semibold text-white ring ring-gray-600 ring-offset-2" href="#">2</a>
                 <span className="font-semibold text-gray-900">Shipping</span>
               </li>
               <svg
@@ -30,7 +44,7 @@ const Checkout = () => {
                 />
               </svg>
               <li className="flex items-center space-x-3 text-left sm:space-x-4">
-                {/* <a className="flex h-6 w-6 items-center justify-center rounded-full bg-gray-400 text-xs font-semibold text-white" href="#">3</a> */}
+                <a className="flex h-6 w-6 items-center justify-center rounded-full bg-gray-400 text-xs font-semibold text-white" href="#">3</a>
                 <span className="font-semibold text-gray-500">Payment</span>
               </li>
             </ul>
@@ -293,7 +307,45 @@ const Checkout = () => {
             Place Order
           </button>
         </div>
-      </div>
+      </div> */}
+      {/* <div className="p-4">
+        <h2 className="text-lg font-medium mb-4">Shopping Cart</h2>
+        {cartItems.length === 0 ? (
+          <p>Your cart is empty</p>
+        ) : (
+          <ul className="space-y-2">
+            {cartItems.map((item) => (
+              <li key={item.id}>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-8 h-8 object-cover rounded"
+                    />
+                    <span className="ml-2">{item.name}</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <button
+                      className="bg-gray-200 text-gray-800 rounded px-2 py-1"
+                      onClick={() => handleRemoveFromCart(item)}
+                    >
+                      -
+                    </button>
+                    <span>{item.quantity}</span>
+                    <button
+                      className="bg-gray-200 text-gray-800 rounded px-2 py-1"
+                      onClick={() => handleAddToCart(item)}
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div> */}
     </>
   );
 };

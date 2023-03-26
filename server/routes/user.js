@@ -54,6 +54,7 @@ router.post("/createUser", async (req, res) => {
     const secPass = await bcrypt.hash(req.body.password, salt);
 
     user = await User.create({
+      name: req.body.name,
       phone: req.body.phone,
       password: secPass,
       isAdmin: req.body.isAdmin,
@@ -307,7 +308,7 @@ router.post("/combineImage", async (req, res) => {
     ])
       .then((images) => {
         // Combine the two images into a single image
-        images[0].composite(images[1], 40 , 55);
+        images[0].composite(images[1], 13, 45);
 
         // Convert the combined image to base64
         images[0].getBase64Async(Jimp.MIME_PNG).then((base64CombinedImage) => {
