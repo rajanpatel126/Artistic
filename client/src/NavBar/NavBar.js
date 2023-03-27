@@ -28,6 +28,10 @@ function NavBar() {
     }
   };
 
+  const handleCart = () => {
+    navigation("/checkout");
+  };
+
   const handleLogout = (e) => {
     localStorage.clear();
     console.log("sfhbfedvfde");
@@ -121,7 +125,11 @@ function NavBar() {
                 </div>
               )}
             </div>
-            <AiOutlineShoppingCart className="ml-4 my-auto mt-4 mr-2 cursor-pointer text-6xl" />
+            <AiOutlineShoppingCart
+              onClick={handleCart}
+              size={35}
+              className="ml-4 my-auto mt-4 mr-2 cursor-pointer"
+            />
           </div>
           <div
             className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"

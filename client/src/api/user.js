@@ -96,3 +96,16 @@ export const combineImage = async (obj) => {
     return { error: error.message || error };
   }
 };
+
+export const getImageInfo = async (productId) => {
+  try {
+    const { data } = await client.get(`/Product/getImageInfo/${productId}`);
+    return data;
+  } catch (error) {
+    const { response } = error;
+    if (response?.data) {
+      return response.data;
+    }
+    return { error: error.message || error };
+  }
+};

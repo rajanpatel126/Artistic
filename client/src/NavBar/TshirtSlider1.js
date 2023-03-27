@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "./sliders.css";
 import { Button } from "react-bootstrap";
 import { fetchFromTag } from "../api/admin";
+import { getImageInfo } from "../api/user";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -85,7 +86,15 @@ const TshirtSlider1 = () => {
     setTshirts([]);
     const data = await fetchFromTag("T-Shirt");
     setTshirts(data);
-    console.log(tshirts);
+  };
+
+  const handleCart = async (itemId) => {
+    const data = await getImageInfo(itemId);
+    console.log("Data id :" + data);
+    var a = [];
+    a = JSON.parse(localStorage.getItem("ProductInfo")) || [];
+    a.push(data);
+    localStorage.setItem("ProductInfo", JSON.stringify(a));
   };
 
   useEffect(() => {
@@ -111,7 +120,12 @@ const TshirtSlider1 = () => {
                   ₹ {item?.price}
                 </span>
               </div>
-              <Button className="bg-orange-200 text-black font-bold font-serif border-2 mt-2 text-2xl rounded-xl">
+              <Button
+                onClick={() => {
+                  handleCart(item._id);
+                }}
+                className="bg-orange-200 text-black font-bold font-serif border-2 mt-2 text-2xl rounded-xl"
+              >
                 Add to Cart
               </Button>
             </div>

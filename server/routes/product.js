@@ -62,6 +62,20 @@ router.get("/userByName", async (req, res) => {
   return res.json(product);
 });
 
+//getting the all info of product
+router.get("/getImageInfo/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!validationResult(id))
+      return res.status(401).json({ error: "Invalid Request" });
+    let product = await Product.findById(id);
+    res.json(product);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal server error");
+  }
+});
+
 //Route3: deletion of products using "api/product/deleteProducts"
 router.delete("/deleteProducts/:id", async (req, res) => {
   try {
