@@ -28,7 +28,19 @@ const UserSchema = new Schema(
     gender: {
       type: String,
     },
-    order: [String],
+    order: {
+      type: [
+        mongoose.Schema({
+          fname: String,
+          lname: String,
+          email: String,
+          address: String,
+          city: String,
+          products: [Object],
+          total: Number,
+        }),
+      ],
+    },
     date: {
       type: Date,
       default: Date.now,

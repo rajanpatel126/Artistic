@@ -1,8 +1,95 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import { BiRupee } from "react-icons/bi";
+import client from "../api/client";
+
+function loadScript(src) {
+  return new Promise((resolve) => {
+    const script = document.createElement("script");
+    script.src = src;
+    script.onload = () => {
+      resolve(true);
+    };
+    script.onerror = () => {
+      resolve(false);
+    };
+    document.body.appendChild(script);
+  });
+}
 
 const Checkout = () => {
+  const [cart, setCartState] = useState([]);
+  const [total, setTotal] = useState(0);
+
+  const [orderData, setOrderData] = useState({
+    fname: "",
+    lname: "",
+    email: "",
+    address: "",
+    city: "",
+    products: [],
+    total: 0,
+  });
+
+  const handleChange = async (e) => {
+    setOrderData({ ...orderData, total: total + 40 });
+    setOrderData({ ...orderData, products: cart });
+
+    setOrderData({ ...orderData, [e.target.name]: [e.target.value] });
+  };
+
+  useEffect(() => {
+    const cartData = JSON.parse(localStorage.getItem("cart"));
+    let ttl = 0;
+    cartData.map((item) => {
+      ttl += item.price;
+    });
+    setTotal(ttl);
+    if (cartData) {
+      setCartState(cartData);
+    }
+  }, []);
+  const displayRazorpay = async () => {
+    const res = await loadScript(
+      "https://checkout.razorpay.com/v1/checkout.js"
+    );
+    if (!res) {
+      alert("Unable to load Payment gateway. Are you online?");
+      return;
+    }
+
+    const options = {
+      key: "rzp_test_giq1IMMWeasz25", // Enter the Key ID generated from the Dashboard
+      amount: total * 100,
+      currency: "INR",
+      name: "Artisitic",
+      description: "Proceed To Payment",
+      image:
+        "https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX35633090.jpg",
+      handler: async function (response) {
+        const { data } = await client.post(
+          `/user/orders?userEmail=${localStorage.getItem("userEmail")}`,
+          orderData
+        );
+        if (data?.success) {
+          alert(data.message);
+        }
+      },
+
+      theme: {
+        color: "teal",
+      },
+    };
+
+    const paymentObject = new window.Razorpay(options);
+    paymentObject.open();
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    displayRazorpay();
+  };
+
   return (
     <>
       <div className="container p-12 mx-auto">
@@ -22,7 +109,8 @@ const Checkout = () => {
                       First Name
                     </label>
                     <input
-                      name="firstName"
+                      name="fname"
+                      onChange={handleChange}
                       type="text"
                       placeholder="First Name"
                       className="w-full px-4 py-3 normal-case border border-gray-300 rounded lg:text-2xl focus:outline-none focus:ring-1 focus:ring-blue-600"
@@ -36,9 +124,10 @@ const Checkout = () => {
                       Last Name
                     </label>
                     <input
-                      name="Last Name"
+                      name="lname"
                       type="text"
                       placeholder="Last Name"
+                      onChange={handleChange}
                       className="w-full px-4 normal-case py-3 text-sm border border-gray-300 rounded lg:text-2xl focus:outline-none focus:ring-1 focus:ring-blue-600"
                     />
                   </div>
@@ -54,6 +143,7 @@ const Checkout = () => {
                     <input
                       name="email"
                       type="text"
+                      onChange={handleChange}
                       placeholder="Email"
                       className="w-full px-4 normal-case py-3 text-sm border border-gray-300 rounded lg:text-2xl focus:outline-none focus:ring-1 focus:ring-blue-600"
                     />
@@ -69,9 +159,10 @@ const Checkout = () => {
                     </label>
                     <textarea
                       className="w-full px-4 py-3 mb-12 normal-case text-xs border border-gray-300 rounded lg:text-2xl focus:outline-none focus:ring-1 focus:ring-blue-600"
-                      name="Address"
+                      name="address"
                       cols="20"
                       rows="4"
+                      onChange={handleChange}
                       placeholder="Address"
                     ></textarea>
                   </div>
@@ -87,13 +178,17 @@ const Checkout = () => {
                     <input
                       name="city"
                       type="text"
+                      onChange={handleChange}
                       placeholder="City"
                       className="w-full px-4 normal-case py-3 text-sm border border-gray-300 rounded lg:text-2xl focus:outline-none focus:ring-1 focus:ring-blue-600"
                     />
                   </div>
                 </div>
                 <div className="mt-4">
-                  <button className="w-fit px-6 py-2 text-white font-bold bg-blue-600 hover:bg-blue-900">
+                  <button
+                    onClick={handleSubmit}
+                    className="w-fit px-6 py-2 text-white font-bold bg-blue-600 hover:bg-blue-900"
+                  >
                     Payment
                   </button>
                 </div>
@@ -105,25 +200,18 @@ const Checkout = () => {
               <h2 className="text-4xl font-bold text-center">Current Cart</h2>
               <div className="mt-8">
                 <div className="flex flex-col space-y-4">
-                  <div className="flex space-x-4">
-                    <div className="w-full mb-7">
-                      <h2 className="text-2xl font-bold text-red-500">
-                        Product 1
-                      </h2>
-                      <p className="text-lg">Lorem ipsum dolor sit amet, tet</p>
+                  {cart.map((item) => (
+                    <div className="flex space-x-4">
+                      <div className="w-full mb-7">
+                        <h2 className="text-2xl font-bold text-red-500">
+                          {item.name}
+                        </h2>
+                      </div>
+                      <div className="text-2xl font-bold">
+                        <span> ₹{item.price}</span>
+                      </div>
                     </div>
-                    <div className="text-2xl font-bold">$20.00</div>
-                  </div>
-
-                  <div className="flex space-x-4">
-                    <div className="w-full">
-                      <h2 className="text-2xl font-bold text-red-500">
-                        Product 2
-                      </h2>
-                      <p className="text-lg">Lorem ipsum dolor sit amet, tet</p>
-                    </div>
-                    <div className="text-2xl font-bold">$20.00</div>
-                  </div>
+                  ))}
                 </div>
               </div>
 
@@ -131,7 +219,7 @@ const Checkout = () => {
                 Subtotal
                 <div className="ml-52 flex ">
                   <BiRupee></BiRupee>
-                  40.00
+                  {total}
                 </div>
               </div>
               <div className="flex items-center w-full py-4 text-2xl font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
@@ -145,7 +233,7 @@ const Checkout = () => {
                 Total
                 <div className="ml-64 flex ">
                   <BiRupee></BiRupee>
-                  40.00
+                  {total + 40}
                 </div>
               </div>
               <div className="flex items-center w-full py-4 text-2xl font-semibold  lg:py-5 lg:px-3 text-heading  last:text-base last:pb-0">

@@ -86,6 +86,30 @@ const ShirtSlider1 = () => {
     const data = await fetchAllProducts();
     setProducts(data);
   };
+  const [cart, setCartState] = useState([]);
+
+  useEffect(() => {
+    const cartData = JSON.parse(localStorage.getItem("cart"));
+    if (cartData) {
+      setCartState(cartData);
+    }
+  }, []);
+
+  const addToCart = (product) => {
+    const newCart = [...cart, product];
+    setCartState(newCart);
+    localStorage.setItem("cart", JSON.stringify(newCart));
+  };
+
+  const removeFromCart = (product) => {
+    const index = cart.findIndex((item) => item.id === product.id);
+    if (index !== -1) {
+      const newCart = [...cart];
+      newCart.splice(index, 1);
+      setCartState(newCart);
+      localStorage.setItem("cart", JSON.stringify(newCart));
+    }
+  };
 
   useEffect(() => {
     handleProducts();
@@ -110,7 +134,12 @@ const ShirtSlider1 = () => {
                   ₹ {item?.price}
                 </span>
               </div>
-              <Button className="bg-orange-200 text-black font-bold font-serif border-2 mt-2 text-2xl rounded-xl">
+              <Button
+                className="bg-orange-200 text-black font-bold font-serif border-2 mt-2 text-2xl rounded-xl"
+                onClick={() =>
+                  addToCart({ name: item?.name, price: item?.price })
+                }
+              >
                 Add to Cart
               </Button>
             </div>

@@ -10,6 +10,7 @@ const nodemailer = require("nodemailer");
 const sendMail = require("../nodemailer");
 require("dotenv").config;
 const Jimp = require("jimp");
+const moment = require("moment");
 //Route:1 creating user
 router.post("/createUser", async (req, res) => {
   let success = false;
@@ -325,6 +326,59 @@ router.post("/combineImage", async (req, res) => {
     }, 5000);
   } catch (error) {
     console.log(error);
+  }
+});
+
+router.post("/orders", async (req, res) => {
+  try {
+    const { userEmail } = req.query;
+    const user = await User.findOne({ emailAddress: userEmail });
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const { fname, lname, email, address, city, products, total } = req.body;
+
+    user.order.push({
+      fname: fname[0],
+      lname: lname[0],
+      email: email[0],
+      address: address[0],
+      city: city[0],
+      products: products,
+      total: total[0],
+    });
+    await user.save();
+
+    const emailText = `Dear ${fname} ${lname},
+
+    Thank you for your recent order with Artistic. Your order has been successfully processed and is on its way!
+    
+    Order details:
+    
+    Order Date: ${moment(Date.now()).format("DD-MM-YYYY")}
+
+    
+    Shipping Address:
+    ${fname} ${lname}
+    ${address}
+    
+    If you have any questions or concerns about your order, please contact our customer support team at help@artisitc@gmail.com or reply to this email.
+    
+    Thank you for choosing Artisitc!
+    
+    Best regards,
+    Artisitc team`;
+
+    sendMail(email, "Order Confirmation", emailText);
+
+    res
+      .status(201)
+      .json({ success: true, message: "Order added successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: "Server error" });
   }
 });
 
