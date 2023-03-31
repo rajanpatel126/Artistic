@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { BiRupee } from "react-icons/bi";
 import client from "../api/client";
 
@@ -20,7 +21,7 @@ function loadScript(src) {
 const Checkout = () => {
   const [cart, setCartState] = useState([]);
   const [total, setTotal] = useState(0);
-
+  const navigation = useNavigate();
   const [orderData, setOrderData] = useState({
     fname: "",
     lname: "",
@@ -39,14 +40,16 @@ const Checkout = () => {
   };
 
   useEffect(() => {
-    const cartData = JSON.parse(localStorage.getItem("cart"));
-    let ttl = 0;
-    cartData.map((item) => {
-      ttl += item.price;
-    });
-    setTotal(ttl);
-    if (cartData) {
-      setCartState(cartData);
+    if (localStorage.getItem("cart")?.length > 1) {
+      const cartData = JSON.parse(localStorage.getItem("cart"));
+      let ttl = 0;
+      cartData.map((item) => {
+        ttl += item.price;
+      });
+      setTotal(ttl);
+      if (cartData) {
+        setCartState(cartData);
+      }
     }
   }, []);
   const displayRazorpay = async () => {
@@ -60,7 +63,7 @@ const Checkout = () => {
 
     const options = {
       key: "rzp_test_giq1IMMWeasz25", // Enter the Key ID generated from the Dashboard
-      amount: total * 100,
+      amount: (total + 40) * 100,
       currency: "INR",
       name: "Artisitic",
       description: "Proceed To Payment",
@@ -71,8 +74,11 @@ const Checkout = () => {
           `/user/orders?userEmail=${localStorage.getItem("userEmail")}`,
           orderData
         );
+        console.log("Data ", data);
         if (data?.success) {
           alert(data.message);
+          localStorage.setItem("cart", []);
+          navigation("/");
         }
       },
 

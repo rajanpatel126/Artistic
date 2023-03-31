@@ -85,7 +85,6 @@ const ShirtSlider2 = () => {
     setCustomiseProducts([]);
     const data = await fetchFromTag("Customised Shirt");
     setCustomiseProducts(data);
-    console.log(customiseproducts);
   };
 
   useEffect(() => {

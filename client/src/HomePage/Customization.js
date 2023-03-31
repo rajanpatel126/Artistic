@@ -5,10 +5,12 @@ import { useState } from "react";
 import { fetchFromTag } from "../api/admin";
 import { getArtDesigns } from "../api/artist";
 import { combineImage } from "../api/user";
+import { Button } from "react-bootstrap";
 const Customization = () => {
   const [image1, setImage1] = useState("");
   const [image2, setImage2] = useState("");
   const [mergedImage, setMergedImage] = useState("");
+  const [cart, setCartState] = useState([]);
 
   const [tshirts, setTshirts] = useState([]);
   const [artDesign, setArtDesign] = useState([]);
@@ -35,6 +37,12 @@ const Customization = () => {
   };
   let imageSrc;
   let artSrc;
+
+  const addToCart = (product) => {
+    const newCart = [...cart, product];
+    setCartState(newCart);
+    localStorage.setItem("cart", JSON.stringify(newCart));
+  };
 
   const handleClick1 = (event) => {
     const data = event.target;
@@ -109,6 +117,12 @@ const Customization = () => {
             alt="customisedImage"
             className="flex flex-row justify-center object-cover object-center w-96 h-[350px]  hover:cursor-pointer transform "
           />
+          <Button
+            className="bg-orange-200 text-black font-bold font-serif border-2 mt-2 text-2xl rounded-xl"
+            onClick={() => addToCart({ name: "Customise Tshirt", price: 1500 })}
+          >
+            Add to Cart
+          </Button>
         </div>
       </div>
     </>

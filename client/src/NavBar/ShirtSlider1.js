@@ -89,9 +89,11 @@ const ShirtSlider1 = () => {
   const [cart, setCartState] = useState([]);
 
   useEffect(() => {
-    const cartData = JSON.parse(localStorage.getItem("cart"));
-    if (cartData) {
-      setCartState(cartData);
+    if (localStorage.getItem("cart")?.length > 0) {
+      const cartData = JSON.parse(localStorage.getItem("cart"));
+      if (cartData) {
+        setCartState(cartData);
+      }
     }
   }, []);
 
