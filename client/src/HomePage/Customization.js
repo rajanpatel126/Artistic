@@ -15,6 +15,7 @@ const Customization = () => {
   const [tshirts, setTshirts] = useState([]);
   const [artDesign, setArtDesign] = useState([]);
 
+  let imageSrc, artSrc;
   const handleProducts = async () => {
     setTshirts([]);
     const data = await fetchFromTag("T-Shirt");
@@ -30,12 +31,13 @@ const Customization = () => {
   const handleClick = async () => {
     console.log(".................");
   };
-  const mergeImages = async () => {
-    const data = await combineImage({ img1: image1, img2: image2 });
-    setMergedImage((prev) => [...prev, data.combineImg]);
+  let myArr = new Array();
+  const mergeImages = async (image1, image2) => {
+    combineImage({ img1: image1, img2: image2 }).then((response) => {
+      myArr.push(response.combineImg);
+      setMergedImage(myArr);
+    });
   };
-  let imageSrc;
-  let artSrc;
 
   const addToCart = (product) => {
     const newCart = [...cart, product];
@@ -46,14 +48,10 @@ const Customization = () => {
   const handleClick1 = (event) => {
     const data = event.target;
     imageSrc = data.src;
-    console.log(data, imageSrc);
-    console.log("image clicked");
   };
   const handleClick2 = (event) => {
     const data = event.target;
     artSrc = data.src;
-    console.log(data, artSrc);
-    console.log("art clicked");
   };
 
   useEffect(() => {
@@ -62,17 +60,10 @@ const Customization = () => {
   }, []);
 
   useEffect(() => {
-    setImage1(tshirts[0]?.productImg);
-    console.log(image1);
+    tshirts.forEach((item) => {
+      mergeImages(item?.productImg, artDesign[0]?.patternImg);
+    });
   }, [tshirts]);
-  useEffect(() => {
-    setImage2(artDesign[0]?.patternImg);
-    console.log(image2);
-  }, [artDesign]);
-
-  useEffect(() => {
-    mergeImages();
-  }, [image1, image2]);
 
   return (
     <>
@@ -110,18 +101,28 @@ const Customization = () => {
           Customise
         </button>
         <h2 className="mt-2 text-black">Customised Products</h2>
-        <div className="lg:w-1/4 md:w-1/2 p-4 hover:scale-110">
-          <img
-            src={mergedImage}
-            alt="customisedImage"
-            className="flex flex-row justify-center object-cover object-center w-96 h-[350px]  hover:cursor-pointer transform "
-          />
-          <Button
-            className="bg-orange-200 flex justify-center text-black font-bold font-serif border-2 mt-2 text-2xl rounded-xl"
-            onClick={() => addToCart({ name: "Customise Tshirt", price: 1500 })}
-          >
-            Add to Cart
-          </Button>
+        <div className=" flex flex-row justify-center items-start">
+          {mergedImage.map((item, idx) => {
+            return (
+              <>
+                <div className="lg:w-1/4 md:w-1/2 p-4 hover:scale-110 hover:bg-[#d1edb6] hover:shadow-2xl">
+                  <img
+                    src={item}
+                    alt="ecommerce"
+                    className=" object-center h-[250px] block  hover:cursor-pointer transform "
+                  />
+                  <Button
+                    className="bg-orange-200 text-black font-bold font-serif border-2 mt-2 text-2xl rounded-xl"
+                    onClick={() =>
+                      addToCart({ name: "Customized Tshirts", price: 1500 })
+                    }
+                  >
+                    Add to Cart
+                  </Button>
+                </div>
+              </>
+            );
+          })}
         </div>
       </div>
     </>
