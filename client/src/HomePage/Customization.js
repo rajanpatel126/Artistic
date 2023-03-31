@@ -9,7 +9,7 @@ import { Button } from "react-bootstrap";
 const Customization = () => {
   const [image1, setImage1] = useState("");
   const [image2, setImage2] = useState("");
-  const [mergedImage, setMergedImage] = useState("");
+  const [mergedImage, setMergedImage] = useState([]);
   const [cart, setCartState] = useState([]);
 
   const [tshirts, setTshirts] = useState([]);
@@ -32,8 +32,7 @@ const Customization = () => {
   };
   const mergeImages = async () => {
     const data = await combineImage({ img1: image1, img2: image2 });
-    setMergedImage(data.combineImg);
-    console.log(data);
+    setMergedImage((prev) => [...prev, data.combineImg]);
   };
   let imageSrc;
   let artSrc;
@@ -118,7 +117,7 @@ const Customization = () => {
             className="flex flex-row justify-center object-cover object-center w-96 h-[350px]  hover:cursor-pointer transform "
           />
           <Button
-            className="bg-orange-200 text-black font-bold font-serif border-2 mt-2 text-2xl rounded-xl"
+            className="bg-orange-200 flex justify-center text-black font-bold font-serif border-2 mt-2 text-2xl rounded-xl"
             onClick={() => addToCart({ name: "Customise Tshirt", price: 1500 })}
           >
             Add to Cart

@@ -11,6 +11,7 @@ export const Login = (props) => {
     const { data } = await verifyUser({ emailAddress: email, password: pass });
     console.log(data);
     localStorage.setItem("userEmail", email);
+    localStorage.setItem("cart", []);
     if (data?.user) {
       navigate("/");
     } else {
