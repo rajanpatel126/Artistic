@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./sliders.css";
 import { Button } from "react-bootstrap";
+import { fetchFromTag } from "../api/admin";
+import { getImageInfo } from "../api/user";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -77,170 +79,56 @@ const Slider1 = () => {
     ),
   };
 
+  const [kurti, setKurti] = useState([]);
+
+  const handleProducts = async () => {
+    setKurti([]);
+    const data = await fetchFromTag("Kurti");
+    setKurti(data);
+  };
+  useEffect(() => {
+    handleProducts();
+  }, []);
+
+  const handleCart = async (itemId) => {
+    const data = await getImageInfo(itemId);
+    console.log("Data id :" + data);
+    var a = [];
+    a = JSON.parse(localStorage.getItem("ProductInfo")) || [];
+    a.push(data);
+    localStorage.setItem("ProductInfo", JSON.stringify(a));
+  };
+
   return (
     <div>
       <Slider {...settings}>
-        <div className="p-4  lg:w-1/4 md:w-1/2">
-          <div className="h-full flex flex-col items-center text-center">
-            <img
-              alt="team"
-              className="flex-shrink-0 rounded-lg viol w-96 h-[350px] object-center mb-4 border-2 border-purple-700"
-              src="./images/kurti1.png"
-            />
-            <div className="">
-              <h2 className="text-black title-font font-bold text-2xl mb-2">
-                Embroided Kurtis by Biba
-              </h2>
-
-              <span className="mt-1 line-through text-3xl mb-3">₹320</span>
-              <span className="mx-3 text-3xl font-bold mb-3">₹250</span>
+        {kurti.map((item) => (
+          <div className="p-4  lg:w-1/4 md:w-1/2">
+            <div className="h-full flex flex-col items-center text-center">
+              <img
+                alt="team"
+                className="flex-shrink-0 rounded-lg viol w-96 h-[350px] object-center mb-4 border-2 border-purple-700"
+                src={item?.productImg}
+              />
+              <div className="">
+                <h2 className="text-black title-font font-bold text-2xl mb-2">
+                  {item?.name}
+                </h2>
+                <span className="mx-3 text-3xl font-bold mb-3">
+                  ₹ {item?.price}
+                </span>
+              </div>
+              <Button
+                onClick={() => {
+                  handleCart(item._id);
+                }}
+                className="bg-orange-200 text-black font-bold font-serif border-2 mt-2 text-2xl rounded-xl"
+              >
+                Add to Cart
+              </Button>
             </div>
-            <Button className="bg-orange-200 text-black font-bold font-serif border-2 mt-2 text-2xl rounded-xl">
-              Add to Cart
-            </Button>
           </div>
-        </div>
-        <div className="p-4 lg:w-1/4 md:w-1/2">
-          <div className="h-full flex flex-col items-center text-center">
-            <img
-              alt="team"
-              className="flex-shrink-0 rounded-lg viol w-96 h-[350px] object-center mb-4 border border-purple-700"
-              src="./images/kurti2.png"
-            />
-            <div className="">
-              <h2 className="text-black title-font font-bold text-2xl mb-2">
-                Jansya Tunic Tops
-              </h2>
-
-              <span className="mt-1 line-through text-3xl mb-3">₹320</span>
-              <span className="mx-3 text-3xl font-bold mb-3">₹250</span>
-            </div>
-            <Button className="bg-orange-200 text-black font-bold font-serif border-2 mt-2 text-2xl rounded-xl">
-              Add to Cart
-            </Button>
-          </div>
-        </div>
-
-        <div className="p-4  lg:w-1/4 md:w-1/2">
-          <div className="h-full flex flex-col items-center text-center">
-            <img
-              alt="team"
-              className="flex-shrink-0 rounded-lg viol w-96 h-[350px] object-center mb-4 border border-purple-700"
-              src="./images/kurti3.png"
-            />
-            <div className="">
-              <h2 className="text-black title-font font-bold text-2xl mb-2">
-                Fashion with Varanga
-              </h2>
-              <span className="mt-1 line-through text-3xl mb-3">₹320</span>
-              <span className="mx-3 text-3xl font-bold mb-3">₹250</span>
-            </div>
-            <Button className="bg-orange-200 text-black font-bold font-serif border-2 mt-2 text-2xl rounded-xl">
-              Add to Cart
-            </Button>
-          </div>
-        </div>
-        <div className="p-4  lg:w-1/4 md:w-1/2">
-          <div className="h-full flex flex-col items-center text-center">
-            <img
-              alt="team"
-              className="flex-shrink-0 rounded-lg viol w-96 h-[350px] object-center mb-4 border border-purple-700"
-              src="./images/kurti4.png"
-            />
-            <div className="">
-              <h2 className="text-black title-font font-bold text-2xl mb-2">
-                Aurelia Pure Cotton
-              </h2>
-              <span className="mt-1 line-through text-3xl mb-3">₹320</span>
-              <span className="mx-3 text-3xl font-bold mb-3">₹250</span>
-            </div>
-            <Button className="bg-orange-200 text-black font-bold font-serif border-2 mt-2 text-2xl rounded-xl">
-              Add to Cart
-            </Button>
-          </div>
-        </div>
-        <div className="p-4  lg:w-1/4 md:w-1/2">
-          <div className="h-full flex flex-col items-center text-center">
-            <img
-              alt="team"
-              className="flex-shrink-0 rounded-lg viol w-96 h-[350px] object-center mb-4 border border-purple-700"
-              src="./images/kurti5.png"
-            />
-            <div className="">
-              <h2 className="text-black title-font font-bold text-2xl mb-2">
-                Rangritri Indian Women
-              </h2>
-
-              <span className="mt-1 line-through text-3xl mb-3">₹320</span>
-              <span className="mx-3 text-3xl font-bold mb-3">₹250</span>
-            </div>
-            <Button className="bg-orange-200 text-black font-bold font-serif border-2 mt-2 text-2xl rounded-xl">
-              Add to Cart
-            </Button>
-          </div>
-        </div>
-        <div className="p-4  lg:w-1/4 md:w-1/2">
-          <div className="h-full flex flex-col items-center text-center">
-            <img
-              alt="team"
-              className="flex-shrink-0 rounded-lg viol w-96 h-[350px] object-center mb-4 border border-purple-700"
-              src="./images/kurti6.png"
-            />
-            <div className="">
-              <h2 className="text-black title-font font-bold text-2xl mb-2">
-                Embroided Kurtis by Biba
-              </h2>
-
-              <span className="mt-1 line-through text-3xl mb-3">₹320</span>
-              <span className="mx-3 text-3xl font-bold mb-3">₹250</span>
-            </div>
-            <Button className="bg-orange-200 text-black font-bold font-serif border-2 mt-2 text-2xl rounded-xl">
-              Add to Cart
-            </Button>
-          </div>
-        </div>
-
-        <div className="p-4  lg:w-1/4 md:w-1/2">
-          <div className="h-full flex flex-col items-center text-center">
-            <img
-              alt="team"
-              className="flex-shrink-0 rounded-lg viol w-96 h-[350px] object-center mb-4 border border-purple-700"
-              src="./images/kurti7.png"
-            />
-            <div className="">
-              <h2 className="text-black title-font font-bold text-2xl mb-2">
-                Jansya Tunic Tops
-              </h2>
-
-              <span className="mt-1 line-through text-3xl mb-3">₹320</span>
-              <span className="mx-3 text-3xl font-bold mb-3">₹250</span>
-            </div>
-            <Button className="bg-orange-200 text-black font-bold font-serif border-2 mt-2 text-2xl rounded-xl">
-              Add to Cart
-            </Button>
-          </div>
-        </div>
-
-        <div className="p-4  lg:w-1/4 md:w-1/2">
-          <div className="h-full flex flex-col items-center text-center">
-            <img
-              alt="team"
-              className="flex-shrink-0 rounded-lg viol w-96 h-[350px] object-center mb-4 border border-purple-700"
-              src="./images/kurti8.png"
-            />
-            <div className="">
-              <h2 className="text-black title-font font-bold text-2xl mb-16">
-                Fashion with Varanga
-              </h2>
-
-              <span className="mt-1 line-through text-3xl mb-3">₹320</span>
-              <span className="mx-3 text-3xl font-bold mb-3">₹250</span>
-            </div>
-            <Button className="bg-orange-200 text-black font-bold font-serif border-2 mt-2 text-2xl rounded-xl">
-              Add to Cart
-            </Button>
-          </div>
-        </div>
+        ))}
       </Slider>
     </div>
   );
