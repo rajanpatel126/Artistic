@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
@@ -91,6 +92,33 @@ const ShirtSlider2 = () => {
     handleProducts();
   }, []);
 
+  const [cart, setCartState] = useState([]);
+
+  useEffect(() => {
+    if (localStorage.getItem("cart")?.length > 0) {
+      const cartData = JSON.parse(localStorage.getItem("cart"));
+      if (cartData) {
+        setCartState(cartData);
+      }
+    }
+  }, []);
+
+  const addToCart = (product) => {
+    const newCart = [...cart, product];
+    setCartState(newCart);
+    localStorage.setItem("cart", JSON.stringify(newCart));
+  };
+
+  const removeFromCart = (product) => {
+    const index = cart.findIndex((item) => item.id === product.id);
+    if (index !== -1) {
+      const newCart = [...cart];
+      newCart.splice(index, 1);
+      setCartState(newCart);
+      localStorage.setItem("cart", JSON.stringify(newCart));
+    }
+  };
+
   return (
     <div>
       <Slider {...settings}>
@@ -110,7 +138,12 @@ const ShirtSlider2 = () => {
                   ₹ {item?.price}
                 </span>
               </div>
-              <Button className="bg-orange-200 text-black font-bold font-serif border-2 mt-2 text-2xl rounded-xl">
+              <Button
+                onClick={() =>
+                  addToCart({ name: item?.name, price: item?.price })
+                }
+                className="bg-orange-200 text-black font-bold font-serif border-2 mt-2 text-2xl rounded-xl"
+              >
                 Add to Cart
               </Button>
             </div>

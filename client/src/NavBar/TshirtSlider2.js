@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -89,13 +90,31 @@ const TshirtSlider2 = () => {
     handleProducts();
   }, []);
 
-  const handleCart = async (itemId) => {
-    const data = await getImageInfo(itemId);
-    console.log("Data id :" + data);
-    var a = [];
-    a = JSON.parse(localStorage.getItem("ProductInfo")) || [];
-    a.push(data);
-    localStorage.setItem("ProductInfo", JSON.stringify(a));
+  const [cart, setCartState] = useState([]);
+
+  useEffect(() => {
+    if (localStorage.getItem("cart")?.length > 0) {
+      const cartData = JSON.parse(localStorage.getItem("cart"));
+      if (cartData) {
+        setCartState(cartData);
+      }
+    }
+  }, []);
+
+  const addToCart = (product) => {
+    const newCart = [...cart, product];
+    setCartState(newCart);
+    localStorage.setItem("cart", JSON.stringify(newCart));
+  };
+
+  const removeFromCart = (product) => {
+    const index = cart.findIndex((item) => item.id === product.id);
+    if (index !== -1) {
+      const newCart = [...cart];
+      newCart.splice(index, 1);
+      setCartState(newCart);
+      localStorage.setItem("cart", JSON.stringify(newCart));
+    }
   };
 
   return (
@@ -118,9 +137,9 @@ const TshirtSlider2 = () => {
                 </span>
               </div>
               <Button
-                onClick={() => {
-                  handleCart(item._id);
-                }}
+                onClick={() =>
+                  addToCart({ name: item?.name, price: item?.price })
+                }
                 className="bg-orange-200 text-black font-bold font-serif border-2 mt-2 text-2xl rounded-xl"
               >
                 Add to Cart

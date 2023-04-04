@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { fetchFromTag } from "../api/admin";
+import { Button } from "react-bootstrap";
 
 export default function ProductCollections() {
   const [trendKurti, setTrendKurti] = useState([]);
@@ -24,6 +25,33 @@ export default function ProductCollections() {
     setTrendKurti(kurti);
     setTrendShirt(shirt);
     setTrendTshirt(tshirt);
+  };
+
+  const [cart, setCartState] = useState([]);
+
+  useEffect(() => {
+    if (localStorage.getItem("cart")?.length > 0) {
+      const cartData = JSON.parse(localStorage.getItem("cart"));
+      if (cartData) {
+        setCartState(cartData);
+      }
+    }
+  }, []);
+
+  const addToCart = (product) => {
+    const newCart = [...cart, product];
+    setCartState(newCart);
+    localStorage.setItem("cart", JSON.stringify(newCart));
+  };
+
+  const removeFromCart = (product) => {
+    const index = cart.findIndex((item) => item.id === product.id);
+    if (index !== -1) {
+      const newCart = [...cart];
+      newCart.splice(index, 1);
+      setCartState(newCart);
+      localStorage.setItem("cart", JSON.stringify(newCart));
+    }
   };
 
   useEffect(() => {
@@ -54,21 +82,21 @@ export default function ProductCollections() {
         </div>
       </section>
       <div className="bg-[#d1af5a]">
-        <section className="text-black body-font">
+        <section className="text-black body-font ">
           <div className="container px-5 py-20 mx-auto">
             <div className="flex flex-wrap -mx-14 -m-4">
               {trendKurti.map((item) => (
                 <div className="lg:w-1/4 md:w-1/2 p-4 w-full hover:scale-110 hover:bg-[#e2dcce] hover:shadow-2xl">
-                  <Link
+                  <div
                     className="block relative h-4/5 rounded overflow-hidden"
-                    to="/Kurti"
+                    // to="/Kurti"
                   >
                     <img
                       src={item?.productImg}
                       alt="ecommerce"
-                      className="object-cover object-center w-full h-full block  hover:cursor-pointer transform "
+                      className="object-cover object-center w-full h-full block  transform "
                     />
-                  </Link>
+                  </div>
                   <div className="mt-4">
                     <label className="bg-blue-500 text-2xl p-2 text-white font-semibold">
                       8% OFF
@@ -89,20 +117,28 @@ export default function ProductCollections() {
                       </span>
                     </div>
                   </div>
+                  <Button
+                    onClick={() =>
+                      addToCart({ name: item?.name, price: item?.price })
+                    }
+                    className="bg-orange-200 text-black font-bold font-serif border-2 text-2xl rounded-xl"
+                  >
+                    Add to Cart
+                  </Button>
                 </div>
               ))}
               {trendShirt.map((item) => (
                 <div className="lg:w-1/4 md:w-1/2 p-4 w-full hover:scale-110 hover:shadow-2xl hover:bg-[#e2dcce]">
-                  <Link
+                  <div
                     className="block relative h-4/5 rounded overflow-hidden"
-                    to="/Shirt"
+                    // to="/Shirt"
                   >
                     <img
                       alt="ecommerce"
-                      className="object-cover object-center w-full h-full block hover:cursor-pointer transform hover:scale-110 hover:shadow-2xl"
+                      className="object-cover object-center w-full h-full block transform hover:scale-110 hover:shadow-2xl"
                       src={item?.productImg}
                     />
-                  </Link>
+                  </div>
                   <div className="mt-4">
                     <label className="bg-blue-500 text-2xl p-2 text-white font-semibold">
                       15% OFF
@@ -122,20 +158,28 @@ export default function ProductCollections() {
                       ₹ {item?.price}
                     </span>
                   </div>
+                  <Button
+                    onClick={() =>
+                      addToCart({ name: item?.name, price: item?.price })
+                    }
+                    className="bg-orange-200 text-black font-bold font-serif border-2 text-2xl rounded-xl"
+                  >
+                    Add to Cart
+                  </Button>
                 </div>
               ))}
               {trendHoodie.map((item) => (
                 <div className="lg:w-1/4 md:w-1/2 p-4 w-full hover:scale-110 hover:shadow-2xl hover:bg-[#e2dcce]">
-                  <Link
+                  <div
                     className="block relative h-4/5 rounded overflow-hidden"
-                    to="/Hoodie"
+                    // to="/Hoodie"
                   >
                     <img
                       alt="ecommerce"
                       className="object-cover object-center w-full h-full block hover:cursor-pointer transform hover:scale-110 hover:shadow-2xl"
                       src={item?.productImg}
                     />
-                  </Link>
+                  </div>
                   <div className="mt-4">
                     <label className="bg-blue-500 text-2xl p-2 text-white font-semibold">
                       Upto 15% OFF
@@ -151,12 +195,20 @@ export default function ProductCollections() {
                       ₹ {item?.price}
                     </span>
                   </div>
+                  <Button
+                    onClick={() =>
+                      addToCart({ name: item?.name, price: item?.price })
+                    }
+                    className="bg-orange-200 text-black font-bold font-serif border-2 text-2xl rounded-xl"
+                  >
+                    Add to Cart
+                  </Button>
                 </div>
               ))}
               {trendTshirt.map((item) => (
                 <div className="lg:w-1/4 md:w-1/2 p-4 w-full hover:scale-110 hover:shadow-2xl hover:bg-[#e2dcce]">
-                  <Link
-                    to="/Tshirt"
+                  <div
+                    // to="/Tshirt"
                     className="block relative h-4/5 rounded overflow-hidden"
                   >
                     <img
@@ -164,7 +216,7 @@ export default function ProductCollections() {
                       alt="ecommerce"
                       className="object-cover object-center w-full h-full block hover:cursor-pointer transform hover:scale-110 hover:shadow-2xl"
                     />
-                  </Link>
+                  </div>
                   <div className="mt-4">
                     <label className="bg-blue-500 text-2xl p-2 text-white font-semibold">
                       12% OFF
@@ -183,6 +235,14 @@ export default function ProductCollections() {
                       ₹ {item?.price}
                     </span>
                   </div>
+                  <Button
+                    onClick={() =>
+                      addToCart({ name: item?.name, price: item?.price })
+                    }
+                    className="bg-orange-200 text-black font-bold font-serif border-2 text-2xl rounded-xl"
+                  >
+                    Add to Cart
+                  </Button>
                 </div>
               ))}
             </div>
