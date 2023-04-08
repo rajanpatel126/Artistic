@@ -96,6 +96,13 @@ const Checkout = () => {
     e.preventDefault();
     displayRazorpay();
   };
+  const clearCart = async (e) => {
+    e.preventDefault();
+    localStorage.setItem("cart", []);
+  };
+  useEffect(() => {
+    clearCart();
+  }, []);
 
   return (
     <>
@@ -197,6 +204,12 @@ const Checkout = () => {
                     className="w-fit px-6 py-2 text-white font-bold bg-blue-600 hover:bg-blue-900"
                   >
                     Payment
+                  </button>
+                  <button
+                    onClick={clearCart}
+                    className="w-fit ml-4 px-6 py-2 text-white font-bold bg-blue-600 hover:bg-blue-900"
+                  >
+                    Clear cart
                   </button>
                 </div>
               </div>

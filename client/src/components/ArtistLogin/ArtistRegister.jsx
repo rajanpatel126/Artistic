@@ -24,6 +24,7 @@ export const ArtistRegister = (props) => {
     }
     localStorage.setItem("Artist Email", email);
     localStorage.setItem("Artist Phone No", phoneNo);
+    localStorage.setItem("ArtistId", data?.artist?.id);
     console.log(data);
   };
 

@@ -11,8 +11,9 @@ import { deleteArt } from "./api/artist";
 
 export default function ViewArt() {
   const [artData, setArtData] = useState([]);
+  const [artistId, setArtistId] = useState(localStorage.getItem("ArtistId"));
   const handleArt = async () => {
-    const { data } = await client.get(`/artist/getArtDesigns`);
+    const { data } = await client.get(`/artist/getArtDesigns/${artistId}`);
     setArtData(data);
     console.log("art data", data);
   };

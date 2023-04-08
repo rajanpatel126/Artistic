@@ -106,7 +106,7 @@ router.post("/signinArtist", async (req, res) => {
     }
     const data = {
       artist: {
-        id: artist.id,
+        id: artist._id,
       },
     };
     res.json({ data });
@@ -205,8 +205,8 @@ router.put("/addDesignDetails/:id", async (req, res) => {
   }
 });
 
-router.get("/getArtDesigns", async (req, res) => {
-  let artist = await Artist.findById("63dc21f2dda8160c29e95f54");
+router.get("/getArtDesigns/:id", async (req, res) => {
+  let artist = await Artist.findById(req.params.id);
 
   return res.json(artist.Pattern);
 });
@@ -247,6 +247,11 @@ router.get("/getArtDesign/:id/:artId", async (req, res) => {
   });
 
   return res.json({ success: false, msg: "Can't find Pattern" });
+});
+
+router.get("/getArtofArtist/:id", async (req, res) => {
+  let artist = await Artist.findById(req.params.id);
+
 });
 
 //Forgot Password
