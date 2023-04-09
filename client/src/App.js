@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import About from "./About";
 import Home from "./Home";
@@ -45,8 +45,12 @@ import Tshirts from "./NavBar/Tshirts";
 import Customization from "./HomePage/Customization";
 import AddProducts from "./AdminPanel/AddProducts";
 import Checkout from "./components/Checkout";
+import { serchingFunction } from "./api/admin";
 
 const App = () => {
+  const [query, setQuery] = useState("");
+  const [products, setProducts] = useState([]);
+
   const theme = {
     colors: {
       bg: "#F6F8FA",
@@ -66,12 +70,16 @@ const App = () => {
       tab: "998px",
     },
   };
+  const handleSearch = async () => {
+    const data = await serchingFunction(query);
+    setProducts(data);
+  };
 
   return (
     <ThemeProvider theme={theme}>
       <Router>
         <GlobalStyle />
-        <NavBar />
+        <NavBar setQuery={setQuery} handleSearch={handleSearch} />
         <Routes>
           <Route path="/" element={<Home />}>
             {" "}
@@ -105,7 +113,7 @@ const App = () => {
           <Route path="/Admin/Product" element={<Product />} />
           <Route path="/Admin/Artist" element={<Artists />} />
 
-          <Route path="/Shirts" element={<Shirts />} />
+          <Route path="/Shirts" element={<Shirts products={products} />} />
           <Route path="/Kurtis" element={<Kurtis />} />
           <Route path="/Hoodies" element={<Hoodies />} />
           <Route path="/Tshirts" element={<Tshirts />} />

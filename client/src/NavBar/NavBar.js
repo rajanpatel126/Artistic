@@ -6,7 +6,7 @@ import { AiOutlineSearch, AiOutlineShoppingCart } from "react-icons/ai";
 import { FaRegUserCircle } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
 
-function NavBar() {
+function NavBar({ handleSearch, setQuery }) {
   const navigation = useNavigate();
   const handleSelect = (e) => {
     if (e.target.value === "Admin") {
@@ -64,9 +64,15 @@ function NavBar() {
                 name="text"
                 type="text"
                 placeholder="Search..."
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                }}
                 className="w-[300px] mt-12 p-2.5 text-3xl normal-case text-black outline-none bg-[#f3e1fc] focus:bg-white focus:border-black border-gray-500 border-2 focus:shadow-2xl rounded-xl"
               ></input>
-              <AiOutlineSearch className="cursor-pointer text-black h-16 w-20 mt-12 p-1 ml-3 mr-1" />
+              <AiOutlineSearch
+                onClick={handleSearch}
+                className="cursor-pointer text-black h-16 w-20 mt-12 p-1 ml-3 mr-1"
+              />
 
               {!show && (
                 <div className="relative group z-20">

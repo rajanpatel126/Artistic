@@ -28,9 +28,6 @@ export default function ViewArt() {
     setArtData(proData);
   };
 
-  // useEffect(() => {
-  //   console.log(artData);
-  // }, [artData]);
   useEffect(() => {
     handleArt();
     handleDelete();
