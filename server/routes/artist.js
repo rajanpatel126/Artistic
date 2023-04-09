@@ -80,7 +80,6 @@ router.post("/signinArtist", async (req, res) => {
   }
 
   const { emailAddress, password } = req.body;
-  console.log(emailAddress, password);
   try {
     let artist = await Artist.findOne({ emailAddress });
     if (!artist) {
