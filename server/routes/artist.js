@@ -211,6 +211,12 @@ router.get("/getArtDesigns/:id", async (req, res) => {
   return res.json(artist.Pattern);
 });
 
+router.get("/getAllArtDesigns", async (req, res) => {
+  let artists = await Artist.find({}).exec(); // Wait for the query to complete and get the documents
+  let patterns = artists.flatMap(artist => artist.Pattern); // Combine the "Pattern" arrays from all documents into a single array
+  return res.json(patterns);
+});
+
 //deleting specific art
 router.put("/deleteArt/:id/:pId", async (req, res) => {
   try {

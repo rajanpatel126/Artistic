@@ -4,7 +4,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { fetchFromTag } from "../api/admin";
-import { getArtDesigns } from "../api/artist";
+import { getAllArtDesigns } from "../api/artist";
 import { combineImage } from "../api/user";
 import { Button } from "react-bootstrap";
 const Customization = () => {
@@ -25,7 +25,7 @@ const Customization = () => {
 
   const handleArts = async () => {
     setArtDesign([]);
-    const arts = await getArtDesigns();
+    const arts = await getAllArtDesigns();
     setArtDesign(arts);
   };
 
@@ -41,8 +41,9 @@ const Customization = () => {
   };
 
   const addToCart = (product) => {
-    setCartState((prev) => [...prev, product]);
-    localStorage.setItem("cart", JSON.stringify(cart));
+    const newCart = [...cart, product];
+    setCartState(newCart);
+    localStorage.setItem("cart", JSON.stringify(newCart));
   };
 
   const handleClick1 = (event) => {
@@ -57,6 +58,15 @@ const Customization = () => {
   useEffect(() => {
     handleArts();
     handleProducts();
+  }, []);
+
+  useEffect(() => {
+    if (localStorage.getItem("cart")?.length > 0) {
+      const cartData = JSON.parse(localStorage.getItem("cart"));
+      if (cartData) {
+        setCartState(cartData);
+      }
+    }
   }, []);
 
   useEffect(() => {

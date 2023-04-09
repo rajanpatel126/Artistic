@@ -92,9 +92,9 @@ export const deleteArt = async (artId, productId) => {
 };
 
 //getting the art designs
-export const getArtDesigns = async () => {
+export const getAllArtDesigns = async () => {
   try {
-    const { data } = await client.get(`/artist/getArtDesigns`);
+    const { data } = await client.get(`/artist/getAllArtDesigns`);
     return data;
   } catch (error) {
     const { response } = error;

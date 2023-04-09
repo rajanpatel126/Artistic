@@ -2,14 +2,14 @@
 import React, { useEffect, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { BiRupee } from "react-icons/bi";
-import { getArtDesigns } from "../api/artist";
+import { getAllArtDesigns } from "../api/artist";
 
 export default function Artists() {
   const [artDesigns, setArtDesigns] = useState([]);
 
   const handleArts = async () => {
     setArtDesigns([]);
-    const arts = await getArtDesigns();
+    const arts = await getAllArtDesigns();
     setArtDesigns(arts);
   };
   useEffect(() => {
