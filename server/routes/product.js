@@ -54,7 +54,7 @@ router.get("/fetchFromTag", async (req, res) => {
 });
 
 //serching functionality
-router.get("/userByName", async (req, res) => {
+router.get("/getByName", async (req, res) => {
   const { name } = req.query;
   const product = await Product.find({
     name: { $regex: `^${name}`, $options: "i" },

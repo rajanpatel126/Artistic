@@ -99,6 +99,8 @@ const Checkout = () => {
   const clearCart = async (e) => {
     e.preventDefault();
     localStorage.setItem("cart", []);
+    setCartState([]);
+    setTotal(0);
   };
   useEffect(() => {
     clearCart();

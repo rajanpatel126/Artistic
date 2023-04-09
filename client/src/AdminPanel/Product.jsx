@@ -25,12 +25,8 @@ export default function Product() {
 
   const handleDelete = async (id) => {
     const deletedData = await DeleteProducts(id);
-    let proData = prodData;
-    const a = proData.splice(
-      proData.findIndex((e) => e._id === id),
-      1
-    );
-    setProdData(proData);
+    const newProdData = prodData.filter((item) => item._id !== id);
+    setProdData(newProdData);
   };
   useEffect(() => {
     handleProducts();

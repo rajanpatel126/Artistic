@@ -31,7 +31,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-const ShirtSlider1 = () => {
+const ShirtSlider1 = ({ searchedProducts }) => {
   const settings = {
     infinite: true,
     slidesToShow: 4,
@@ -96,6 +96,10 @@ const ShirtSlider1 = () => {
       }
     }
   }, []);
+
+  useEffect(() => {
+    setProducts(searchedProducts);
+  }, [searchedProducts.length > 0]);
 
   const addToCart = (product) => {
     const newCart = [...cart, product];

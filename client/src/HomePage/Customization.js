@@ -41,9 +41,8 @@ const Customization = () => {
   };
 
   const addToCart = (product) => {
-    const newCart = [...cart, product];
-    setCartState(newCart);
-    localStorage.setItem("cart", JSON.stringify(newCart));
+    setCartState((prev) => [...prev, product]);
+    localStorage.setItem("cart", JSON.stringify(cart));
   };
 
   const handleClick1 = (event) => {
@@ -84,16 +83,17 @@ const Customization = () => {
         </div>
         <h2 className="flex justify-center mt-2 text-black">Art Designs</h2>
         <div className=" flex flex-row justify-center items-center">
-          {artDesign.map((item) => (
-            <div className="lg:w-1/4 md:w-1/2 p-4 hover:scale-110">
-              <img
-                onClick={handleClick2}
-                src={item?.patternImg}
-                alt="ecommerce"
-                className="object-cover w-[250px] object-center block  hover:cursor-pointer transform "
-              />
-            </div>
-          ))}
+          {artDesign.map !== undefined &&
+            artDesign.map((item) => (
+              <div className="lg:w-1/4 md:w-1/2 p-4 hover:scale-110">
+                <img
+                  onClick={handleClick2}
+                  src={item?.patternImg}
+                  alt="ecommerce"
+                  className="object-cover w-[250px] object-center block  hover:cursor-pointer transform "
+                />
+              </div>
+            ))}
         </div>
         <button
           onClick={handleClick}

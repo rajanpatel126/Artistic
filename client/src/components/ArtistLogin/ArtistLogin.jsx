@@ -10,7 +10,7 @@ export const ArtistLogin = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { data } = await verifyArtist({
+    const data = await verifyArtist({
       emailAddress: email,
       password: pass,
     });
@@ -23,7 +23,9 @@ export const ArtistLogin = (props) => {
 
   return (
     <div className=" bg-gradient-to-r from-blue-300 to-slate-400 py-24">
-      <div className="flex justify-center text-7xl mb-2 font-bold">Artist login</div>
+      <div className="flex justify-center text-7xl mb-2 font-bold">
+        Artist login
+      </div>
       <div className="auth-form-container mx-auto bg-slate-700 bg-opacity-75 md:bg-opacity-75 justify-center w-96">
         <div className="logoimg">
           <img
@@ -36,7 +38,6 @@ export const ArtistLogin = (props) => {
 
         <form className="login-form">
           <input
-            value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="text-3xl normal-case h-20 "
             type="email"
@@ -46,7 +47,6 @@ export const ArtistLogin = (props) => {
           ></input>
 
           <input
-            value={pass}
             onChange={(e) => setPass(e.target.value)}
             type="password"
             className="text-3xl normal-case h-20 "

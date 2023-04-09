@@ -79,10 +79,10 @@ router.post("/signinArtist", async (req, res) => {
     return res.status(400).json({ errors: errors.array() });
   }
 
-  const { email, password } = req.body;
-
+  const { emailAddress, password } = req.body;
+  console.log(emailAddress, password);
   try {
-    let artist = await Artist.findOne({ email });
+    let artist = await Artist.findOne({ emailAddress });
     if (!artist) {
       success = false;
       return res
@@ -109,7 +109,8 @@ router.post("/signinArtist", async (req, res) => {
         id: artist._id,
       },
     };
-    res.json({ data });
+    console.log(data);
+    res.json(data);
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Internal server error");
@@ -251,7 +252,6 @@ router.get("/getArtDesign/:id/:artId", async (req, res) => {
 
 router.get("/getArtofArtist/:id", async (req, res) => {
   let artist = await Artist.findById(req.params.id);
-
 });
 
 //Forgot Password

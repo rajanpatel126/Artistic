@@ -42,9 +42,7 @@ export const fetchAllProducts = async () => {
 
 export const fetchFromTag = async (tag) => {
   try {
-    const { data } = await client.get(
-      `/product/fetchFromTag?tag=${tag}`
-    );
+    const { data } = await client.get(`/product/fetchFromTag?tag=${tag}`);
     return data;
   } catch (error) {
     const { response } = error;
@@ -57,7 +55,7 @@ export const fetchFromTag = async (tag) => {
 
 export const serchingFunction = async (name) => {
   try {
-    const { data } = await client.get(`/product/userByName?name=${name}`);
+    const { data } = await client.get(`/product/getByName?name=${name}`);
     return data;
   } catch (error) {
     const { response } = error;
@@ -71,9 +69,7 @@ export const serchingFunction = async (name) => {
 //deleting products
 export const DeleteProducts = async (prodId) => {
   try {
-    const { data } = await client.delete(
-      `/product/deleteProducts/${prodId}`
-    );
+    const { data } = await client.delete(`/product/deleteProducts/${prodId}`);
     return data;
   } catch (error) {
     const { response } = error;
