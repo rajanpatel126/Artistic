@@ -29,7 +29,11 @@ function NavBar({ handleSearch, setQuery }) {
   };
 
   const handleCart = () => {
-    navigation("/checkout");
+    if (localStorage.getItem("userEmail")) {
+      navigation("/checkout");
+    } else {
+      navigation("/");
+    }
   };
 
   const handleLogout = (e) => {
