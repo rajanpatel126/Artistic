@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 // const mongoURI = process.env.MONGODB_URL;
 const mongoURI =
-  "mongodb+srv://rajan126:rajan126@cluster0.jp2rvbv.mongodb.net/Artistic?retryWrites=true&w=majority";
+  "mongodb+srv://:@cluster0.jp2rvbv.mongodb.net/Artistic?retryWrites=true&w=majority";
 
 mongoose.set("strictQuery", false);
 // url for connect database
